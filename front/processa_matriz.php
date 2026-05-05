@@ -103,11 +103,25 @@ if (!empty($mapa_usuarios)) {
     }
 }
 
-// Ordenar os usuários em ordem alfabética (Nome + Sobrenome)
+// Ordenar os usuários em ordem alfabética ignorando acentos (Nome + Sobrenome)
 uasort($mapa_usuarios, function($a, $b) {
-    $nomeA = strtolower(trim(($a['firstname'] ?? '') . ' ' . ($a['realname'] ?? '')));
-    $nomeB = strtolower(trim(($b['firstname'] ?? '') . ' ' . ($b['realname'] ?? '')));
-    return strcmp($nomeA, $nomeB);
+    // Tabela de conversão para ignorar acentos na hora da ordenação
+    $acentos = [
+        'á'=>'a', 'à'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a',
+        'é'=>'e', 'è'=>'e', 'ê'=>'e', 'ë'=>'e',
+        'í'=>'i', 'ì'=>'i', 'î'=>'i', 'ï'=>'i',
+        'ó'=>'o', 'ò'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o',
+        'ú'=>'u', 'ù'=>'u', 'û'=>'u', 'ü'=>'u',
+        'ç'=>'c', 'ñ'=>'n'
+    ];
+
+    $nomeA = mb_strtolower(trim(($a['firstname'] ?? '') . ' ' . ($a['realname'] ?? '')), 'UTF-8');
+    $nomeB = mb_strtolower(trim(($b['firstname'] ?? '') . ' ' . ($b['realname'] ?? '')), 'UTF-8');
+
+    $nomeA_limpo = strtr($nomeA, $acentos);
+    $nomeB_limpo = strtr($nomeB, $acentos);
+
+    return strcmp($nomeA_limpo, $nomeB_limpo);
 });
 
 // Cálculos de Paginação
