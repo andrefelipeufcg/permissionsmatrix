@@ -348,10 +348,10 @@ echo "</tr>";
 foreach ($usuarios_pagina as $uid => $dados) {
     echo "<tr class='tab_bg_1'>";
     
-    $cor_ativo = ($dados['ativo'] === 'Sim') ? 'color: #274e13; font-weight: bold; text-align: center;' : 'color: #990000; text-align: center;';
+    $cor_ativo = ($dados['ativo'] === __('Yes', 'matrizpermissoes')) ? 'color: #274e13; font-weight: bold; text-align: center;' : 'color: #990000; text-align: center;';
 
     // Travando as 4 primeiras colunas com os mesmos índices dos cabeçalhos e alinhamentos
-    echo "<td class='freeze-col' data-colindex='0' style='$cor_ativo'>" . ($dados['ativo'] ?? 'Não') . "</td>";
+    echo "<td class='freeze-col' data-colindex='0' style='$cor_ativo'>" . ($dados['ativo'] ?? __('No', 'matrizpermissoes')) . "</td>";
     echo "<td class='freeze-col' data-colindex='1' style='white-space: nowrap; text-align: left;'>" . ($dados['login'] ?? '') . "</td>";
     echo "<td class='freeze-col' data-colindex='2' style='white-space: nowrap; text-align: left;'>" . ($dados['firstname'] ?? '') . "</td>";
     echo "<td class='freeze-col freeze-shadow' data-colindex='3' style='white-space: nowrap; text-align: left;'>" . ($dados['realname'] ?? '') . "</td>";
