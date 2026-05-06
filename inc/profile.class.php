@@ -4,7 +4,7 @@ if (!defined('GLPI_ROOT')) { die("Acesso negado"); }
 class PluginMatrizpermissoesProfile extends CommonGLPI {
 
     static function getTypeName($nb = 0) {
-        return 'Matriz de Permissões';
+        return __('Permissions Matrix', 'matrizpermissoes');
     }
 
     static function getIcon() {
