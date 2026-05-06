@@ -99,7 +99,7 @@ if (!empty($mapa_usuarios)) {
         $mapa_usuarios[$uid]['login']     = $linha['login'];
         $mapa_usuarios[$uid]['firstname'] = $linha['firstname'];
         $mapa_usuarios[$uid]['realname']  = $linha['realname'];
-        $mapa_usuarios[$uid]['ativo']     = $linha['is_active'] ? 'Sim' : 'Não';
+        $mapa_usuarios[$uid]['ativo']     = $linha['is_active'] ? __('Yes', 'matrizpermissoes') : __('No', 'matrizpermissoes');
     }
 }
 
@@ -155,7 +155,8 @@ if ($is_export) {
     $output = fopen('php://output', 'w');
     fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF)); 
 
-    $cabecalho = array_merge(['Ativo', 'Usuário', 'Nome', 'Sobrenome'], $nomes_perfis, $nomes_grupos);
+    // Cabeçalho do CSV
+    $cabecalho = array_merge([__('Active', 'matrizpermissoes'), __('User', 'matrizpermissoes'), __('First name', 'matrizpermissoes'), __('Last name', 'matrizpermissoes')], $nomes_perfis, $nomes_grupos);
     fputcsv($output, $cabecalho, ';'); 
 
     // O CSV continua exportando 100% da lista ($mapa_usuarios inteiro)
@@ -173,7 +174,7 @@ if ($is_export) {
 
         // Se a pessoa não tem 'X' nas colunas selecionadas, a linha não vai para o CSV
         if ($tem_x) {
-            $linha = [$dados['ativo'] ?? 'Não', $dados['login'] ?? '', $dados['firstname'] ?? '', $dados['realname'] ?? ''];
+            $linha = [$dados['ativo'] ?? __('No', 'matrizpermissoes'), $dados['login'] ?? '', $dados['firstname'] ?? '', $dados['realname'] ?? ''];
             foreach ($nomes_perfis as $p) $linha[] = isset($dados['perfis'][$p]) ? 'X' : '';
             foreach ($nomes_grupos as $g) $linha[] = isset($dados['grupos'][$g]) ? 'X' : '';
             fputcsv($output, $linha, ';');
@@ -237,11 +238,11 @@ $total_usuarios = count($mapa_usuarios);
 // Painel Superior: Totalizador e Botões
 echo "<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px;'>";
     echo "<div style='font-size: 15px; font-weight: bold; color: #333;'>";
-        echo "<i class='fas fa-users' style='margin-right: 5px; color: #1d5ea3;'></i> Total de usuários encontrados: <span style='color: #1d5ea3; font-size: 16px;'>" . $total_usuarios . "</span>";
+        echo "<i class='fas fa-users' style='margin-right: 5px; color: #1d5ea3;'></i> " . __('Total users found:', 'matrizpermissoes') . " <span style='color: #1d5ea3; font-size: 16px;'>" . $total_usuarios . "</span>";
     echo "</div>";
 
     echo "<div style='display: flex; gap: 10px;'>";
-        echo "<a href='matriz.php' class='vsubmit' style='background-color: #555555; text-decoration: none; padding: 5px 15px; display: inline-flex; align-items: center;' title='Voltar para a seleção de entidades'>⬅️ Voltar</a>";
+        echo "<a href='matriz.php' class='vsubmit' style='background-color: #555555; text-decoration: none; padding: 5px 15px; display: inline-flex; align-items: center;' title='" . __('Back to entities selection', 'matrizpermissoes') . "'>⬅️ " . __('Back', 'matrizpermissoes') . "</a>";
 
         echo "<form id='form-exportar' method='post' action='processa_matriz.php' style='margin: 0;'>";
             echo "<input type='hidden' name='_glpi_csrf_token' value='" . Session::getNewCSRFToken() . "'>";
@@ -258,7 +259,7 @@ echo "<div style='display: flex; justify-content: space-between; align-items: ce
             echo "<input type='hidden' name='perfis_ativos' id='input_perfis_ativos' value=''>";
             echo "<input type='hidden' name='grupos_ativos' id='input_grupos_ativos' value=''>";
             
-            echo "<button type='submit' name='exportar_csv' value='1' class='vsubmit' style='background-color: #2e7d32;' title='Fazer o download da tabela em formato CSV'>📥 Exportar para CSV</button>";
+            echo "<button type='submit' name='exportar_csv' value='1' class='vsubmit' style='background-color: #2e7d32;' title='" . __('Download table in CSV format', 'matrizpermissoes') . "'>📥 " . __('Export to CSV', 'matrizpermissoes') . "</button>";
         echo "</form>";
     echo "</div>";
 echo "</div>";
@@ -279,9 +280,9 @@ if ($total_paginas > 1) {
         echo "<button onclick='irParaPagina($prev)' class='btn-paginacao' style='background-color: #1d5ea3;'><i class='fas fa-chevron-left'></i></button>";
     }
     
-    echo "<span style='font-size: 14px; color: #555;'>Página ";
+    echo "<span style='font-size: 14px; color: #555;'>" . __('Page', 'matrizpermissoes') . " ";
     echo "<input type='number' value='$pagina_atual' min='1' max='$total_paginas' style='width: 60px; text-align: center; padding: 3px; border: 1px solid #ccc; border-radius: 4px; font-weight: bold;' onchange='pularParaPagina(this.value, $total_paginas)'> ";
-    echo "de <b>$total_paginas</b></span>";    
+    echo __('of', 'matrizpermissoes') . " <b>$total_paginas</b></span>";    
     
     if ($pagina_atual < $total_paginas) {
         $next = $pagina_atual + 1;
@@ -291,7 +292,14 @@ if ($total_paginas > 1) {
     echo "</div>";
 
     // Texto mostrando o intervalo de usuários atual
-    echo "<span style='font-size: 14px; color: #333;'>Exibindo <b>$inicio_exibicao - $fim_exibicao</b> de <b>$total_usuarios</b> usuários</span>";
+    // Usando sprintf para injetar as variáveis no texto traduzido
+    $texto_exibindo = sprintf(
+        __('Showing %1$s - %2$s of %3$s users', 'matrizpermissoes'), 
+        "<b>$inicio_exibicao</b>", 
+        "<b>$fim_exibicao</b>", 
+        "<b>$total_usuarios</b>"
+    );
+    echo "<span style='font-size: 14px; color: #333;'>$texto_exibindo</span>";
     
     echo "</div>";
 }
@@ -301,7 +309,7 @@ echo "<div style='margin-bottom: 15px; padding: 15px; background: #f8f9fa; borde
 
 // O Botão de Toggle
 echo "<div id='btn-toggle-filtro' style='cursor: pointer; text-align: center; color: #1d5ea3; font-weight: bold; font-size: 14px; padding: 5px;'>";
-echo "<i class='fas fa-filter'></i> Ocultar/Mostrar Colunas (Filtro Visual) <i class='fas fa-caret-down'></i>";
+echo "<i class='fas fa-filter'></i> " . __('Hide/Show Columns (Visual Filter)', 'matrizpermissoes') . " <i class='fas fa-caret-down'></i>";
 echo "</div>";
 
 // O Conteúdo do Filtro (oculto por padrão)
@@ -313,10 +321,10 @@ $col_index = 4; // As 4 primeiras colunas são fixas (0 a 3)
 // Caixa de Filtros de Perfis
 echo "<div style='flex: 1; min-width: 250px; text-align: left;'>";
 echo "<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>";
-echo "<strong style='color: #555;'>Perfis:</strong>";
+echo "<strong style='color: #555;'>" . __('Profiles:', 'matrizpermissoes') . "</strong>";
 echo "<div style='font-size: 12px;'>";
-echo "<a href='#' class='acao-massa-perfil' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>Marcar Todos</a> | ";
-echo "<a href='#' class='acao-massa-perfil' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>Desmarcar Todos</a>";
+echo "<a href='#' class='acao-massa-perfil' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>" . __('Check all', 'matrizpermissoes') . "</a> | ";
+echo "<a href='#' class='acao-massa-perfil' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>" . __('Uncheck all', 'matrizpermissoes') . "</a>";
 echo "</div></div>";
 
 echo "<div id='caixa-perfis' style='max-height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; background: #fff; border-radius: 3px;'>";
@@ -332,10 +340,10 @@ echo "</div></div>";
 // Caixa de Filtros de Grupos
 echo "<div style='flex: 1; min-width: 250px; text-align: left;'>";
 echo "<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>";
-echo "<strong style='color: #555;'>Grupos:</strong>";
+echo "<strong style='color: #555;'>" . __('Groups:', 'matrizpermissoes') . "</strong>";
 echo "<div style='font-size: 12px;'>";
-echo "<a href='#' class='acao-massa-grupo' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>Marcar Todos</a> | ";
-echo "<a href='#' class='acao-massa-grupo' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>Desmarcar Todos</a>";
+echo "<a href='#' class='acao-massa-grupo' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>" . __('Check all', 'matrizpermissoes') . "</a> | ";
+echo "<a href='#' class='acao-massa-grupo' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>" . __('Uncheck all', 'matrizpermissoes') . "</a>";
 echo "</div></div>";
 
 echo "<div id='caixa-grupos' style='max-height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; background: #fff; border-radius: 3px;'>";
@@ -366,10 +374,10 @@ echo "<table class='tab_cadre_fixehov' style='margin: 0; min-width: 100%; width:
 // Cabeçalhos
 echo "<tr class='headerRow'>";
 // Aplicando a classe freeze e marcando o índice da coluna
-echo "<th class='freeze-col' data-colindex='0' style='text-align: center;'>Ativo</th>";
-echo "<th class='freeze-col' data-colindex='1' style='text-align: left;'>Usuário</th>";
-echo "<th class='freeze-col' data-colindex='2' style='text-align: left;'>Nome</th>";
-echo "<th class='freeze-col freeze-shadow' data-colindex='3' style='text-align: left;'>Sobrenome</th>";
+echo "<th class='freeze-col' data-colindex='0' style='text-align: center;'>" . __('Active', 'matrizpermissoes') . "</th>";
+echo "<th class='freeze-col' data-colindex='1' style='text-align: left;'>" . __('User', 'matrizpermissoes') . "</th>";
+echo "<th class='freeze-col' data-colindex='2' style='text-align: left;'>" . __('First name', 'matrizpermissoes') . "</th>";
+echo "<th class='freeze-col freeze-shadow' data-colindex='3' style='text-align: left;'>" . __('Last name', 'matrizpermissoes') . "</th>";
 
 foreach ($nomes_perfis as $p) echo "<th style='background-color: #999999; color: white; white-space: nowrap; text-align: center; padding: 5px 15px;'>$p</th>";
 foreach ($nomes_grupos as $g) echo "<th style='background-color: #0b5394; color: white; white-space: nowrap; text-align: center; padding: 5px 15px;'>$g</th>";
