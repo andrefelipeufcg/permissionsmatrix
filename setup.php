@@ -1,26 +1,26 @@
 <?php
-// O nome das funções DEVE conter o nome exato da pasta do plugin (plugin_matrizpermissoes)
+// O nome das funções DEVE conter o nome exato da pasta do plugin (plugin_permissionsmatrix)
 
 /**
  * Função principal de inicialização do plugin
  */
-function plugin_init_matrizpermissoes() {
+function plugin_init_permissionsmatrix() {
     global $PLUGIN_HOOKS;
-    $PLUGIN_HOOKS["csrf_compliant"]["matrizpermissoes"] = true;
-    $PLUGIN_HOOKS['menu_toadd']['matrizpermissoes'] = ['tools' => 'PluginMatrizpermissoesMatriz'];
-    Plugin::registerClass('PluginMatrizpermissoesProfile', ['addtabon' => 'Profile']);
+    $PLUGIN_HOOKS["csrf_compliant"]["permissionsmatrix"] = true;
+    $PLUGIN_HOOKS['menu_toadd']['permissionsmatrix'] = ['tools' => 'PluginPermissionsmatrixMatriz'];
+    Plugin::registerClass('PluginPermissionsmatrixProfile', ['addtabon' => 'Profile']);
 }
 
 /**
  * Define a versão, autor e requisitos do plugin
  */
-function plugin_version_matrizpermissoes() {
+function plugin_version_permissionsmatrix() {
     return [
-        'name'           => __('Permissions Matrix', 'matrizpermissoes'),
+        'name'           => __('Permissions Matrix', 'permissionsmatrix'),
         'version'        => '1.1.3',
         'author'         => 'andrefelipeufcg',
         'license'        => 'GPLv2+',
-        'homepage'       => 'https://github.com/andrefelipeufcg/matrizpermissoes',
+        'homepage'       => 'https://github.com/andrefelipeufcg/permissionsmatrix',
         'minGlpiVersion' => '10.0.0' // Funciona para a v10 e v11
     ];
 }
@@ -28,9 +28,9 @@ function plugin_version_matrizpermissoes() {
 /**
  * Verifica os pré-requisitos antes de deixar o usuário clicar em "Instalar"
  */
-function plugin_matrizpermissoes_check_prerequisites() {
+function plugin_permissionsmatrix_check_prerequisites() {
     if (version_compare(GLPI_VERSION, '10.0.0', '<')) {
-        echo __("This plugin requires GLPI 10.0.0 or higher.", "matrizpermissoes");
+        echo __("This plugin requires GLPI 10.0.0 or higher.", "permissionsmatrix");
         return false;
     }
     return true;
@@ -39,6 +39,6 @@ function plugin_matrizpermissoes_check_prerequisites() {
 /**
  * Verifica se a configuração inicial está correta
  */
-function plugin_matrizpermissoes_check_config() {
+function plugin_permissionsmatrix_check_config() {
     return true;
 }

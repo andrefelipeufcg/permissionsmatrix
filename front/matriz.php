@@ -4,18 +4,18 @@ include ("../../../inc/includes.php");
 
 // 2. Trava de segurança: Garante que só quem está logado e quem tem permissão pode acessar
 Session::checkLoginUser();
-Session::checkRight('plugin_matrizpermissoes', READ);
+Session::checkRight('plugin_permissionsmatrix', READ);
 
 // 3. Renderiza o cabeçalho nativo do GLPI
 // Parâmetros: Título da aba, Caminho atual, Menu principal (Ferramentas), Nome do Plugin
-Html::header(__('Permissions Matrix', 'matrizpermissoes'), $_SERVER['PHP_SELF'], "tools", "PluginMatrizpermissoesMatriz");
+Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", "PluginPermissionsmatrixMatriz");
 
 // 4. Início da construção da Interface (Usando as classes CSS nativas do GLPI)
 echo "<div class='center' style='margin-top: 20px;'>";
 echo "<table class='tab_cadre_fixe'>";
 
 // Título do quadro
-echo "<tr><th colspan='2'>" . __('Permissions Matrix Generator', 'matrizpermissoes') . "</th></tr>";
+echo "<tr><th colspan='2'>" . __('Permissions Matrix Generator', 'permissionsmatrix') . "</th></tr>";
 
 // Formulário que vai enviar os dados para o motor de processamento
 echo "<form method='post' action='processa_matriz.php'>";
@@ -25,7 +25,7 @@ echo "<input type='hidden' name='_glpi_csrf_token' value='" . Session::getNewCSR
 
 // --- CAMPO 1: Entidade dos Perfis ---
 echo "<tr class='tab_bg_1'>";
-echo "<td width='30%'><strong>" . __('1. Profiles Entity:', 'matrizpermissoes') . "</strong></td>";
+echo "<td width='30%'><strong>" . __('1. Profiles Entity:', 'permissionsmatrix') . "</strong></td>";
 echo "<td>";
 // Essa linha cria o Select com pesquisa (Select2)
 // que já puxa todas as entidades do banco de dados automaticamente!
@@ -38,7 +38,7 @@ echo "</tr>";
 
 // --- CAMPO 2: Entidade dos Grupos ---
 echo "<tr class='tab_bg_1'>";
-echo "<td><strong>" . __('2. Groups Entity:', 'matrizpermissoes') . "</strong></td>";
+echo "<td><strong>" . __('2. Groups Entity:', 'permissionsmatrix') . "</strong></td>";
 echo "<td>";
 Entity::dropdown([
     'name' => 'entities_id_groups', 
@@ -50,7 +50,7 @@ echo "</tr>";
 // --- BOTÃO DE SUBMIT ---
 echo "<tr class='tab_bg_2'>";
 echo "<td colspan='2' class='center'>";
-echo "<button type='submit' name='gerar_matriz' class='vsubmit'>" . __('Generate Permissions Matrix', 'matrizpermissoes') . "</button>";
+echo "<button type='submit' name='gerar_matriz' class='vsubmit'>" . __('Generate Permissions Matrix', 'permissionsmatrix') . "</button>";
 echo "</td>";
 echo "</tr>";
 

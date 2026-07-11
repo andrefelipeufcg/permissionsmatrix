@@ -14,13 +14,13 @@ if (isset($_POST['update_matriz_right'])) {
     // Remove a permissão antiga
     $DB->delete('glpi_profilerights', [
         'profiles_id' => $profile_id,
-        'name'        => 'plugin_matrizpermissoes'
+        'name'        => 'plugin_permissionsmatrix'
     ]);
     
     // Insere o status atualizado (Garante que o 0 fique salvo se desmarcado)
     $DB->insert('glpi_profilerights', [
         'profiles_id' => $profile_id,
-        'name'        => 'plugin_matrizpermissoes',
+        'name'        => 'plugin_permissionsmatrix',
         'rights'      => $right
     ]);
     

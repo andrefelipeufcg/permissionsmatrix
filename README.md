@@ -28,17 +28,17 @@ Developed to facilitate access auditing and the extraction of structured reports
 ## 🚀 How to Install
 
 1. **Download the plugin** and extract the files.
-2. **Rename the folder** strictly to `matrizpermissoes` (no special characters or underscores, as required by GLPI).
+2. **Rename the folder** strictly to `permissionsmatrix` (no special characters or underscores, as required by GLPI).
 3. Upload the folder to your GLPI server's plugin directory:
    ```bash
-   /var/www/your_glpi/plugins/matrizpermissoes
+   /var/www/your_glpi/plugins/permissionsmatrix
    ```
 
 4. **Adjust server permissions (Important):**
    The web server needs read permission to compile the Autoloader. Access your terminal and execute:
    ```bash
-   sudo chown -R www-data:www-data /var/www/your_glpi/plugins/matrizpermissoes
-   sudo chmod -R 755 /var/www/your_glpi/plugins/matrizpermissoes
+   sudo chown -R www-data:www-data /var/www/your_glpi/plugins/permissionsmatrix
+   sudo chmod -R 755 /var/www/your_glpi/plugins/permissionsmatrix
    ```
    *(Note: If your server uses CentOS/RedHat, the user might be `apache` instead of `www-data`).*
 
@@ -113,17 +113,17 @@ Développé pour faciliter l'audit des accès et l'extraction de rapports struct
 ## 🚀 Comment l'installer
 
 1. **Téléchargez le plugin** et extrayez les fichiers.
-2. **Renommez le dossier** obligatoirement en `matrizpermissoes` (sans caractères spéciaux ni tirets bas, comme exigé par GLPI).
+2. **Renommez le dossier** obligatoirement en `permissionsmatrix` (sans caractères spéciaux ni tirets bas, comme exigé par GLPI).
 3. Envoyez le dossier dans le répertoire des plugins de votre serveur GLPI :
    ```bash
-   /var/www/votre_glpi/plugins/matrizpermissoes
+   /var/www/votre_glpi/plugins/permissionsmatrix
    ```
 
 4. **Ajustez les permissions sur le serveur (Important) :**
    Le serveur web doit avoir la permission de lecture pour compiler l'Autoloader. Accédez à votre terminal et exécutez :
    ```bash
-   sudo chown -R www-data:www-data /var/www/votre_glpi/plugins/matrizpermissoes
-   sudo chmod -R 755 /var/www/votre_glpi/plugins/matrizpermissoes
+   sudo chown -R www-data:www-data /var/www/votre_glpi/plugins/permissionsmatrix
+   sudo chmod -R 755 /var/www/votre_glpi/plugins/permissionsmatrix
    ```
    *(Remarque : Si votre serveur utilise CentOS/RedHat, l'utilisateur peut être `apache` au lieu de `www-data`).*
 
@@ -198,17 +198,17 @@ Desenvolvido para facilitar a auditoria de acessos e a extração de relatórios
 ## 🚀 Como Instalar
 
 1. **Faça o download do plugin** e extraia os arquivos.
-2. **Renomeie a pasta** obrigatoriamente para `matrizpermissoes` (sem caracteres especiais ou sublinhados, exigência do GLPI).
+2. **Renomeie a pasta** obrigatoriamente para `permissionsmatrix` (sem caracteres especiais ou sublinhados, exigência do GLPI).
 3. Envie a pasta para o diretório de plugins do seu servidor GLPI:
    ```bash
-   /var/www/seu_glpi/plugins/matrizpermissoes
+   /var/www/seu_glpi/plugins/permissionsmatrix
    ```
 
 4. **Ajuste as permissões no servidor (Importante):**
    O servidor web precisa ter permissão de leitura para compilar o Autoloader. Acesse seu terminal e execute:
    ```bash
-   sudo chown -R www-data:www-data /var/www/seu_glpi/plugins/matrizpermissoes
-   sudo chmod -R 755 /var/www/seu_glpi/plugins/matrizpermissoes
+   sudo chown -R www-data:www-data /var/www/seu_glpi/plugins/permissionsmatrix
+   sudo chmod -R 755 /var/www/seu_glpi/plugins/permissionsmatrix
    ```
    *(Nota: Se o seu servidor utilizar CentOS/RedHat, o usuário pode ser o `apache` em vez de `www-data`).*
 

@@ -10,20 +10,20 @@ if (!defined('GLPI_ROOT')) {
  * Classe principal do plugin.
  * A nomenclatura DEVE ser Plugin + NomeDoPlugin + NomeDaClasse
  */
-class PluginMatrizpermissoesMatriz extends CommonGLPI {
+class PluginPermissionsmatrixMatriz extends CommonGLPI {
     
     /**
      * Define o nome que vai aparecer no menu do GLPI
      */
     static function getMenuName() {
-        return __('Permissions Matrix', 'matrizpermissoes');
+        return __('Permissions Matrix', 'permissionsmatrix');
     }
 
     /**
      * Define o nome interno do tipo (padrão do framework)
      */
     static function getTypeName($nb = 0) {
-        return __('Permissions Matrix', 'matrizpermissoes');
+        return __('Permissions Matrix', 'permissionsmatrix');
     }
 
     /**
@@ -44,7 +44,7 @@ class PluginMatrizpermissoesMatriz extends CommonGLPI {
         
         return [
             'title' => self::getMenuName(),
-            'page'  => '/plugins/matrizpermissoes/front/matriz.php',
+            'page'  => '/plugins/permissionsmatrix/front/matriz.php',
             'icon'  => self::getIcon()
         ];
     }
@@ -57,6 +57,6 @@ class PluginMatrizpermissoesMatriz extends CommonGLPI {
     #[\ReturnTypeWillChange]
     public static function canView(): bool {
         // Agora o GLPI só exibe o menu se o perfil tiver a permissão 1 (READ)
-        return Session::haveRight('plugin_matrizpermissoes', READ);
+        return Session::haveRight('plugin_permissionsmatrix', READ);
     }
 }

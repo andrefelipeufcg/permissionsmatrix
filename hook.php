@@ -4,7 +4,7 @@
  * Rotina de instalação
  * Aqui você cria tabelas no banco de dados quando necessário.
  */
-function plugin_matrizpermissoes_install() {
+function plugin_permissionsmatrix_install() {
     global $DB;
     
     // Busca todos os perfis existentes no GLPI
@@ -19,7 +19,7 @@ function plugin_matrizpermissoes_install() {
             'FROM'   => 'glpi_profilerights',
             'WHERE'  => [
                 'profiles_id' => $profile_id,
-                'name'        => 'plugin_matrizpermissoes'
+                'name'        => 'plugin_permissionsmatrix'
             ]
         ]);
         
@@ -27,7 +27,7 @@ function plugin_matrizpermissoes_install() {
         if (count($iterator) == 0) {
             $DB->insert('glpi_profilerights', [
                 'profiles_id' => $profile_id,
-                'name'        => 'plugin_matrizpermissoes',
+                'name'        => 'plugin_permissionsmatrix',
                 'rights'      => 1
             ]);
         }
@@ -40,6 +40,6 @@ function plugin_matrizpermissoes_install() {
  * Rotina de desinstalação
  * Aqui você limparia as tabelas criadas na instalação.
  */
-function plugin_matrizpermissoes_uninstall() {
+function plugin_permissionsmatrix_uninstall() {
     return true;
 }

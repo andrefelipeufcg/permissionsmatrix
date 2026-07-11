@@ -1,9 +1,9 @@
 <root>
     <name>Permissions Matrix</name>
-    <key>matrizpermissoes</key>
+    <key>permissionsmatrix</key>
     <state>stable</state>
     
-    <logo>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/logo.png</logo>
+    <logo>https://raw.githubusercontent.com/andrefelipeufcg/permissionsmatrix/main/logo.png</logo>
     
     <description>
         <short>
@@ -146,11 +146,11 @@
         </long>
     </description>
     
-    <homepage>https://github.com/andrefelipeufcg/matrizpermissoes</homepage>
-    <download>https://github.com/andrefelipeufcg/matrizpermissoes/releases</download>
-    <issues>https://github.com/andrefelipeufcg/matrizpermissoes/issues</issues>
-    <readme>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/README.md</readme>
-    <changelog>https://github.com/andrefelipeufcg/matrizpermissoes/releases</changelog>
+    <homepage>https://github.com/andrefelipeufcg/permissionsmatrix</homepage>
+    <download>https://github.com/andrefelipeufcg/permissionsmatrix/releases</download>
+    <issues>https://github.com/andrefelipeufcg/permissionsmatrix/issues</issues>
+    <readme>https://raw.githubusercontent.com/andrefelipeufcg/permissionsmatrix/main/README.md</readme>
+    <changelog>https://github.com/andrefelipeufcg/permissionsmatrix/releases</changelog>
     
     <authors>
         <author>andrefelipeufcg</author>
@@ -160,27 +160,27 @@
         <version>
             <num>1.1.3</num> 
             <compatibility>&gt;=10.0.0</compatibility> 
-            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.3.zip</download_url>
+            <download_url>https://github.com/andrefelipeufcg/permissionsmatrix/archive/refs/tags/v1.1.3.zip</download_url>
         </version>
         <version>
             <num>1.1.2</num> 
             <compatibility>&gt;=10.0.0</compatibility> 
-            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.2.zip</download_url>
+            <download_url>https://github.com/andrefelipeufcg/permissionsmatrix/archive/refs/tags/v1.1.2.zip</download_url>
         </version>
         <version>
             <num>1.1.1</num> 
             <compatibility>&gt;=10.0.0</compatibility> 
-            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.1.zip</download_url>
+            <download_url>https://github.com/andrefelipeufcg/permissionsmatrix/archive/refs/tags/v1.1.1.zip</download_url>
         </version>
         <version>
             <num>1.1.0</num> 
             <compatibility>&gt;=10.0.0</compatibility> 
-            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.0.zip</download_url>
+            <download_url>https://github.com/andrefelipeufcg/permissionsmatrix/archive/refs/tags/v1.1.0.zip</download_url>
         </version>
         <version>
             <num>1.0.0</num> 
             <compatibility>&gt;=10.0.0</compatibility> 
-            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.0.0.zip</download_url>
+            <download_url>https://github.com/andrefelipeufcg/permissionsmatrix/archive/refs/tags/v1.0.0.zip</download_url>
         </version>
     </versions>
     
@@ -796,7 +796,7 @@
     </tags>
     
     <screenshots>
-        <screenshot>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/screenshot1.png</screenshot>
-        <screenshot>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/screenshot2.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/andrefelipeufcg/permissionsmatrix/main/screenshot1.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/andrefelipeufcg/permissionsmatrix/main/screenshot2.png</screenshot>
     </screenshots>
 </root>
