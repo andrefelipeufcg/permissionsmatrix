@@ -1,0 +1,802 @@
+<root>
+    <name>Permissions Matrix</name>
+    <key>matrizpermissoes</key>
+    <state>stable</state>
+    
+    <logo>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/logo.png</logo>
+    
+    <description>
+        <short>
+            <ar_IQ>إضافة GLPI لإنشاء وتصدير مصفوفة أذونات مستخدم مرئية (الملفات الشخصية × المجموعات).</ar_IQ>
+            <ar_SA>إضافة GLPI لإنشاء وتصدير مصفوفة أذونات مستخدم مرئية (الملفات الشخصية × المجموعات).</ar_SA>
+            <ar_SY>إضافة GLPI لإنشاء وتصدير مصفوفة أذونات مستخدم مرئية (الملفات الشخصية × المجموعات).</ar_SY>
+            <az_AZ>Vizual istifadəçi icazələri matrisini (Profillər x Qruplar) yaratmaq və ixrac etmək üçün GLPI Plugini.</az_AZ>
+            <be_BY>Убудова GLPI для стварэння і экспарту візуальнай матрыцы дазволаў карыстальнікаў (Профілі x Групы).</be_BY>
+            <bg_BG>GLPI плъгин за генериране и експортиране на визуална матрица с потребителски разрешения (Профили x Групи).</bg_BG>
+            <bn_BD>একটি ভিজ্যুয়াল ব্যবহারকারী অনুমতি ম্যাট্রিক্স (প্রোফাইল x গ্রুপ) তৈরি এবং রপ্তানি করার জন্য GLPI প্লাগইন।</bn_BD>
+            <ca_ES>Connector GLPI per generar i exportar una matriu visual de permisos d'usuari (Perfils x Grups).</ca_ES>
+            <cs_CZ>Zásuvný modul GLPI pro generování a export vizuální matice uživatelských oprávnění (Profily x Skupiny).</cs_CZ>
+            <da_DK>GLPI Plugin til at generere og eksportere en visuel brugerrettighedsmatrix (Profiler x Grupper).</da_DK>
+            <de_DE>GLPI Plugin zum Generieren und Exportieren einer visuellen Benutzerberechtigungsmatrix (Profile x Gruppen).</de_DE>
+            <el_GR>Πρόσθετο GLPI για τη δημιουργία και εξαγωγή ενός οπτικού πίνακα δικαιωμάτων χρηστών (Προφίλ x Ομάδες).</el_GR>
+            <en_GB>GLPI Plugin for generating and exporting a visual user permissions matrix (Profiles x Groups).</en_GB>
+            <en_US>GLPI Plugin for generating and exporting a visual user permissions matrix (Profiles x Groups).</en_US>
+            <eo>GLPI-Kromaĵo por generi kaj eksporti vidan uzantrajtan matricon (Profiloj x Grupoj).</eo>
+            <es_419>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_419>
+            <es_AR>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_AR>
+            <es_CL>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_CL>
+            <es_CO>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_CO>
+            <es_EC>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_EC>
+            <es_ES>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_ES>
+            <es_MX>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_MX>
+            <es_VE>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_VE>
+            <et_EE>GLPI pistikprogramm visuaalse kasutajaõiguste maatriksi (profiilid x rühmad) loomiseks ja eksportimiseks.</et_EE>
+            <eu_ES>GLPI plugina erabiltzaileen baimenen matrize bisual bat (Profilak x Taldeak) sortu eta esportatzeko.</eu_ES>
+            <fa_IR>افزونه GLPI برای تولید و استخراج یک ماتریس مجوزهای کاربر بصری (نمایه‌ها × گروه‌ها).</fa_IR>
+            <fi_FI>GLPI-laajennus visuaalisen käyttöoikeusmatriisin (Profiilit x Ryhmät) luomiseen ja viemiseen.</fi_FI>
+            <fr_BE>Plugin GLPI pour la génération et l'exportation d'une matrice visuelle des permissions des utilisateurs (Profils x Groupes).</fr_BE>
+            <fr_CA>Plugin GLPI pour la génération et l'exportation d'une matrice visuelle des permissions des utilisateurs (Profils x Groupes).</fr_CA>
+            <fr_FR>Plugin GLPI pour la génération et l'exportation d'une matrice visuelle des permissions des utilisateurs (Profils x Groupes).</fr_FR>
+            <gl_ES>Plugin GLPI para xerar e exportar unha matriz visual de permisos de usuario (Perfís x Grupos).</gl_ES>
+            <he_IL>תוסף GLPI ליצירה וייצוא של מטריצת הרשאות משתמש חזותית (פרופילים x קבוצות).</he_IL>
+            <hi_IN>विज़ुअल उपयोगकर्ता अनुमति मैट्रिक्स (प्रोफ़ाइल x समूह) उत्पन्न करने और निर्यात करने के लिए GLPI प्लगइन।</hi_IN>
+            <hr_HR>GLPI dodatak za generiranje i izvoz vizualne matrice korisničkih dozvola (Profili x Grupe).</hr_HR>
+            <hu_HU>GLPI bővítmény vizuális felhasználói jogosultsági mátrix (Profilok x Csoportok) generálásához és exportálásához.</hu_HU>
+            <id_ID>Plugin GLPI untuk menghasilkan dan mengekspor matriks izin pengguna visual (Profil x Grup).</id_ID>
+            <is_IS>GLPI viðbót til að búa til og flytja út sjónrænt notendaheimildafylki (Snið x Hópar).</is_IS>
+            <it_IT>Plugin GLPI per generare ed esportare una matrice visiva delle autorizzazioni utente (Profili x Gruppi).</it_IT>
+            <ja_JP>視覚的なユーザー権限マトリックス (プロファイル x グループ) を生成およびエクスポートするための GLPI プラグイン。</ja_JP>
+            <km_KH>កម្មវិធីជំនួយ GLPI សម្រាប់បង្កើត និងនាំចេញម៉ាទ្រីសការអនុញ្ញាតអ្នកប្រើប្រាស់ដែលមើលឃើញ (ទម្រង់ x ក្រុម) ។</km_KH>
+            <kn>ದೃಶ್ಯ ಬಳಕೆದಾರ ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್ (ಪ್ರೊಫೈಲ್‌ಗಳು x ಗುಂಪುಗಳು) ಉತ್ಪಾದಿಸಲು ಮತ್ತು ರಫ್ತು ಮಾಡಲು GLPI ಪ್ಲಗಿನ್.</kn>
+            <ko_KR>시각적 사용자 권한 매트릭스(프로필 x 그룹)를 생성하고 내보내는 GLPI 플러그인입니다.</ko_KR>
+            <lt_LT>GLPI papildinys, skirtas vaizdinei vartotojų leidimų matricai (Profiliai x Grupės) generuoti ir eksportuoti.</lt_LT>
+            <lv_LV>GLPI spraudnis vizuālas lietotāju atļauju matricas (Profili x Grupas) ģenerēšanai un eksportēšanai.</lv_LV>
+            <mn_MN>Харааны хэрэглэгчийн зөвшөөрлийн матриц (Профайл х Бүлгүүд) үүсгэх, экспортлох GLPI залгаас.</mn_MN>
+            <ms_MY>Pemalam GLPI untuk menjana dan mengeksport matriks kebenaran pengguna visual (Profil x Kumpulan).</ms_MY>
+            <nb_NO>GLPI-plugin for å generere og eksportere en visuell brukertillatelsesmatrise (Profiler x Grupper).</nb_NO>
+            <nl_BE>GLPI-plug-in voor het genereren en exporteren van een visuele matrix voor gebruikersrechten (Profielen x Groepen).</nl_BE>
+            <nl_NL>GLPI-plug-in voor het genereren en exporteren van een visuele matrix voor gebruikersrechten (Profielen x Groepen).</nl_NL>
+            <nn_NO>GLPI-tillegg for å generere og eksportere ein visuell brukartillatingsmatrise (Profilar x Grupper).</nn_NO>
+            <pl_PL>Wtyczka GLPI do generowania i eksportowania wizualnej macierzy uprawnień użytkowników (Profile x Grupy).</pl_PL>
+            <pt_BR>Plugin GLPI para geração e exportação de matriz visual de permissões de usuários (Perfis x Grupos).</pt_BR>
+            <pt_PT>Plugin GLPI para geração e exportação de matriz visual de permissões de usuários (Perfis x Grupos).</pt_PT>
+            <ro_RO>Plugin GLPI pentru generarea și exportul unei matrici vizuale a permisiunilor utilizatorilor (Profiluri x Grupuri).</ro_RO>
+            <ru_RU>Плагин GLPI для создания и экспорта визуальной матрицы разрешений пользователей (Профили x Группы).</ru_RU>
+            <sk_SK>Zásuvný modul GLPI na generovanie a export vizuálnej matice oprávnení používateľov (Profily x Skupiny).</sk_SK>
+            <sl_SI>Vtičnik GLPI za ustvarjanje in izvoz vizualne matrike uporabniških dovoljenj (Profili x Skupine).</sl_SI>
+            <sq_AL>Shtojcë GLPI për gjenerimin dhe eksportimin e një matrice vizuale të lejeve të përdoruesit (Profile x Grupe).</sq_AL>
+            <sr_RS>GLPI додатак за генерисање и извоз визуелне матрице корисничких дозвола (Профили к Групе).</sr_RS>
+            <sv_SE>GLPI-plugin för att generera och exportera en visuell behörighetsmatris för användare (Profiler x Grupper).</sv_SE>
+            <th_TH>ปลั๊กอิน GLPI สำหรับสร้างและส่งออกเมทริกซ์สิทธิ์ผู้ใช้ด้วยภาพ (โปรไฟล์ x กลุ่ม)</th_TH>
+            <tr_TR>Görsel bir kullanıcı izinleri matrisi (Profiller x Gruplar) oluşturmak ve dışa aktarmak için GLPI Eklentisi.</tr_TR>
+            <uk_UA>Плагін GLPI для створення та експорту візуальної матриці дозволів користувачів (Профілі x Групи).</uk_UA>
+            <vi_VN>Plugin GLPI để tạo và xuất ma trận quyền người dùng trực quan (Hồ sơ x Nhóm).</vi_VN>
+            <zh_CN>用于生成和导出可视用户权限矩阵（配置文件 x 组）的 GLPI 插件。</zh_CN>
+            <zh_HK>用於生成和導出可視用戶權限矩陣（配置文件 x 組）的 GLPI 插件。</zh_HK>
+            <zh_TW>用於生成和導出可視用戶權限矩陣（配置文件 x 組）的 GLPI 插件。</zh_TW>
+        </short>
+        <long>
+            <ar_IQ>تقوم هذه الإضافة بإنشاء مصفوفة ديناميكية ومرئية تتقاطع مع المستخدمين والملفات الشخصية والمجموعات داخل GLPI. إنها تسمح بتصفية الأعمدة ديناميكيًا وتوفر ميزة التصدير إلى CSV لأغراض التدقيق.</ar_IQ>
+            <ar_SA>تقوم هذه الإضافة بإنشاء مصفوفة ديناميكية ومرئية تتقاطع مع المستخدمين والملفات الشخصية والمجموعات داخل GLPI. إنها تسمح بتصفية الأعمدة ديناميكيًا وتوفر ميزة التصدير إلى CSV لأغراض التدقيق.</ar_SA>
+            <ar_SY>تقوم هذه الإضافة بإنشاء مصفوفة ديناميكية ومرئية تتقاطع مع المستخدمين والملفات الشخصية والمجموعات داخل GLPI. إنها تسمح بتصفية الأعمدة ديناميكيًا وتوفر ميزة التصدير إلى CSV لأغراض التدقيق.</ar_SY>
+            <az_AZ>Bu plagin GLPI daxilində istifadəçiləri, profilləri və qrupları kəsişən dinamik və vizual matris yaradır. O, dinamik sütun süzgəcinə imkan verir və audit məqsədləri üçün CSV-yə ixrac funksiyasını təqdim edir.</az_AZ>
+            <be_BY>Гэтая ўбудова стварае дынамічную і візуальную матрыцу перасячэння карыстальнікаў, профіляў і груп у GLPI. Гэта дазваляе дынамічна фільтраваць слупкі і забяспечвае функцыю экспарту ў CSV для мэт аўдыту.</be_BY>
+            <bg_BG>Този плъгин генерира динамична и визуална матрица, пресичаща потребители, профили и групи в GLPI. Той позволява динамично филтриране на колони и предоставя функция за експортиране в CSV за целите на одита.</bg_BG>
+            <bn_BD>এই প্লাগইনটি GLPI-এর মধ্যে ব্যবহারকারী, প্রোফাইল এবং গোষ্ঠী অতিক্রম করে একটি গতিশীল এবং ভিজ্যুয়াল ম্যাট্রিক্স তৈরি করে। এটি ডায়নামিক কলাম ফিল্টারিংয়ের অনুমতি দেয় এবং নিরীক্ষার উদ্দেশ্যে CSV বৈশিষ্ট্যে একটি এক্সপোর্ট প্রদান করে।</bn_BD>
+            <ca_ES>Aquest connector genera una matriu dinàmica i visual que creua usuaris, perfils i grups dins de GLPI. Permet el filtratge dinàmic de columnes i proporciona una funció d'exportació a CSV per a finalitats d'auditoria.</ca_ES>
+            <cs_CZ>Tento zásuvný modul generuje dynamickou a vizuální matici protínající uživatele, profily a skupiny v rámci GLPI. Umožňuje dynamické filtrování sloupců a poskytuje funkci exportu do CSV pro účely auditu.</cs_CZ>
+            <da_DK>Dette plugin genererer en dynamisk og visuel matrix, der krydser brugere, profiler og grupper inden for GLPI. Det tillader dynamisk kolonnefiltrering og giver en eksport til CSV-funktion til revisionsformål.</da_DK>
+            <de_DE>Dieses Plugin generiert eine dynamische und visuelle Matrix, die Benutzer, Profile und Gruppen in GLPI kreuzt. Es ermöglicht eine dynamische Spaltenfilterung und bietet eine CSV-Exportfunktion für Prüfzwecke.</de_DE>
+            <el_GR>Αυτό το πρόσθετο δημιουργεί έναν δυναμικό και οπτικό πίνακα που διασταυρώνει χρήστες, προφίλ και ομάδες εντός του GLPI. Επιτρέπει το δυναμικό φιλτράρισμα στηλών και παρέχει μια δυνατότητα εξαγωγής σε CSV για σκοπούς ελέγχου.</el_GR>
+            <en_GB>This plugin generates a dynamic and visual matrix crossing users, profiles, and groups within GLPI. It allows dynamic column filtering and provides an export to CSV feature for auditing purposes.</en_GB>
+            <en_US>This plugin generates a dynamic and visual matrix crossing users, profiles, and groups within GLPI. It allows dynamic column filtering and provides an export to CSV feature for auditing purposes.</en_US>
+            <eo>Ĉi tiu kromaĵo generas dinamikan kaj vidan matricon krucantan uzantojn, profilojn kaj grupojn ene de GLPI. Ĝi ebligas dinamikan kolumnan filtradon kaj provizas eksporton al CSV-trajto por kontrolaj celoj.</eo>
+            <es_419>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_419>
+            <es_AR>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_AR>
+            <es_CL>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_CL>
+            <es_CO>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_CO>
+            <es_EC>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_EC>
+            <es_ES>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_ES>
+            <es_MX>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_MX>
+            <es_VE>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_VE>
+            <et_EE>See pistikprogramm genereerib GLPI-s dünaamilise ja visuaalse maatriksi, mis ristab kasutajaid, profiile ja rühmi. See võimaldab veergude dünaamilist filtreerimist ja pakub auditeerimise eesmärgil CSV-vormingusse eksportimise funktsiooni.</et_EE>
+            <eu_ES>Plugin honek matrize dinamiko eta bisual bat sortzen du GLPI barruan erabiltzaileak, profilak eta taldeak gurutzatzen dituena. Zutabeen iragazketa dinamikoa ahalbidetzen du eta CSVra esportatzeko funtzio bat eskaintzen du auditoria helburuetarako.</eu_ES>
+            <fa_IR>این افزونه یک ماتریس پویا و بصری از تقاطع کاربران، نمایه‌ها و گروه‌ها در داخل GLPI ایجاد می‌کند. این امکان فیلتر کردن ستون به صورت پویا را فراهم می‌کند و ویژگی صادرات به CSV را برای اهداف حسابرسی ارائه می‌دهد.</fa_IR>
+            <fi_FI>Tämä laajennus luo dynaamisen ja visuaalisen matriisin, joka risteää käyttäjien, profiilien ja ryhmien kesken GLPI:ssä. Se mahdollistaa dynaamisen sarakesuodatuksen ja tarjoaa vienti-CSV-toiminnon tarkoituksiin.</fi_FI>
+            <fr_BE>Ce plugin génère une matrice dynamique et visuelle croisant les utilisateurs, les profils et les groupes dans GLPI. Il permet un filtrage dynamique des colonnes et fournit une exportation en CSV pour les audits.</fr_BE>
+            <fr_CA>Ce plugin génère une matrice dynamique et visuelle croisant les utilisateurs, les profils et les groupes dans GLPI. Il permet un filtrage dynamique des colonnes et fournit une exportation en CSV pour les audits.</fr_CA>
+            <fr_FR>Ce plugin génère une matrice dynamique et visuelle croisant les utilisateurs, les profils et les groupes dans GLPI. Il permet un filtrage dynamique des colonnes et fournit une exportation en CSV pour les audits.</fr_FR>
+            <gl_ES>Este plugin xera unha matriz dinámica e visual cruzando usuarios, perfís e grupos dentro de GLPI. Permite o filtrado dinámico de columnas e proporciona unha función de exportación a CSV para fins de auditoría.</gl_ES>
+            <he_IL>תוסף זה יוצר מטריצה ​​דינמית וחזותית החוצה משתמשים, פרופילים וקבוצות בתוך GLPI. הוא מאפשר סינון עמודות דינמי ומספק תכונת ייצוא ל-CSV למטרות ביקורת.</he_IL>
+            <hi_IN>यह प्लगइन GLPI के भीतर उपयोगकर्ताओं, प्रोफाइल और समूहों को पार करते हुए एक गतिशील और दृश्य मैट्रिक्स उत्पन्न करता है। यह गतिशील कॉलम फ़िल्टरिंग की अनुमति देता है और ऑडिटिंग उद्देश्यों के लिए CSV सुविधा में निर्यात प्रदान करता है।</hi_IN>
+            <hr_HR>Ovaj dodatak generira dinamičku i vizualnu matricu koja presijeca korisnike, profile i grupe unutar GLPI-ja. Omogućuje dinamičko filtriranje stupaca i pruža značajku izvoza u CSV u svrhu revizije.</hr_HR>
+            <hu_HU>Ez a bővítmény egy dinamikus és vizuális mátrixot hoz létre, amely a felhasználókat, profilokat és csoportokat keresztezi a GLPI-ben. Lehetővé teszi a dinamikus oszlopszűrést, és CSV-be történő exportálási funkciót biztosít auditálási célokra.</hu_HU>
+            <id_ID>Plugin ini menghasilkan matriks dinamis dan visual yang melintasi pengguna, profil, dan grup dalam GLPI. Ini memungkinkan pemfilteran kolom dinamis dan menyediakan fitur ekspor ke CSV untuk tujuan audit.</id_ID>
+            <is_IS>Þessi viðbót býr til kraftmikið og sjónrænt fylki sem fer yfir notendur, snið og hópa innan GLPI. Það leyfir kraftmikla dálkasíun og veitir útflutning í CSV eiginleika í endurskoðunarskyni.</is_IS>
+            <it_IT>Questo plugin genera una matrice dinamica e visiva che incrocia utenti, profili e gruppi all'interno di GLPI. Consente il filtraggio dinamico delle colonne e fornisce una funzione di esportazione in CSV per scopi di controllo.</it_IT>
+            <ja_JP>このプラグインは、GLPI内でユーザー、プロファイル、グループが交差する動的で視覚的なマトリックスを生成します。動的な列フィルタリングを可能にし、監査目的のCSVへのエクスポート機能を提供します。</ja_JP>
+            <km_KH>កម្មវិធីជំនួយនេះបង្កើតម៉ាទ្រីសថាមវន្ត និងមើលឃើញដែលឆ្លងកាត់អ្នកប្រើប្រាស់ ទម្រង់ និងក្រុមនៅក្នុង GLPI ។ វាអនុញ្ញាតឱ្យមានការត្រងជួរឈរថាមវន្ត និងផ្តល់នូវការនាំចេញទៅមុខងារ CSV សម្រាប់គោលបំណងសវនកម្ម។</km_KH>
+            <kn>ಈ ಪ್ಲಗಿನ್ GLPI ಒಳಗೆ ಬಳಕೆದಾರರು, ಪ್ರೊಫೈಲ್‌ಗಳು ಮತ್ತು ಗುಂಪುಗಳನ್ನು ದಾಟುವ ಡೈನಾಮಿಕ್ ಮತ್ತು ದೃಶ್ಯ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ಅನ್ನು ರಚಿಸುತ್ತದೆ. ಇದು ಡೈನಾಮಿಕ್ ಕಾಲಮ್ ಫಿಲ್ಟರಿಂಗ್ ಅನ್ನು ಅನುಮತಿಸುತ್ತದೆ ಮತ್ತು ಆಡಿಟಿಂಗ್ ಉದ್ದೇಶಗಳಿಗಾಗಿ CSV ವೈಶಿಷ್ಟ್ಯಕ್ಕೆ ರಫ್ತು ಒದಗಿಸುತ್ತದೆ.</kn>
+            <ko_KR>이 플러그인은 GLPI 내에서 사용자, 프로필, 그룹이 교차하는 동적이고 시각적인 매트릭스를 생성합니다. 동적 열 필터링을 허용하고 감사 목적의 CSV로 내보내기 기능을 제공합니다.</ko_KR>
+            <lt_LT>Šis papildinys sukuria dinamišką ir vizualią matricą, kertančią vartotojus, profilius ir grupes GLPI. Tai leidžia dinamiškai filtruoti stulpelius ir suteikia eksporto į CSV funkciją audito tikslais.</lt_LT>
+            <lv_LV>Šis spraudnis ģenerē dinamisku un vizuālu matricu, kas šķērso lietotājus, profilus un grupas GLPI ietvaros. Tas nodrošina dinamisku kolonnu filtrēšanu un nodrošina eksportēšanas uz CSV funkciju audita nolūkos.</lv_LV>
+            <mn_MN>Энэхүү залгаас нь GLPI доторх хэрэглэгчид, профайл болон бүлгүүдийг огтолсон динамик болон визуал матриц үүсгэдэг. Энэ нь баганыг динамик шүүх боломжийг олгодог бөгөөд аудитын зорилгоор CSV рүү экспортлох боломжийг олгодог.</mn_MN>
+            <ms_MY>Pemalam ini menjana matriks dinamik dan visual merentas pengguna, profil dan kumpulan dalam GLPI. Ia membenarkan penapisan lajur dinamik dan menyediakan ciri eksport ke CSV untuk tujuan pengauditan.</ms_MY>
+            <nb_NO>Dette pluginet genererer en dynamisk og visuell matrise som krysser brukere, profiler og grupper innenfor GLPI. Det tillater dynamisk kolonnefiltrering og gir en eksport til CSV-funksjon for revisjonsformål.</nb_NO>
+            <nl_BE>Deze plug-in genereert een dynamische en visuele matrix die gebruikers, profielen en groepen in GLPI kruist. Het maakt dynamische kolomfiltering mogelijk en biedt een exporteerfunctie naar CSV voor auditdoeleinden.</nl_BE>
+            <nl_NL>Deze plug-in genereert een dynamische en visuele matrix die gebruikers, profielen en groepen in GLPI kruist. Het maakt dynamische kolomfiltering mogelijk en biedt een exporteerfunctie naar CSV voor auditdoeleinden.</nl_NL>
+            <nn_NO>Dette tillegget genererer ein dynamisk og visuell matrise som kryssar brukarar, profilar og grupper innanfor GLPI. Det tillèt dynamisk kolonnefiltrering og gir ein eksport til CSV-funksjon for revisjonsformål.</nn_NO>
+            <pl_PL>Ta wtyczka generuje dynamiczną i wizualną macierz krzyżującą użytkowników, profile i grupy w GLPI. Umożliwia dynamiczne filtrowanie kolumn i oferuje funkcję eksportu do pliku CSV do celów audytowych.</pl_PL>
+            <pt_BR>Este plugin gera uma matriz dinâmica e visual cruzando usuários, perfis e grupos no GLPI. Permite o filtro dinâmico de colunas e fornece exportação para CSV para fins de auditoria.</pt_BR>
+            <pt_PT>Este plugin gera uma matriz dinâmica e visual cruzando usuários, perfis e grupos no GLPI. Permite o filtro dinâmico de colunas e fornece exportação para CSV para fins de auditoria.</pt_PT>
+            <ro_RO>Acest plugin generează o matrice dinamică și vizuală încrucișând utilizatori, profiluri și grupuri în GLPI. Permite filtrarea dinamică a coloanelor și oferă o funcție de export în CSV în scopuri de audit.</ro_RO>
+            <ru_RU>Этот плагин создает динамическую и визуальную матрицу пересечения пользователей, профилей и групп в GLPI. Он позволяет динамически фильтровать столбцы и предоставляет функцию экспорта в CSV для целей аудита.</ru_RU>
+            <sk_SK>Tento zásuvný modul generuje dynamickú a vizuálnu maticu pretínajúcu používateľov, profily a skupiny v rámci GLPI. Umožňuje dynamické filtrovanie stĺpcov a poskytuje funkciu exportu do CSV na účely auditu.</sk_SK>
+            <sl_SI>Ta vtičnik ustvari dinamično in vizualno matriko, ki križa uporabnike, profile in skupine znotraj GLPI. Omogoča dinamično filtriranje stolpcev in ponuja funkcijo izvoza v CSV za namene revizije.</sl_SI>
+            <sq_AL>Kjo shtojcë gjeneron një matricë dinamike dhe vizuale që kryqëzon përdoruesit, profilet dhe grupet brenda GLPI. Lejon filtrimin dinamik të kolonave dhe ofron një funksion eksporti në CSV për qëllime auditimi.</sq_AL>
+            <sr_RS>Овај додатак генерише динамичку и визуелну матрицу која укршта кориснике, профиле и групе унутар GLPI-ја. Омогућава динамичко филтрирање колона и пружа функцију извоза у CSV у сврхе ревизије.</sr_RS>
+            <sv_SE>Detta plugin genererar en dynamisk och visuell matris som korsar användare, profiler och grupper inom GLPI. Det möjliggör dynamisk kolumnfiltrering och tillhandahåller en export till CSV-funktion för revisionsändamål.</sv_SE>
+            <th_TH>ปลั๊กอินนี้จะสร้างเมทริกซ์แบบไดนามิกและมองเห็นได้ซึ่งข้ามผู้ใช้ โปรไฟล์ และกลุ่มภายใน GLPI อนุญาตให้กรองคอลัมน์แบบไดนามิกและมีคุณสมบัติการส่งออกไปยัง CSV สำหรับการตรวจสอบ</th_TH>
+            <tr_TR>Bu eklenti, GLPI içinde kullanıcıları, profilleri ve grupları kesiştiren dinamik ve görsel bir matris oluşturur. Dinamik sütun filtrelemesine izin verir ve denetim amaçları için CSV'ye dışa aktarma özelliği sunar.</tr_TR>
+            <uk_UA>Цей плагін створює динамічну та візуальну матрицю перетину користувачів, профілів і груп у GLPI. Він дозволяє динамічно фільтрувати стовпці та надає функцію експорту в CSV для цілей аудиту.</uk_UA>
+            <vi_VN>Plugin này tạo ra một ma trận động và trực quan vượt qua người dùng, hồ sơ và nhóm trong GLPI. Nó cho phép lọc cột động và cung cấp tính năng xuất sang CSV cho mục đích kiểm toán.</vi_VN>
+            <zh_CN>该插件在 GLPI 中生成一个交叉用户、配置文件和组的动态可视矩阵。它允许动态列过滤并提供导出为 CSV 的功能以用于审计目的。</zh_CN>
+            <zh_HK>該插件在 GLPI 中生成一個交叉用戶、配置文件和組的動態可視矩陣。它允許動態列過濾並提供導出為 CSV 的功能以用於審計目的。</zh_HK>
+            <zh_TW>該插件在 GLPI 中生成一個交叉用戶、配置文件和組的動態可視矩陣。它允許動態列過濾並提供導出為 CSV 的功能以用於審計目的。</zh_TW>
+        </long>
+    </description>
+    
+    <homepage>https://github.com/andrefelipeufcg/matrizpermissoes</homepage>
+    <download>https://github.com/andrefelipeufcg/matrizpermissoes/releases</download>
+    <issues>https://github.com/andrefelipeufcg/matrizpermissoes/issues</issues>
+    <readme>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/README.md</readme>
+    <changelog>https://github.com/andrefelipeufcg/matrizpermissoes/releases</changelog>
+    
+    <authors>
+        <author>andrefelipeufcg</author>
+    </authors>
+    
+    <versions>
+        <version>
+            <num>1.1.3</num> 
+            <compatibility>&gt;=10.0.0</compatibility> 
+            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.3.zip</download_url>
+        </version>
+        <version>
+            <num>1.1.2</num> 
+            <compatibility>&gt;=10.0.0</compatibility> 
+            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.2.zip</download_url>
+        </version>
+        <version>
+            <num>1.1.1</num> 
+            <compatibility>&gt;=10.0.0</compatibility> 
+            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.1.zip</download_url>
+        </version>
+        <version>
+            <num>1.1.0</num> 
+            <compatibility>&gt;=10.0.0</compatibility> 
+            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.1.0.zip</download_url>
+        </version>
+        <version>
+            <num>1.0.0</num> 
+            <compatibility>&gt;=10.0.0</compatibility> 
+            <download_url>https://github.com/andrefelipeufcg/matrizpermissoes/archive/refs/tags/v1.0.0.zip</download_url>
+        </version>
+    </versions>
+    
+    <langs>
+        <lang>ar_IQ</lang>
+        <lang>ar_SA</lang>
+        <lang>ar_SY</lang>
+        <lang>az_AZ</lang>
+        <lang>be_BY</lang>
+        <lang>bg_BG</lang>
+        <lang>bn_BD</lang>
+        <lang>ca_ES</lang>
+        <lang>cs_CZ</lang>
+        <lang>da_DK</lang>
+        <lang>de_DE</lang>
+        <lang>el_GR</lang>
+        <lang>en_GB</lang>
+        <lang>en_US</lang>
+        <lang>eo</lang>
+        <lang>es_419</lang>
+        <lang>es_AR</lang>
+        <lang>es_CL</lang>
+        <lang>es_CO</lang>
+        <lang>es_EC</lang>
+        <lang>es_ES</lang>
+        <lang>es_MX</lang>
+        <lang>es_VE</lang>
+        <lang>et_EE</lang>
+        <lang>eu_ES</lang>
+        <lang>fa_IR</lang>
+        <lang>fi_FI</lang>
+        <lang>fr_BE</lang>
+        <lang>fr_CA</lang>
+        <lang>fr_FR</lang>
+        <lang>gl_ES</lang>
+        <lang>he_IL</lang>
+        <lang>hi_IN</lang>
+        <lang>hr_HR</lang>
+        <lang>hu_HU</lang>
+        <lang>id_ID</lang>
+        <lang>is_IS</lang>
+        <lang>it_IT</lang>
+        <lang>ja_JP</lang>
+        <lang>km_KH</lang>
+        <lang>kn</lang>
+        <lang>ko_KR</lang>
+        <lang>lt_LT</lang>
+        <lang>lv_LV</lang>
+        <lang>mn_MN</lang>
+        <lang>ms_MY</lang>
+        <lang>nb_NO</lang>
+        <lang>nl_BE</lang>
+        <lang>nl_NL</lang>
+        <lang>nn_NO</lang>
+        <lang>pl_PL</lang>
+        <lang>pt_BR</lang>
+        <lang>pt_PT</lang>
+        <lang>ro_RO</lang>
+        <lang>ru_RU</lang>
+        <lang>sk_SK</lang>
+        <lang>sl_SI</lang>
+        <lang>sq_AL</lang>
+        <lang>sr_RS</lang>
+        <lang>sv_SE</lang>
+        <lang>th_TH</lang>
+        <lang>tr_TR</lang>
+        <lang>uk_UA</lang>
+        <lang>vi_VN</lang>
+        <lang>zh_CN</lang>
+        <lang>zh_HK</lang>
+        <lang>zh_TW</lang>
+    </langs>
+    
+    <license>GPLv2+</license>
+    
+    <tags>
+        <ar_IQ>
+            <tag>أذونات</tag>
+            <tag>مصفوفة</tag>
+            <tag>تصدير</tag>
+            <tag>مستخدمين</tag>
+            <tag>ملفات_شخصية</tag>
+            <tag>مجموعات</tag>
+        </ar_IQ>
+        <ar_SA>
+            <tag>أذونات</tag>
+            <tag>مصفوفة</tag>
+            <tag>تصدير</tag>
+            <tag>مستخدمين</tag>
+            <tag>ملفات_شخصية</tag>
+            <tag>مجموعات</tag>
+        </ar_SA>
+        <ar_SY>
+            <tag>أذونات</tag>
+            <tag>مصفوفة</tag>
+            <tag>تصدير</tag>
+            <tag>مستخدمين</tag>
+            <tag>ملفات_شخصية</tag>
+            <tag>مجموعات</tag>
+        </ar_SY>
+        <az_AZ>
+            <tag>icazeler</tag>
+            <tag>matris</tag>
+            <tag>ixrac</tag>
+            <tag>istifadeciler</tag>
+            <tag>profiller</tag>
+            <tag>qruplar</tag>
+        </az_AZ>
+        <be_BY>
+            <tag>дазволы</tag>
+            <tag>матрыца</tag>
+            <tag>экспарт</tag>
+            <tag>карыстальнікі</tag>
+            <tag>профілі</tag>
+            <tag>групы</tag>
+        </be_BY>
+        <bg_BG>
+            <tag>разрешения</tag>
+            <tag>матрица</tag>
+            <tag>експорт</tag>
+            <tag>потребители</tag>
+            <tag>профили</tag>
+            <tag>групи</tag>
+        </bg_BG>
+        <bn_BD>
+            <tag>অনুমতি</tag>
+            <tag>ম্যাট্রিক্স</tag>
+            <tag>রপ্তানি</tag>
+            <tag>ব্যবহারকারী</tag>
+            <tag>প্রোফাইল</tag>
+            <tag>গ্রুপ</tag>
+        </bn_BD>
+        <ca_ES>
+            <tag>permisos</tag>
+            <tag>matriu</tag>
+            <tag>exportacio</tag>
+            <tag>usuaris</tag>
+            <tag>perfils</tag>
+            <tag>grups</tag>
+        </ca_ES>
+        <cs_CZ>
+            <tag>opravneni</tag>
+            <tag>matice</tag>
+            <tag>export</tag>
+            <tag>uzivatele</tag>
+            <tag>profily</tag>
+            <tag>skupiny</tag>
+        </cs_CZ>
+        <da_DK>
+            <tag>rettigheder</tag>
+            <tag>matrix</tag>
+            <tag>eksport</tag>
+            <tag>brugere</tag>
+            <tag>profiler</tag>
+            <tag>grupper</tag>
+        </da_DK>
+        <de_DE>
+            <tag>berechtigungen</tag>
+            <tag>matrix</tag>
+            <tag>export</tag>
+            <tag>benutzer</tag>
+            <tag>profile</tag>
+            <tag>gruppen</tag>
+        </de_DE>
+        <el_GR>
+            <tag>δικαιωματα</tag>
+            <tag>πινακας</tag>
+            <tag>εξαγωγη</tag>
+            <tag>χρηστες</tag>
+            <tag>προφιλ</tag>
+            <tag>ομαδες</tag>
+        </el_GR>
+        <en_GB>
+            <tag>permissions</tag>
+            <tag>matrix</tag>
+            <tag>export</tag>
+            <tag>users</tag>
+            <tag>profiles</tag>
+            <tag>groups</tag>
+        </en_GB>
+        <en_US>
+            <tag>permissions</tag>
+            <tag>matrix</tag>
+            <tag>export</tag>
+            <tag>users</tag>
+            <tag>profiles</tag>
+            <tag>groups</tag>
+        </en_US>
+        <eo>
+            <tag>rajtoj</tag>
+            <tag>matrico</tag>
+            <tag>eksporto</tag>
+            <tag>uzantoj</tag>
+            <tag>profiloj</tag>
+            <tag>grupoj</tag>
+        </eo>
+        <es_419>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_419>
+        <es_AR>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_AR>
+        <es_CL>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_CL>
+        <es_CO>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_CO>
+        <es_EC>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_EC>
+        <es_ES>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_ES>
+        <es_MX>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_MX>
+        <es_VE>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfiles</tag>
+            <tag>grupos</tag>
+        </es_VE>
+        <et_EE>
+            <tag>oigused</tag>
+            <tag>maatriks</tag>
+            <tag>eksport</tag>
+            <tag>kasutajad</tag>
+            <tag>profiilid</tag>
+            <tag>ruhmad</tag>
+        </et_EE>
+        <eu_ES>
+            <tag>baimenak</tag>
+            <tag>matrizea</tag>
+            <tag>esportazioa</tag>
+            <tag>erabiltzaileak</tag>
+            <tag>profilak</tag>
+            <tag>taldeak</tag>
+        </eu_ES>
+        <fa_IR>
+            <tag>مجوزها</tag>
+            <tag>ماتریس</tag>
+            <tag>صادرات</tag>
+            <tag>کاربران</tag>
+            <tag>نمایه ها</tag>
+            <tag>گروه ها</tag>
+        </fa_IR>
+        <fi_FI>
+            <tag>oikeudet</tag>
+            <tag>matriisi</tag>
+            <tag>vienti</tag>
+            <tag>kayttajat</tag>
+            <tag>profiilit</tag>
+            <tag>ryhmat</tag>
+        </fi_FI>
+        <fr_BE>
+            <tag>permissions</tag>
+            <tag>matrice</tag>
+            <tag>exportation</tag>
+            <tag>utilisateurs</tag>
+            <tag>profils</tag>
+            <tag>groupes</tag>
+        </fr_BE>
+        <fr_CA>
+            <tag>permissions</tag>
+            <tag>matrice</tag>
+            <tag>exportation</tag>
+            <tag>utilisateurs</tag>
+            <tag>profils</tag>
+            <tag>groupes</tag>
+        </fr_CA>
+        <fr_FR>
+            <tag>permissions</tag>
+            <tag>matrice</tag>
+            <tag>exportation</tag>
+            <tag>utilisateurs</tag>
+            <tag>profils</tag>
+            <tag>groupes</tag>
+        </fr_FR>
+        <gl_ES>
+            <tag>permisos</tag>
+            <tag>matriz</tag>
+            <tag>exportacion</tag>
+            <tag>usuarios</tag>
+            <tag>perfis</tag>
+            <tag>grupos</tag>
+        </gl_ES>
+        <he_IL>
+            <tag>הרשאות</tag>
+            <tag>מטריצה</tag>
+            <tag>ייצוא</tag>
+            <tag>משתמשים</tag>
+            <tag>פרופילים</tag>
+            <tag>קבוצות</tag>
+        </he_IL>
+        <hi_IN>
+            <tag>अनुमतियां</tag>
+            <tag>मैट्रिक्स</tag>
+            <tag>निर्यात</tag>
+            <tag>उपयोगकर्ता</tag>
+            <tag>प्रोफ़ाइल</tag>
+            <tag>समूह</tag>
+        </hi_IN>
+        <hr_HR>
+            <tag>dozvole</tag>
+            <tag>matrica</tag>
+            <tag>izvoz</tag>
+            <tag>korisnici</tag>
+            <tag>profili</tag>
+            <tag>grupe</tag>
+        </hr_HR>
+        <hu_HU>
+            <tag>jogosultsagok</tag>
+            <tag>matrix</tag>
+            <tag>export</tag>
+            <tag>felhasznalok</tag>
+            <tag>profilok</tag>
+            <tag>csoportok</tag>
+        </hu_HU>
+        <id_ID>
+            <tag>izin</tag>
+            <tag>matriks</tag>
+            <tag>ekspor</tag>
+            <tag>pengguna</tag>
+            <tag>profil</tag>
+            <tag>grup</tag>
+        </id_ID>
+        <is_IS>
+            <tag>heimildir</tag>
+            <tag>fylki</tag>
+            <tag>utflutningur</tag>
+            <tag>notendur</tag>
+            <tag>snid</tag>
+            <tag>hopar</tag>
+        </is_IS>
+        <it_IT>
+            <tag>autorizzazioni</tag>
+            <tag>matrice</tag>
+            <tag>esportazione</tag>
+            <tag>utenti</tag>
+            <tag>profili</tag>
+            <tag>gruppi</tag>
+        </it_IT>
+        <ja_JP>
+            <tag>権限</tag>
+            <tag>マトリックス</tag>
+            <tag>エクスポート</tag>
+            <tag>ユーザー</tag>
+            <tag>プロファイル</tag>
+            <tag>グループ</tag>
+        </ja_JP>
+        <km_KH>
+            <tag>ការអនុញ្ញាត</tag>
+            <tag>ម៉ាទ្រីស</tag>
+            <tag>នាំចេញ</tag>
+            <tag>អ្នកប្រើប្រាស់</tag>
+            <tag>ទម្រង់</tag>
+            <tag>ក្រុម</tag>
+        </km_KH>
+        <kn>
+            <tag>ಅನುಮತಿಗಳು</tag>
+            <tag>ಮ್ಯಾಟ್ರಿಕ್ಸ್</tag>
+            <tag>ರಫ್ತು</tag>
+            <tag>ಬಳಕೆದಾರರು</tag>
+            <tag>ಪ್ರೊಫೈಲ್ಗಳು</tag>
+            <tag>ಗುಂಪುಗಳು</tag>
+        </kn>
+        <ko_KR>
+            <tag>권한</tag>
+            <tag>매트릭스</tag>
+            <tag>내보내기</tag>
+            <tag>사용자</tag>
+            <tag>프로필</tag>
+            <tag>그룹</tag>
+        </ko_KR>
+        <lt_LT>
+            <tag>leidimai</tag>
+            <tag>matrica</tag>
+            <tag>eksportas</tag>
+            <tag>vartotojai</tag>
+            <tag>profiliai</tag>
+            <tag>grupes</tag>
+        </lt_LT>
+        <lv_LV>
+            <tag>atlaujas</tag>
+            <tag>matrica</tag>
+            <tag>eksportesana</tag>
+            <tag>lietotaji</tag>
+            <tag>profili</tag>
+            <tag>grupas</tag>
+        </lv_LV>
+        <mn_MN>
+            <tag>зовшоорол</tag>
+            <tag>матриц</tag>
+            <tag>экспорт</tag>
+            <tag>хэрэглэгчид</tag>
+            <tag>профайл</tag>
+            <tag>булгууд</tag>
+        </mn_MN>
+        <ms_MY>
+            <tag>kebenaran</tag>
+            <tag>matriks</tag>
+            <tag>eksport</tag>
+            <tag>pengguna</tag>
+            <tag>profil</tag>
+            <tag>kumpulan</tag>
+        </ms_MY>
+        <nb_NO>
+            <tag>tillatelser</tag>
+            <tag>matrise</tag>
+            <tag>eksport</tag>
+            <tag>brukere</tag>
+            <tag>profiler</tag>
+            <tag>grupper</tag>
+        </nb_NO>
+        <nl_BE>
+            <tag>rechten</tag>
+            <tag>matrix</tag>
+            <tag>export</tag>
+            <tag>gebruikers</tag>
+            <tag>profielen</tag>
+            <tag>groepen</tag>
+        </nl_BE>
+        <nl_NL>
+            <tag>rechten</tag>
+            <tag>matrix</tag>
+            <tag>export</tag>
+            <tag>gebruikers</tag>
+            <tag>profielen</tag>
+            <tag>groepen</tag>
+        </nl_NL>
+        <nn_NO>
+            <tag>tillatingar</tag>
+            <tag>matrise</tag>
+            <tag>eksport</tag>
+            <tag>brukarar</tag>
+            <tag>profilar</tag>
+            <tag>grupper</tag>
+        </nn_NO>
+        <pl_PL>
+            <tag>uprawnienia</tag>
+            <tag>macierz</tag>
+            <tag>eksport</tag>
+            <tag>uzytkownicy</tag>
+            <tag>profile</tag>
+            <tag>grupy</tag>
+        </pl_PL>
+        <pt_BR>
+            <tag>permissoes</tag>
+            <tag>matriz</tag>
+            <tag>exportacao</tag>
+            <tag>usuarios</tag>
+            <tag>perfis</tag>
+            <tag>grupos</tag>
+        </pt_BR>
+        <pt_PT>
+            <tag>permissoes</tag>
+            <tag>matriz</tag>
+            <tag>exportacao</tag>
+            <tag>usuarios</tag>
+            <tag>perfis</tag>
+            <tag>grupos</tag>
+        </pt_PT>
+        <ro_RO>
+            <tag>permisiuni</tag>
+            <tag>matrice</tag>
+            <tag>export</tag>
+            <tag>utilizatori</tag>
+            <tag>profiluri</tag>
+            <tag>grupuri</tag>
+        </ro_RO>
+        <ru_RU>
+            <tag>разрешения</tag>
+            <tag>матрица</tag>
+            <tag>экспорт</tag>
+            <tag>пользователи</tag>
+            <tag>профили</tag>
+            <tag>группы</tag>
+        </ru_RU>
+        <sk_SK>
+            <tag>opravnenia</tag>
+            <tag>matica</tag>
+            <tag>export</tag>
+            <tag>pouzivatelia</tag>
+            <tag>profily</tag>
+            <tag>skupiny</tag>
+        </sk_SK>
+        <sl_SI>
+            <tag>dovoljenja</tag>
+            <tag>matrika</tag>
+            <tag>izvoz</tag>
+            <tag>uporabniki</tag>
+            <tag>profili</tag>
+            <tag>skupine</tag>
+        </sl_SI>
+        <sq_AL>
+            <tag>leje</tag>
+            <tag>matrice</tag>
+            <tag>eksport</tag>
+            <tag>perdorues</tag>
+            <tag>profile</tag>
+            <tag>grupe</tag>
+        </sq_AL>
+        <sr_RS>
+            <tag>dozvole</tag>
+            <tag>matrica</tag>
+            <tag>izvoz</tag>
+            <tag>korisnici</tag>
+            <tag>profili</tag>
+            <tag>grupe</tag>
+        </sr_RS>
+        <sv_SE>
+            <tag>behorigheter</tag>
+            <tag>matris</tag>
+            <tag>export</tag>
+            <tag>anvandare</tag>
+            <tag>profiler</tag>
+            <tag>grupper</tag>
+        </sv_SE>
+        <th_TH>
+            <tag>สิทธิ์</tag>
+            <tag>เมทริกซ์</tag>
+            <tag>ส่งออก</tag>
+            <tag>ผู้ใช้</tag>
+            <tag>โปรไฟล์</tag>
+            <tag>กลุ่ม</tag>
+        </th_TH>
+        <tr_TR>
+            <tag>izinler</tag>
+            <tag>matris</tag>
+            <tag>disaaktar</tag>
+            <tag>kullanicilar</tag>
+            <tag>profiller</tag>
+            <tag>gruplar</tag>
+        </tr_TR>
+        <uk_UA>
+            <tag>дозволи</tag>
+            <tag>матриця</tag>
+            <tag>експорт</tag>
+            <tag>користувачі</tag>
+            <tag>профілі</tag>
+            <tag>групи</tag>
+        </uk_UA>
+        <vi_VN>
+            <tag>quyen</tag>
+            <tag>ma_tran</tag>
+            <tag>xuat</tag>
+            <tag>nguoi_dung</tag>
+            <tag>ho_so</tag>
+            <tag>nhom</tag>
+        </vi_VN>
+        <zh_CN>
+            <tag>权限</tag>
+            <tag>矩阵</tag>
+            <tag>导出</tag>
+            <tag>用户</tag>
+            <tag>配置文件</tag>
+            <tag>组</tag>
+        </zh_CN>
+        <zh_HK>
+            <tag>權限</tag>
+            <tag>矩陣</tag>
+            <tag>導出</tag>
+            <tag>用戶</tag>
+            <tag>配置文件</tag>
+            <tag>組</tag>
+        </zh_HK>
+        <zh_TW>
+            <tag>權限</tag>
+            <tag>矩陣</tag>
+            <tag>導出</tag>
+            <tag>用戶</tag>
+            <tag>配置文件</tag>
+            <tag>組</tag>
+        </zh_TW>
+    </tags>
+    
+    <screenshots>
+        <screenshot>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/screenshot1.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/andrefelipeufcg/matrizpermissoes/main/screenshot2.png</screenshot>
+    </screenshots>
+</root>
