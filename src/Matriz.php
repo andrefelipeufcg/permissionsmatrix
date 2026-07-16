@@ -1,16 +1,16 @@
 <?php
 
+namespace GlpiPlugin\Permissionsmatrix;
+
 // Trava de segurança padrão do GLPI para impedir acesso direto ao arquivo
 if (!defined('GLPI_ROOT')) {
     die("Desculpe. Você não pode acessar este arquivo diretamente");
 }
 
-
 /**
  * Classe principal do plugin.
- * A nomenclatura DEVE ser Plugin + NomeDoPlugin + NomeDaClasse
  */
-class PluginPermissionsmatrixMatriz extends CommonGLPI {
+class Matriz extends \CommonGLPI {
     
     /**
      * Define o nome que vai aparecer no menu do GLPI
@@ -57,6 +57,6 @@ class PluginPermissionsmatrixMatriz extends CommonGLPI {
     #[\ReturnTypeWillChange]
     public static function canView(): bool {
         // Agora o GLPI só exibe o menu se o perfil tiver a permissão 1 (READ)
-        return Session::haveRight('plugin_permissionsmatrix', READ);
+        return \Session::haveRight('plugin_permissionsmatrix', READ);
     }
 }

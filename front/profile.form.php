@@ -2,7 +2,6 @@
 include("../../../inc/includes.php");
 
 // Verifica se está logado e se tem permissão de gerenciar perfis
-Session::checkLoginUser();
 Session::checkRight("profile", UPDATE);
 
 global $DB;

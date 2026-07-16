@@ -1,0 +1,27 @@
+<form method='post' action='{{ url_form }}'>
+<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
+<input type='hidden' name='profiles_id' value='{{ profile_id }}'>
+<input type='hidden' name='update_matriz_right' value='1'>
+
+<div class='center'>
+    <table class='tab_cadre_fixehov'>
+        <tr class='tab_bg_1'><th colspan='2'>{{ __('Plugin Access Configuration', 'permissionsmatrix') }}</th></tr>
+        <tr class='tab_bg_2'>
+            <td class='center' style='width: 50%;'>{{ __('Can view the permissions matrix?', 'permissionsmatrix') }}</td>
+            <td class='center'>
+                <label style='margin-right: 20px; cursor: pointer;'>
+                    <input type='radio' name='matriz_read' value='1' {% if current_right %}checked{% endif %}> {{ __('Yes', 'permissionsmatrix') }}
+                </label>
+                <label style='cursor: pointer;'>
+                    <input type='radio' name='matriz_read' value='0' {% if not current_right %}checked{% endif %}> {{ __('No', 'permissionsmatrix') }}
+                </label>
+            </td>
+        </tr>
+        <tr class='tab_bg_2'>
+            <td colspan='2' class='center'>
+                <input type='submit' name='update' class='submit' value='{{ __('Save', 'permissionsmatrix') }}'>
+            </td>
+        </tr>
+    </table>
+</div>
+</form>

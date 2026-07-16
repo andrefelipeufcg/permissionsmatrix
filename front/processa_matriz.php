@@ -3,7 +3,8 @@
 ini_set('memory_limit', '512M');
 
 include ("../../../inc/includes.php");
-Session::checkLoginUser();
+// Verifica se tem permissão (Security Fix)
+Session::checkRight('plugin_permissionsmatrix', READ);
 
 // Verifica se o formulário original, o botão de exportar ou a paginação foram acionados
 if (!isset($_POST['gerar_matriz']) && !isset($_POST['exportar_csv'])) {
@@ -12,8 +13,32 @@ if (!isset($_POST['gerar_matriz']) && !isset($_POST['exportar_csv'])) {
 }
 
 $is_export = isset($_POST['exportar_csv']);
-$entidade_perfis = $_POST['entities_id_profiles'] ?? [];
-$entidade_grupos = $_POST['entities_id_groups'] ?? [];
+
+// Filtro de Entidades: Previne Data Leak (Security Fix)
+// O POST pode enviar uma string (ID único) ou um array, então forçamos para array
+$post_perfis = (array)($_POST['entities_id_profiles'] ?? []);
+$entidade_perfis = [];
+foreach ($post_perfis as $id) {
+    if (Session::haveAccessToEntity($id)) {
+        $entidade_perfis[] = $id;
+    }
+}
+
+$post_grupos = (array)($_POST['entities_id_groups'] ?? []);
+$entidade_grupos = [];
+foreach ($post_grupos as $id) {
+    if (Session::haveAccessToEntity($id)) {
+        $entidade_grupos[] = $id;
+    }
+}
+
+// Se o usuário tentar forjar entidades às quais não tem acesso, o array fica vazio.
+// Nesse caso, o GLPI geraria erro de "Empty IN". Vamos abortar e voltar.
+if (empty($entidade_perfis) || empty($entidade_grupos)) {
+    Session::addMessageAfterRedirect(__('You do not have access to the requested entities.', 'permissionsmatrix'), false, ERROR);
+    Html::redirect("matriz.php");
+    exit;
+}
 
 // Controle de Paginação
 $pagina_atual = isset($_POST['pagina']) ? max(1, intval($_POST['pagina'])) : 1;
@@ -174,7 +199,20 @@ if ($is_export) {
 
         // Se a pessoa não tem 'X' nas colunas selecionadas, a linha não vai para o CSV
         if ($tem_x) {
-            $linha = [$dados['ativo'] ?? __('No', 'permissionsmatrix'), $dados['login'] ?? '', $dados['firstname'] ?? '', $dados['realname'] ?? ''];
+            // Função local para prevenir CSV Formula Injection
+            $escape_csv = function($val) {
+                if (is_string($val) && strlen($val) > 0 && in_array($val[0], ['=', '+', '-', '@'])) {
+                    return "'" . $val;
+                }
+                return $val;
+            };
+            
+            $linha = [
+                $dados['ativo'] ?? __('No', 'permissionsmatrix'), 
+                $escape_csv($dados['login'] ?? ''), 
+                $escape_csv($dados['firstname'] ?? ''), 
+                $escape_csv($dados['realname'] ?? '')
+            ];
             foreach ($nomes_perfis as $p) $linha[] = isset($dados['perfis'][$p]) ? 'X' : '';
             foreach ($nomes_grupos as $g) $linha[] = isset($dados['grupos'][$g]) ? 'X' : '';
             fputcsv($output, $linha, ';');
@@ -187,383 +225,34 @@ if ($is_export) {
 // =========================================================
 // 6. MODO VISUALIZAÇÃO (Tela HTML do GLPI)
 // =========================================================
-Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", "PluginPermissionsmatrixMatriz");
+use Glpi\Application\View\TemplateRenderer;
 
-// --- ESTILOS CSS PARA TRAVAR AS COLUNAS E A LINHA DO TOPO ---
-echo "<style>
-    /* 1. Colunas fixas na esquerda */
-    .freeze-col {
-        position: -webkit-sticky;
-        position: sticky;
-        z-index: 2; /* Acima dos dados comuns da tabela */
-        background-color: #f4f4f4;
-    }
-    /* 2. Linha de cabeçalhos travada no topo */
-    .headerRow th {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0; /* O segredo que trava no teto */
-        z-index: 3; /* Acima dos dados rolando para cima */
-        box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2); /* Sombrinha embaixo da linha */
-    }
-    /* 3. O Cruzamento Exato (Canto superior esquerdo) precisa ser o maior de todos */
-    .headerRow th.freeze-col {
-        z-index: 4; /* Fica acima das colunas (z:2) e da linha de cabeçalho (z:3) */
-        background-color: #e0e0e0; 
-        color: #333;
-    }
-    /* 4. Sombra lateral */
-    .freeze-shadow {
-        border-right: 1px solid #999;
-        box-shadow: 3px 0px 5px -1px rgba(0,0,0,0.2);
-    }
-    .btn-paginacao { 
-        padding: 5px 15px; 
-        border-radius: 4px; 
-        color: white; 
-        text-decoration: none; 
-        font-weight: bold; 
-        cursor: pointer; 
-        border: none; 
-    }
-    .btn-paginacao:hover { 
-        opacity: 0.8; 
-    }
-</style>";
+Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", \GlpiPlugin\Permissionsmatrix\Matriz::class);
 
-echo "<div class='center' style='margin-top: 20px; width: 95%; margin-left: auto; margin-right: auto;'>";
-
-$total_usuarios = count($mapa_usuarios);
-
-// Painel Superior: Totalizador e Botões
-echo "<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px;'>";
-    echo "<div style='font-size: 15px; font-weight: bold; color: #333;'>";
-        echo "<i class='fas fa-users' style='margin-right: 5px; color: #1d5ea3;'></i> " . __('Total users found:', 'permissionsmatrix') . " <span style='color: #1d5ea3; font-size: 16px;'>" . $total_usuarios . "</span>";
-    echo "</div>";
-
-    echo "<div style='display: flex; gap: 10px;'>";
-        echo "<a href='matriz.php' class='vsubmit' style='background-color: #555555; text-decoration: none; padding: 5px 15px; display: inline-flex; align-items: center;' title='" . __('Back to entities selection', 'permissionsmatrix') . "'>⬅️ " . __('Back', 'permissionsmatrix') . "</a>";
-
-        echo "<form id='form-exportar' method='post' action='processa_matriz.php' style='margin: 0;'>";
-            echo "<input type='hidden' name='_glpi_csrf_token' value='" . Session::getNewCSRFToken() . "'>";
-            
-            // Loop para descompactar o Array corretamente e evitar Warnings do PHP 8
-            foreach ((array)$entidade_perfis as $id_perfil) {
-                echo "<input type='hidden' name='entities_id_profiles[]' value='" . htmlspecialchars($id_perfil, ENT_QUOTES) . "'>";
-            }
-            foreach ((array)$entidade_grupos as $id_grupo) {
-                echo "<input type='hidden' name='entities_id_groups[]' value='" . htmlspecialchars($id_grupo, ENT_QUOTES) . "'>";
-            }
-            
-            // ESSES SÃO OS CAMPOS ESCONDIDOS QUE O JS VAI PREENCHER
-            echo "<input type='hidden' name='perfis_ativos' id='input_perfis_ativos' value=''>";
-            echo "<input type='hidden' name='grupos_ativos' id='input_grupos_ativos' value=''>";
-            
-            echo "<button type='submit' name='exportar_csv' value='1' class='vsubmit' style='background-color: #2e7d32;' title='" . __('Download table in CSV format', 'permissionsmatrix') . "'>📥 " . __('Export to CSV', 'permissionsmatrix') . "</button>";
-        echo "</form>";
-    echo "</div>";
-echo "</div>";
-
-// --- PAINEL DE FILTROS DINÂMICOS ---
-echo "<div style='margin-bottom: 15px; padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px;'>";
-
-// O Botão de Toggle
-echo "<div id='btn-toggle-filtro' style='cursor: pointer; text-align: center; color: #1d5ea3; font-weight: bold; font-size: 14px; padding: 5px;'>";
-echo "<i class='fas fa-filter'></i> " . __('Hide/Show Columns (Visual Filter)', 'permissionsmatrix') . " <i class='fas fa-caret-down'></i>";
-echo "</div>";
-
-// O Conteúdo do Filtro (oculto por padrão)
-echo "<div id='conteudo-filtro' style='display: none; border-top: 1px solid #ccc; margin-top: 10px; padding-top: 15px;'>";
-echo "<div style='display: flex; gap: 20px; flex-wrap: wrap;'>";
-
-$col_index = 4; // As 4 primeiras colunas são fixas (0 a 3)
-
-// Caixa de Filtros de Perfis
-echo "<div style='flex: 1; min-width: 250px; text-align: left;'>";
-echo "<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>";
-echo "<strong style='color: #555;'>" . __('Profiles:', 'permissionsmatrix') . "</strong>";
-echo "<div style='font-size: 12px;'>";
-echo "<a href='#' class='acao-massa-perfil' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>" . __('Check all', 'permissionsmatrix') . "</a> | ";
-echo "<a href='#' class='acao-massa-perfil' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>" . __('Uncheck all', 'permissionsmatrix') . "</a>";
-echo "</div></div>";
-
-echo "<div id='caixa-perfis' style='max-height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; background: #fff; border-radius: 3px;'>";
-foreach ($nomes_perfis as $p) {
-    $val = htmlspecialchars($p, ENT_QUOTES);
-    echo "<label style='display: block; margin-bottom: 4px; cursor: pointer; font-size: 13px; text-align: left;'>";
-    echo "<input type='checkbox' class='col-filter' data-colindex='$col_index' value='$val' checked style='margin-right: 5px;'> $p";
-    echo "</label>";
-    $col_index++;
-}
-echo "</div></div>";
-
-// Caixa de Filtros de Grupos
-echo "<div style='flex: 1; min-width: 250px; text-align: left;'>";
-echo "<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>";
-echo "<strong style='color: #555;'>" . __('Groups:', 'permissionsmatrix') . "</strong>";
-echo "<div style='font-size: 12px;'>";
-echo "<a href='#' class='acao-massa-grupo' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>" . __('Check all', 'permissionsmatrix') . "</a> | ";
-echo "<a href='#' class='acao-massa-grupo' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>" . __('Uncheck all', 'permissionsmatrix') . "</a>";
-echo "</div></div>";
-
-echo "<div id='caixa-grupos' style='max-height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; background: #fff; border-radius: 3px;'>";
-foreach ($nomes_grupos as $g) {
-    $val = htmlspecialchars($g, ENT_QUOTES);
-    echo "<label style='display: block; margin-bottom: 4px; cursor: pointer; font-size: 13px; text-align: left;'>";
-    echo "<input type='checkbox' class='col-filter' data-colindex='$col_index' value='$val' checked style='margin-right: 5px;'> $g";
-    echo "</label>";
-    $col_index++;
-}
-echo "</div></div>";
-
-echo "</div>"; // Fim do flex container
-echo "</div>"; // Fim do conteudo-filtro
-echo "</div>"; // Fim do painel principal
-
-// A Tabela
-// DICA DE OURO: border-collapse: separate garante que as colunas sticky não percam as bordas
-// =========================================================
-// FATIAMENTO DA TELA (PAGINAÇÃO)
-// Só renderiza 100 usuários por vez no HTML para salvar memória!
-// =========================================================
+// Fatiamento da tela (Paginação)
 $usuarios_pagina = array_slice($mapa_usuarios, ($pagina_atual - 1) * $limite_por_pagina, $limite_por_pagina, true);
 
-echo "<div style='overflow-x: auto; max-height: 70vh; box-shadow: 0 0 5px rgba(0,0,0,0.1);'>";
-echo "<table class='tab_cadre_fixehov' style='margin: 0; min-width: 100%; width: max-content; table-layout: auto; border-collapse: separate; border-spacing: 0;'>";
+// Cálculos para exibir a posição atual (Exibindo X - Y de Z usuários)
+$inicio_exibicao = (($pagina_atual - 1) * $limite_por_pagina) + 1;
+$fim_exibicao = min($pagina_atual * $limite_por_pagina, $total_usuarios);
+$texto_exibindo = sprintf(
+    __('Showing %1$s - %2$s of %3$s users', 'permissionsmatrix'), 
+    "<b>$inicio_exibicao</b>", 
+    "<b>$fim_exibicao</b>", 
+    "<b>$total_usuarios</b>"
+);
 
-// Cabeçalhos
-echo "<tr class='headerRow'>";
-// Aplicando a classe freeze e marcando o índice da coluna
-echo "<th class='freeze-col' data-colindex='0' style='text-align: center;'>" . __('Active', 'permissionsmatrix') . "</th>";
-echo "<th class='freeze-col' data-colindex='1' style='text-align: left;'>" . __('User', 'permissionsmatrix') . "</th>";
-echo "<th class='freeze-col' data-colindex='2' style='text-align: left;'>" . __('First name', 'permissionsmatrix') . "</th>";
-echo "<th class='freeze-col freeze-shadow' data-colindex='3' style='text-align: left;'>" . __('Last name', 'permissionsmatrix') . "</th>";
-
-foreach ($nomes_perfis as $p) echo "<th style='background-color: #999999; color: white; white-space: nowrap; text-align: center; padding: 5px 15px;'>$p</th>";
-foreach ($nomes_grupos as $g) echo "<th style='background-color: #0b5394; color: white; white-space: nowrap; text-align: center; padding: 5px 15px;'>$g</th>";
-echo "</tr>";
-
-// Linhas de Dados
-// Loop apenas na Página Atual
-foreach ($usuarios_pagina as $uid => $dados) {
-    echo "<tr class='tab_bg_1'>";
-    
-    $cor_ativo = ($dados['ativo'] === __('Yes', 'permissionsmatrix')) ? 'color: #274e13; font-weight: bold; text-align: center;' : 'color: #990000; text-align: center;';
-
-    // Travando as 4 primeiras colunas com os mesmos índices dos cabeçalhos e alinhamentos
-    echo "<td class='freeze-col' data-colindex='0' style='$cor_ativo'>" . ($dados['ativo'] ?? __('No', 'permissionsmatrix')) . "</td>";
-    echo "<td class='freeze-col' data-colindex='1' style='white-space: nowrap; text-align: left;'>" . ($dados['login'] ?? '') . "</td>";
-    echo "<td class='freeze-col' data-colindex='2' style='white-space: nowrap; text-align: left;'>" . ($dados['firstname'] ?? '') . "</td>";
-    echo "<td class='freeze-col freeze-shadow' data-colindex='3' style='white-space: nowrap; text-align: left;'>" . ($dados['realname'] ?? '') . "</td>";
-    
-    foreach ($nomes_perfis as $p) {
-        $marca = isset($dados['perfis'][$p]) ? "<b style='color: #333;'>X</b>" : "";
-        echo "<td class='center' style='text-align: center;'>$marca</td>";
-    }
-    
-    foreach ($nomes_grupos as $g) {
-        $marca = isset($dados['grupos'][$g]) ? "<b style='color: #0b5394;'>X</b>" : "";
-        echo "<td class='center' style='text-align: center;'>$marca</td>";
-    }
-    
-    echo "</tr>";
-}
-
-echo "</table>";
-echo "</div>"; 
-
-// Controles de Paginação
-if ($total_paginas > 1) {
-    // Cálculos para exibir a posição atual (Exibindo X - Y de Z usuários)
-    $inicio_exibicao = (($pagina_atual - 1) * $limite_por_pagina) + 1;
-    $fim_exibicao = min($pagina_atual * $limite_por_pagina, $total_usuarios);
-
-    echo "<div style='display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 15px; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #ddd;'>";
-    
-    // Botões de navegação e página
-    echo "<div style='display: flex; justify-content: center; align-items: center; gap: 15px;'>";
-    if ($pagina_atual > 1) {
-        $prev = $pagina_atual - 1;
-        echo "<button onclick='irParaPagina(1)' class='btn-paginacao' style='background-color: #555;'><i class='fas fa-angle-double-left'></i></button>";
-        echo "<button onclick='irParaPagina($prev)' class='btn-paginacao' style='background-color: #1d5ea3;'><i class='fas fa-chevron-left'></i></button>";
-    }
-    
-    echo "<span style='font-size: 14px; color: #555;'>" . __('Page', 'permissionsmatrix') . " ";
-    echo "<input type='number' value='$pagina_atual' min='1' max='$total_paginas' style='width: 60px; text-align: center; padding: 3px; border: 1px solid #ccc; border-radius: 4px; font-weight: bold;' onchange='pularParaPagina(this.value, $total_paginas)'> ";
-    echo __('of', 'permissionsmatrix') . " <b>$total_paginas</b></span>";    
-    
-    if ($pagina_atual < $total_paginas) {
-        $next = $pagina_atual + 1;
-        echo "<button onclick='irParaPagina($next)' class='btn-paginacao' style='background-color: #1d5ea3;'><i class='fas fa-chevron-right'></i></button>";
-        echo "<button onclick='irParaPagina($total_paginas)' class='btn-paginacao' style='background-color: #555;'><i class='fas fa-angle-double-right'></i></button>";
-    }
-    echo "</div>";
-
-    // Texto mostrando o intervalo de usuários atual
-    // Usando sprintf para injetar as variáveis no texto traduzido
-    $texto_exibindo = sprintf(
-        __('Showing %1$s - %2$s of %3$s users', 'permissionsmatrix'), 
-        "<b>$inicio_exibicao</b>", 
-        "<b>$fim_exibicao</b>", 
-        "<b>$total_usuarios</b>"
-    );
-    echo "<span style='font-size: 14px; color: #333;'>$texto_exibindo</span>";
-    
-    echo "</div>";
-}
-
-echo "</div>"; // FIM div principal
-
-// Formulário Oculto para disparar a mudança de página via Javascript
-echo "<form id='form-paginacao' method='post' action='processa_matriz.php' style='display:none;'>";
-echo "<input type='hidden' name='_glpi_csrf_token' value='" . Session::getNewCSRFToken() . "'>";
-echo "<input type='hidden' name='gerar_matriz' value='1'>";
-echo "<input type='hidden' name='pagina' id='input_pagina' value='1'>";
-foreach ((array)$entidade_perfis as $id_perfil) {
-    echo "<input type='hidden' name='entities_id_profiles[]' value='" . htmlspecialchars($id_perfil, ENT_QUOTES) . "'>";
-}
-foreach ((array)$entidade_grupos as $id_grupo) {
-    echo "<input type='hidden' name='entities_id_groups[]' value='" . htmlspecialchars($id_grupo, ENT_QUOTES) . "'>";
-}
-echo "</form>";
-
-// --- SCRIPT DE CÁLCULO DINÂMICO E FILTROS ---
-echo "<script type='text/javascript'>
-// Função chamada pelos botões de página
-function irParaPagina(p) {
-    // Desabilita todos os botões e o campo de número para evitar duplo-clique / uso de token velho
-    $('.btn-paginacao').prop('disabled', true).css('cursor', 'not-allowed').css('opacity', '0.5');
-    $('input[type=number]').prop('disabled', true);
-    
-    // Preenche e envia o formulário com segurança
-    document.getElementById('input_pagina').value = p;
-    document.getElementById('form-paginacao').submit();
-}
-
-function pularParaPagina(valor, maximo) {
-    var p = parseInt(valor);
-    // Validações: se digitar texto, vazio ou menor que 1, vai para a página 1
-    if (isNaN(p) || p < 1) {
-        p = 1;
-    }
-    // Se digitar um número maior que o total de páginas, vai para a última
-    if (p > maximo) {
-        p = maximo;
-    }
-    irParaPagina(p);
-}
-
-$(document).ready(function() {
-    
-    // Função para recalcular posições 'left' das colunas fixas após qualquer mudança de layout (como esconder/mostrar colunas)
-    function recalcularPosicoesFixas() {
-        var leftPositions = [];
-        var currentLeft = 0;
-        
-        // Lê a largura exata de cada cabeçalho fixado
-        $('.headerRow th.freeze-col').each(function() {
-            leftPositions.push(currentLeft);
-            currentLeft += $(this).outerWidth();
-        });
-
-        // Aplica a distância 'left' correta para cada célula
-        $('.freeze-col').each(function() {
-            var index = $(this).data('colindex');
-            $(this).css('left', leftPositions[index] + 'px');
-        });
-    }
-
-    // Executa a primeira vez ao carregar a página
-    recalcularPosicoesFixas();
-
-    // FUNÇÃO QUE ALIMENTA OS CAMPOS OCULTOS PARA A EXPORTAÇÃO
-    function atualizaInputsExportacao() {
-        var perfis = [];
-        $('#caixa-perfis .col-filter:checked').each(function() {
-            perfis.push($(this).val());
-        });
-        $('#input_perfis_ativos').val(JSON.stringify(perfis));
-
-        var grupos = [];
-        $('#caixa-grupos .col-filter:checked').each(function() {
-            grupos.push($(this).val());
-        });
-        $('#input_grupos_ativos').val(JSON.stringify(grupos));
-    }
-
-    // Inicializa a exportação com todos marcados logo ao carregar a tela
-    atualizaInputsExportacao();
-
-    // FILTRO INSTANTÂNEO (COLUNAS E LINHAS)
-    $('.col-filter').on('change', function() {
-        // A. Esconde ou mostra a coluna inteira
-        var colIndex = $(this).data('colindex');
-        var isVisible = $(this).is(':checked');
-        var nth = colIndex + 1; 
-        
-        if (isVisible) {
-            $('.tab_cadre_fixehov tr').find('th:nth-child(' + nth + '), td:nth-child(' + nth + ')').show();
-        } else {
-            $('.tab_cadre_fixehov tr').find('th:nth-child(' + nth + '), td:nth-child(' + nth + ')').hide();
-        }
-
-        // B. Descobre quais colunas de perfil/grupo ainda estão ativadas no filtro
-        var colunasVisiveis = [];
-        $('.col-filter:checked').each(function() {
-            colunasVisiveis.push($(this).data('colindex') + 1);
-        });
-
-        // C. Varre todos os usuários. Se não tiver um 'X' visível, esconde a pessoa.
-        $('.tab_cadre_fixehov tr.tab_bg_1').each(function() {
-            var tr_linha = $(this);
-            var linhaTemX = false;
-
-            if (colunasVisiveis.length > 0) {
-                for (var i = 0; i < colunasVisiveis.length; i++) {
-                    var textoCelula = tr_linha.find('td:nth-child(' + colunasVisiveis[i] + ')').text().trim();
-                    if (textoCelula === 'X') {
-                        linhaTemX = true;
-                        break; 
-                    }
-                }
-            }
-
-            if (linhaTemX) {
-                tr_linha.show();
-            } else {
-                tr_linha.hide();
-            }
-        });
-
-        // Toda vez que esconde ou mostra uma coluna, atualiza os campos de exportação CSV
-        atualizaInputsExportacao();
-
-        // RECALCULA AS LARGURAS APÓS O FILTRO (Com um micro-atraso de 50ms)
-        setTimeout(function() {
-            recalcularPosicoesFixas();
-        }, 50);
-    });
-
-    // Efeito de abrir e fechar a caixa de filtros
-    $('#btn-toggle-filtro').on('click', function() {
-        $('#conteudo-filtro').slideToggle('fast');
-    });
-
-    // Marcar/Desmarcar todos os Perfis
-    $('.acao-massa-perfil').on('click', function(e) {
-        e.preventDefault(); 
-        var marcar = $(this).data('acao') === 'marcar';
-        $('#caixa-perfis .col-filter').prop('checked', marcar).trigger('change');
-    });
-
-    // Marcar/Desmarcar todos os Grupos
-    $('.acao-massa-grupo').on('click', function(e) {
-        e.preventDefault(); // Impede a tela de pular pro topo
-        var marcar = $(this).data('acao') === 'marcar';
-        $('#caixa-grupos .col-filter').prop('checked', marcar).trigger('change');
-    });
-
-});
-</script>";
+TemplateRenderer::getInstance()->display('@permissionsmatrix/matriz_result.html.twig', [
+    'total_usuarios'   => $total_usuarios,
+    'nomes_perfis'     => $nomes_perfis,
+    'nomes_grupos'     => $nomes_grupos,
+    'entidade_perfis'  => $entidade_perfis,
+    'entidade_grupos'  => $entidade_grupos,
+    'usuarios_pagina'  => $usuarios_pagina,
+    'pagina_atual'     => $pagina_atual,
+    'total_paginas'    => $total_paginas,
+    'texto_exibindo'   => $texto_exibindo,
+    'csrf_token'       => Session::getNewCSRFToken()
+]);
 
 Html::footer();

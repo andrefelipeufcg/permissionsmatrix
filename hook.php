@@ -7,26 +7,28 @@
 function plugin_permissionsmatrix_install() {
     global $DB;
     
-    // Busca todos os perfis existentes no GLPI
-    $profiles = $DB->request(['SELECT' => 'id', 'FROM' => 'glpi_profiles']);
+    // Concede acesso apenas ao perfil Super-Admin
+    // Compatibilidade: getSuperAdminProfilesId retorna um array no GLPI 11 e não existe no GLPI 10.
+    $superadmin_ids = [];
+    if (method_exists('Profile', 'getSuperAdminProfilesId')) {
+        $superadmin_ids = Profile::getSuperAdminProfilesId();
+    } else {
+        $superadmin_ids = [4]; // Perfil Super-Admin padrão no GLPI 10
+    }
     
-    foreach ($profiles as $profile) {
-        $profile_id = $profile['id'];
-        
-        // Verifica se já existe algum registro (seja 1=Liberado ou 0=Bloqueado)
+    foreach ((array)$superadmin_ids as $superadmin_id) {
         $iterator = $DB->request([
             'SELECT' => 'id',
             'FROM'   => 'glpi_profilerights',
             'WHERE'  => [
-                'profiles_id' => $profile_id,
+                'profiles_id' => $superadmin_id,
                 'name'        => 'plugin_permissionsmatrix'
             ]
         ]);
         
-        // Se for a primeira vez instalando, insere como 1 (Acesso Liberado) para TODOS
         if (count($iterator) == 0) {
             $DB->insert('glpi_profilerights', [
-                'profiles_id' => $profile_id,
+                'profiles_id' => $superadmin_id,
                 'name'        => 'plugin_permissionsmatrix',
                 'rights'      => 1
             ]);
@@ -41,5 +43,7 @@ function plugin_permissionsmatrix_install() {
  * Aqui você limparia as tabelas criadas na instalação.
  */
 function plugin_permissionsmatrix_uninstall() {
+    global $DB;
+    $DB->delete('glpi_profilerights', ['name' => 'plugin_permissionsmatrix']);
     return true;
 }

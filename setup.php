@@ -7,8 +7,8 @@
 function plugin_init_permissionsmatrix() {
     global $PLUGIN_HOOKS;
     $PLUGIN_HOOKS["csrf_compliant"]["permissionsmatrix"] = true;
-    $PLUGIN_HOOKS['menu_toadd']['permissionsmatrix'] = ['tools' => 'PluginPermissionsmatrixMatriz'];
-    Plugin::registerClass('PluginPermissionsmatrixProfile', ['addtabon' => 'Profile']);
+    $PLUGIN_HOOKS['menu_toadd']['permissionsmatrix'] = ['tools' => 'GlpiPlugin\Permissionsmatrix\Matriz'];
+    Plugin::registerClass('GlpiPlugin\Permissionsmatrix\Profile', ['addtabon' => 'Profile']);
 }
 
 /**
@@ -17,7 +17,7 @@ function plugin_init_permissionsmatrix() {
 function plugin_version_permissionsmatrix() {
     return [
         'name'           => __('Permissions Matrix', 'permissionsmatrix'),
-        'version'        => '1.1.3',
+        'version'        => '1.1.4',
         'author'         => 'andrefelipeufcg',
         'license'        => 'GPLv2+',
         'homepage'       => 'https://github.com/andrefelipeufcg/permissionsmatrix',
