@@ -22,6 +22,7 @@
             <el_GR>Πρόσθετο GLPI για τη δημιουργία και εξαγωγή ενός οπτικού πίνακα δικαιωμάτων χρηστών (Προφίλ x Ομάδες).</el_GR>
             <en_GB>GLPI Plugin for generating and exporting a visual user permissions matrix (Profiles x Groups).</en_GB>
             <en_US>GLPI Plugin for generating and exporting a visual user permissions matrix (Profiles x Groups).</en_US>
+            <en>GLPI Plugin for generating and exporting a visual user permissions matrix (Profiles x Groups).</en>
             <eo>GLPI-Kromaĵo por generi kaj eksporti vidan uzantrajtan matricon (Profiloj x Grupoj).</eo>
             <es_419>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_419>
             <es_AR>Plugin GLPI para generar y exportar una matriz visual de permisos de usuario (Perfiles x Grupos).</es_AR>
@@ -91,6 +92,7 @@
             <el_GR>Αυτό το πρόσθετο δημιουργεί έναν δυναμικό και οπτικό πίνακα που διασταυρώνει χρήστες, προφίλ και ομάδες εντός του GLPI. Επιτρέπει το δυναμικό φιλτράρισμα στηλών και παρέχει μια δυνατότητα εξαγωγής σε CSV για σκοπούς ελέγχου.</el_GR>
             <en_GB>This plugin generates a dynamic and visual matrix crossing users, profiles, and groups within GLPI. It allows dynamic column filtering and provides an export to CSV feature for auditing purposes.</en_GB>
             <en_US>This plugin generates a dynamic and visual matrix crossing users, profiles, and groups within GLPI. It allows dynamic column filtering and provides an export to CSV feature for auditing purposes.</en_US>
+            <en>This plugin generates a dynamic and visual matrix crossing users, profiles, and groups within GLPI. It allows dynamic column filtering and provides an export to CSV feature for auditing purposes.</en>
             <eo>Ĉi tiu kromaĵo generas dinamikan kaj vidan matricon krucantan uzantojn, profilojn kaj grupojn ene de GLPI. Ĝi ebligas dinamikan kolumnan filtradon kaj provizas eksporton al CSV-trajto por kontrolaj celoj.</eo>
             <es_419>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_419>
             <es_AR>Este plugin genera una matriz visual dinámica cruzando usuarios, perfiles y grupos dentro de GLPI. Permite el filtrado dinámico de columnas y proporciona una función de exportación a CSV para propósitos de auditoría.</es_AR>
