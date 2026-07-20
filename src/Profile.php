@@ -13,7 +13,7 @@ class Profile extends \CommonGLPI {
         return "fas fa-table";
     }
 
-    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
+    function getTabNameForItem(\CommonGLPI $item, $withtemplate = 0) {
         if ($item->getType() == 'Profile') {
             // Usa o construtor oficial do GLPI para alinhar o ícone e o texto perfeitamente
             return self::createTabEntry(self::getTypeName(), 0, self::getIcon());
@@ -21,7 +21,7 @@ class Profile extends \CommonGLPI {
         return '';
     }
 
-    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
+    static function displayTabContentForItem(\CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
         global $DB;
         $profile_id = $item->getID();
 
@@ -33,11 +33,11 @@ class Profile extends \CommonGLPI {
         }
 
         // Desenha o Formulário
-        $url_form = Plugin::getWebDir('permissionsmatrix') . '/front/profile.form.php';
+        $url_form = \Plugin::getWebDir('permissionsmatrix') . '/front/profile.form.php';
         
         \Glpi\Application\View\TemplateRenderer::getInstance()->display('@permissionsmatrix/profile_form.html.twig', [
             'url_form'      => $url_form,
-            'csrf_token'    => Session::getNewCSRFToken(),
+            'csrf_token'    => \Session::getNewCSRFToken(),
             'profile_id'    => $profile_id,
             'current_right' => $current_right
         ]);

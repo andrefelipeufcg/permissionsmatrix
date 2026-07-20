@@ -7,11 +7,11 @@
 function plugin_permissionsmatrix_install() {
     global $DB;
     
-    // Concede acesso apenas ao perfil Super-Admin
+    // Concede acesso apenas ao perfil Super-Admin (requisito de segurança do Marketplace)
     // Compatibilidade: getSuperAdminProfilesId retorna um array no GLPI 11 e não existe no GLPI 10.
     $superadmin_ids = [];
-    if (method_exists('Profile', 'getSuperAdminProfilesId')) {
-        $superadmin_ids = Profile::getSuperAdminProfilesId();
+    if (method_exists('\Profile', 'getSuperAdminProfilesId')) {
+        $superadmin_ids = \Profile::getSuperAdminProfilesId();
     } else {
         $superadmin_ids = [4]; // Perfil Super-Admin padrão no GLPI 10
     }

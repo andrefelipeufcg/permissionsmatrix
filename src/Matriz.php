@@ -13,6 +13,11 @@ if (!defined('GLPI_ROOT')) {
 class Matriz extends \CommonGLPI {
     
     /**
+     * Define o nome interno do direito de permissão no banco
+     */
+    public static $rightname = 'plugin_permissionsmatrix';
+
+    /**
      * Define o nome que vai aparecer no menu do GLPI
      */
     static function getMenuName() {
