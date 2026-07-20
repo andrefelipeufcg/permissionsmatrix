@@ -1,5 +1,5 @@
 <div align="right">
-  🇬🇧 <a href="#english">English</a> | 🇫🇷 <a href="#français">Français</a> | 🇧🇷 <a href="#português">Português</a>
+  🇬🇧 <a href="#english">English</a> | 🇫🇷 <a href="#français">Français</a> | 🇪🇸 <a href="#español">Español</a> | 🇧🇷 <a href="#português">Português</a> 
 </div>
 
 <a id="english"></a>
@@ -55,14 +55,14 @@ Developed to facilitate access auditing and the extraction of structured reports
 
 ## 🔒 Access Control (Permissions)
 
-By default, right after installation, **all existing profiles** are automatically granted permission to view the Permissions Matrix. The block works by exception. 
+**Important:** By default, right after installation, **only the Super-Admin profile** is automatically granted permission to view the Permissions Matrix (this is a mandatory security requirement from the GLPI Marketplace). 
 
-If you want a specific profile **NOT** to have access to the tool:
+If you want another specific profile (e.g. admin, observer) to have access to the tool:
 1. Navigate to **Administration > Profiles**.
-2. Click on the profile you want to restrict.
+2. Click on the profile you want to grant access.
 3. On the side menu, click the **Permissions Matrix** tab.
-4. Change the option to **No** and click Save. 
-*(The "Tools > Permissions Matrix" menu will no longer be displayed for users with that profile).*
+4. Change the option to **Yes** and click Save. 
+*(The "Tools > Permissions Matrix" menu will now be displayed for users with that profile).*
 
 ## 📖 How to Use
 
@@ -140,14 +140,14 @@ Développé pour faciliter l'audit des accès et l'extraction de rapports struct
 
 ## 🔒 Contrôle d'Accès (Permissions)
 
-Par défaut, juste après l'installation, **tous les profils existants** reçoivent automatiquement la permission de visualiser la Matrice de Permissions. Le blocage fonctionne par exception. 
+**Important :** Par défaut, juste après l'installation, **seul le profil Super-Admin** reçoit automatiquement la permission de visualiser la Matrice de Permissions (il s'agit d'une exigence de sécurité obligatoire du Marketplace GLPI). 
 
-Si vous souhaitez qu'un profil spécifique **N'AIT PAS** accès à l'outil :
+Si vous souhaitez qu'un autre profil spécifique (par exemple, admin, observateur) ait accès à l'outil :
 1. Allez dans **Administration > Profils**.
-2. Cliquez sur le profil que vous souhaitez restreindre.
+2. Cliquez sur le profil auquel vous souhaitez accorder l'accès.
 3. Dans le menu latéral, cliquez sur l'onglet **Matrice de Permissions**.
-4. Modifiez l'option sur **Non** et cliquez sur Sauvegarder. 
-*(Le menu "Outils > Matrice de Permissions" ne sera plus affiché pour les utilisateurs de ce profil).*
+4. Modifiez l'option sur **Oui** et cliquez sur Sauvegarder. 
+*(Le menu "Outils > Matrice de Permissions" sera désormais affiché pour les utilisateurs de ce profil).*
 
 ## 📖 Comment l'utiliser
 
@@ -169,6 +169,91 @@ Si vous souhaitez qu'un profil spécifique **N'AIT PAS** accès à l'outil :
 ## 📄 Licence
 
 Ce projet est sous licence GPLv2+, suivant le standard du framework GLPI.
+
+---
+
+<a id="español"></a>
+# GLPI Plugin - Permissions Matrix (Matriz de Permisos)
+
+Un plugin nativo de GLPI (compatible con las versiones 10 y 11) que genera una visualización rápida y exportable de los permisos de los usuarios, cruzando Perfiles y Grupos según las Entidades seleccionadas.
+
+Desarrollado para facilitar la auditoría de accesos y la extracción de informes estructurados.
+
+## ✨ Características
+
+* **Generación Visual de Matriz:** Tabla dinámica que muestra usuarios activos/inactivos y marca sus respectivos perfiles y grupos con una "X".
+* **Filtros Visuales Dinámicos:** Posibilidad de ocultar/mostrar columnas específicas (perfiles y grupos) directamente en la pantalla.
+* **Control de Acceso Nativo (RBAC):** Integrado de forma nativa en la pantalla de Perfiles de GLPI, lo que permite definir exactamente quién tiene derecho a ver la herramienta.
+* **Filtro de Entidades Inteligente:** Campos de selección integrados con la API nativa Select2 de GLPI. Al seleccionar la entidad del perfil, la entidad del grupo se sincroniza automáticamente.
+* **UX Avanzada (Columnas Adhesivas):** Congelación dinámica de la fila de encabezado y de las columnas de identificación del usuario (Activo, Usuario, Nombre, Apellido), lo que permite desplazarse por matrices extensas sin perder la referencia.
+* **Exportación CSV:** Descargue la matriz generada en formato `.csv` (codificación UTF-8) con un solo clic, lista para abrirse en Excel o hojas de cálculo.
+* **Compatibilidad y Seguridad:** Totalmente adaptado para el motor GLPI 11, utilizando el tipado estricto de PHP 8 (`: bool`) y el nuevo sistema de tokens de sesión (`_glpi_csrf_token`).
+
+## 📋 Requisitos Previos
+
+* **GLPI:** Versión 10.0.0 o superior.
+* **PHP:** Versión 8.0 o superior.
+* Acceso al servidor web (terminal SSH) para ajuste de permisos.
+
+## 🚀 Cómo Instalar
+
+1. **Descargue el plugin** y extraiga los archivos.
+2. **Renombre la carpeta** estrictamente a `permissionsmatrix` (sin caracteres especiales ni guiones bajos, como lo requiere GLPI).
+3. Suba la carpeta al directorio de plugins de su servidor GLPI:
+   ```bash
+   /var/www/su_glpi/plugins/permissionsmatrix
+   ```
+
+4. **Ajuste los permisos en el servidor (Importante):**
+   El servidor web necesita permisos de lectura para compilar el Autoloader. Acceda a su terminal y ejecute:
+   ```bash
+   sudo chown -R www-data:www-data /var/www/su_glpi/plugins/permissionsmatrix
+   sudo chmod -R 755 /var/www/su_glpi/plugins/permissionsmatrix
+   ```
+   *(Nota: Si su servidor utiliza CentOS/RedHat, el usuario podría ser `apache` en lugar de `www-data`).*
+
+5. **Limpie la Caché (Para garantizar la lectura de clases en GLPI 11):**
+   ```bash
+   sudo -u www-data php /var/www/su_glpi/bin/console cache:clear
+   sudo systemctl restart apache2
+   ```
+
+6. **Actívelo en GLPI:**
+   * Inicie sesión con el perfil de Super-Admin.
+   * Navegue hasta **Configuración > Complementos**.
+   * Busque "Matriz de Permisos", haga clic en **Instalar** y luego en **Activar**.
+
+## 🔒 Control de Acceso (Permisos)
+
+**Importante:** Por defecto, justo después de la instalación, **solo el perfil Super-Admin** recibe automáticamente permiso para ver la Matriz de Permisos (esto es un requisito de seguridad obligatorio del GLPI Marketplace). 
+
+Si desea que otro perfil específico (ej. admin, observador) tenga acceso a la herramienta:
+1. Navegue hasta **Administración > Perfiles**.
+2. Haga clic en el perfil al que desea conceder acceso.
+3. En el menú lateral, haga clic en la pestaña **Matriz de Permisos**.
+4. Cambie la opción a **Sí** y haga clic en Guardar. 
+*(El menú "Herramientas > Matriz de Permisos" ahora se mostrará a los usuarios con ese perfil).*
+
+## 📖 Cómo Usar
+
+1. En el menú de GLPI, vaya a **Herramientas > Matriz de Permisos**.
+2. Seleccione la entidad deseada en los campos disponibles.
+3. Haga clic en **Generar Matriz de Permisos**.
+4. Utilice el botón **Ocultar/Mostrar Columnas (Filtro Visual)** para refinar la tabla en la pantalla, si es necesario.
+5. Vea los datos en la pantalla o haga clic en **Exportar a CSV** para descargarlos.
+
+## 🛠️ Estructura de Directorios
+
+* `setup.php` y `hook.php`: Inicialización y registros de hooks en el ecosistema de GLPI, incluyendo la inyección inicial de permisos en la base de datos.
+* `inc/matriz.class.php`: Clase de control principal y renderizado del menú superior.
+* `inc/profile.class.php`: Inyección de la pestaña de configuración en la pantalla nativa de Perfiles.
+* `front/matriz.php`: Interfaz visual del generador principal (selección de entidades).
+* `front/processa_matriz.php`: Motor de búsqueda en base de datos, generación de tabla HTML con UX avanzada y exportación CSV.
+* `front/profile.form.php`: Procesador de guardado de permisos.
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la licencia GPLv2+, siguiendo el estándar del marco GLPI.
 
 ---
 
@@ -225,14 +310,14 @@ Desenvolvido para facilitar a auditoria de acessos e a extração de relatórios
 
 ## 🔒 Controle de Acesso (Permissões)
 
-Por padrão, logo após a instalação, **todos os perfis existentes** recebem permissão automática para visualizar a Matriz de Permissões. O bloqueio funciona por exceção. 
+**Importante:** Por padrão, logo após a instalação, **apenas o perfil Super-Admin** recebe permissão automática para visualizar a Matriz de Permissões (esse é um requisito obrigatório de segurança do Marketplace do GLPI). 
 
-Caso deseje que algum perfil específico **NÃO** tenha acesso à ferramenta:
+Caso deseje que algum outro perfil específico (ex: admin, observador) tenha acesso à ferramenta:
 1. Navegue até **Administração > Perfis**.
-2. Clique no perfil que deseja restringir.
+2. Clique no perfil que deseja conceder acesso.
 3. No menu lateral, clique na aba **Matriz de Permissões**.
-4. Altere a opção para **Não** e clique em Salvar. 
-*(O menu "Ferramentas > Matriz de Permissões" deixará de ser exibido para os usuários daquele perfil).*
+4. Altere a opção para **Sim** e clique em Salvar. 
+*(O menu "Ferramentas > Matriz de Permissões" passará a ser exibido para os usuários daquele perfil).*
 
 ## 📖 Como Usar
 
@@ -254,3 +339,5 @@ Caso deseje que algum perfil específico **NÃO** tenha acesso à ferramenta:
 ## 📄 Licença
 
 Este projeto está licenciado sob a licença GPLv2+, seguindo o padrão do framework GLPI.
+
+---
