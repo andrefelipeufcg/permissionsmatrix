@@ -1,0 +1,128 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: th_TH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. เอนทิตีสำหรับโปรไฟล์:"
+
+msgid "2. Groups Entity:"
+msgstr "2. เอนทิตีสำหรับกลุ่ม:"
+
+msgid "Active"
+msgstr "เปิดใช้งาน"
+
+msgid "Back"
+msgstr "กลับ"
+
+msgid "Back to entities selection"
+msgstr "กลับไปยังการเลือกเอนทิตี"
+
+msgid "Can view the permissions matrix?"
+msgstr "สามารถดูเมทริกซ์การอนุญาตได้หรือไม่?"
+
+msgid "Check all"
+msgstr "เลือกทั้งหมด"
+
+msgid "Download table in CSV format"
+msgstr "ดาวน์โหลดตารางในรูปแบบ CSV"
+
+msgid "Export to CSV"
+msgstr "ส่งออกเป็น CSV"
+
+msgid "First name"
+msgstr "ชื่อ"
+
+msgid "Generate Permissions Matrix"
+msgstr "สร้างเมทริกซ์การอนุญาต"
+
+msgid "Groups:"
+msgstr "กลุ่ม:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "ซ่อน/แสดงคอลัมน์ (ตัวกรองภาพ)"
+
+msgid "Last name"
+msgstr "นามสกุล"
+
+msgid "No"
+msgstr "ไม่ใช่"
+
+msgid "Page"
+msgstr "หน้า"
+
+msgid "Permissions Matrix"
+msgstr "เมทริกซ์การอนุญาต"
+
+msgid "Permissions Matrix Generator"
+msgstr "ตัวสร้างเมทริกซ์การอนุญาต"
+
+msgid "Plugin Access Configuration"
+msgstr "การกำหนดค่าการเข้าถึงปลั๊กอิน"
+
+msgid "Profiles:"
+msgstr "โปรไฟล์:"
+
+msgid "Save"
+msgstr "บันทึก"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "แสดงผู้ใช้ %1$s - %2$s จาก %3$s"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "ปลั๊กอินนี้ต้องการ GLPI 10.0.0 หรือใหม่กว่า"
+
+msgid "Total users found:"
+msgstr "พบผู้ใช้ทั้งหมด:"
+
+msgid "Uncheck all"
+msgstr "ยกเลิกการเลือกทั้งหมด"
+
+msgid "User"
+msgstr "ผู้ใช้"
+
+msgid "Yes"
+msgstr "ใช่"
+
+msgid "of"
+msgstr "จาก"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "อนุญาตให้โปรไฟล์ทั้งหมดสร้างเมทริกซ์การอนุญาตหรือไม่"
+
+msgid "Notice:"
+msgstr "สังเกต:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"หากต้องการให้หรือลบการเข้าถึงโปรไฟล์เฉพาะไปยังเมทริกซ์การอนุญาต "
+"ให้ไปที่โปรไฟล์ที่ต้องการและปรับการตั้งค่านี้ในแท็บ 'เมทริกซ์การอนุญาต'"
+
+msgid "Security Recommendation:"
+msgstr "คำแนะนำด้านความปลอดภัย:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"ขอแนะนำอย่างยิ่งให้จำกัดการอนุญาตนี้ไว้เฉพาะโปรไฟล์ผู้ดูแลระบบระดับสูงเท่านั้น"
+" "
+"การอนุญาตตัวเลือกนี้สำหรับทุกคนทำให้ผู้ใช้ทั่วไปสามารถดูการมอบหมายที่ละเอียดอ่อนและจัดกลุ่มข้อมูลทั่วทั้งระบบได้"
+
+msgid "Saving..."
+msgstr "ประหยัด..."
+
+msgid "Permissions granted to all profiles."
+msgstr "สิทธิ์ที่มอบให้กับโปรไฟล์ทั้งหมด"
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "สิทธิ์ถูกลบออกจากโปรไฟล์ทั้งหมด (ยกเว้น Super-Admin)"

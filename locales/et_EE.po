@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: et_EE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Üksus Profiilide jaoks:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Üksus Gruppide jaoks:"
+
+msgid "Active"
+msgstr "Aktiivne"
+
+msgid "Back"
+msgstr "Tagasi"
+
+msgid "Back to entities selection"
+msgstr "Tagasi üksuste valikusse"
+
+msgid "Can view the permissions matrix?"
+msgstr "Kas saab vaadata õiguste maatriksit?"
+
+msgid "Check all"
+msgstr "Vali kõik"
+
+msgid "Download table in CSV format"
+msgstr "Laadi tabel alla CSV-vormingus"
+
+msgid "Export to CSV"
+msgstr "Ekspordi CSV-sse"
+
+msgid "First name"
+msgstr "Eesnimi"
+
+msgid "Generate Permissions Matrix"
+msgstr "Loo Õiguste Maatriks"
+
+msgid "Groups:"
+msgstr "Grupid:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Peida/Näita Veergusid (Visuaalne Filter)"
+
+msgid "Last name"
+msgstr "Perekonnanimi"
+
+msgid "No"
+msgstr "Ei"
+
+msgid "Page"
+msgstr "Lehekülg"
+
+msgid "Permissions Matrix"
+msgstr "Õiguste Maatriks"
+
+msgid "Permissions Matrix Generator"
+msgstr "Õiguste Maatriksi Generaator"
+
+msgid "Plugin Access Configuration"
+msgstr "Pistikprogrammi Juurdepääsu Konfiguratsioon"
+
+msgid "Profiles:"
+msgstr "Profiilid:"
+
+msgid "Save"
+msgstr "Salvesta"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Näidatakse %1$s - %2$s / %3$s kasutajast"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "See pistikprogramm nõuab GLPI 10.0.0 või uuemat versiooni."
+
+msgid "Total users found:"
+msgstr "Kokku leitud kasutajaid:"
+
+msgid "Uncheck all"
+msgstr "Tühista kõik valikud"
+
+msgid "User"
+msgstr "Kasutaja"
+
+msgid "Yes"
+msgstr "Jah"
+
+msgid "of"
+msgstr "/"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Kas lubada kõigil profiilidel luua lubade maatriks?"
+
+msgid "Notice:"
+msgstr "Märkus:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Konkreetsele profiilile lubade maatriksile juurdepääsu andmiseks või "
+"eemaldamiseks minge soovitud profiilile ja kohandage seda sätet vahekaardil "
+"\"Lubade maatriks\"."
+
+msgid "Security Recommendation:"
+msgstr "Turvalisuse soovitus:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"On tungivalt soovitatav piirata see luba ainult superadministraatori "
+"profiilidega. Selle valiku lubamine kõigile võimaldab tavakasutajatel "
+"vaadata tundlikke ülesandeid ja rühmitada kogu süsteemi andmeid."
+
+msgid "Saving..."
+msgstr "Salvestamine..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Kõigile profiilidele antud load."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Kõigilt profiilidelt (v.a superadministraator) eemaldati load."

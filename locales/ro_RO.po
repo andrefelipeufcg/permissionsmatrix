@@ -1,0 +1,132 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Entitate pentru Profile:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Entitate pentru Grupuri:"
+
+msgid "Active"
+msgstr "Activ"
+
+msgid "Back"
+msgstr "Înapoi"
+
+msgid "Back to entities selection"
+msgstr "Înapoi la selecția entităților"
+
+msgid "Can view the permissions matrix?"
+msgstr "Poate vizualiza matricea permisiunilor?"
+
+msgid "Check all"
+msgstr "Bifează tot"
+
+msgid "Download table in CSV format"
+msgstr "Descarcă tabelul în format CSV"
+
+msgid "Export to CSV"
+msgstr "Exportă în CSV"
+
+msgid "First name"
+msgstr "Nume"
+
+msgid "Generate Permissions Matrix"
+msgstr "Generează Matricea de Permisiuni"
+
+msgid "Groups:"
+msgstr "Grupuri:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Ascunde/Afișează Coloane (Filtru Vizual)"
+
+msgid "Last name"
+msgstr "Prenume"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "Page"
+msgstr "Pagina"
+
+msgid "Permissions Matrix"
+msgstr "Matricea de Permisiuni"
+
+msgid "Permissions Matrix Generator"
+msgstr "Generator de Matrice de Permisiuni"
+
+msgid "Plugin Access Configuration"
+msgstr "Configurare Acces Plugin"
+
+msgid "Profiles:"
+msgstr "Profile:"
+
+msgid "Save"
+msgstr "Salvează"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Afișare %1$s - %2$s din %3$s utilizatori"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Acest plugin necesită GLPI 10.0.0 sau o versiune ulterioară."
+
+msgid "Total users found:"
+msgstr "Total utilizatori găsiți:"
+
+msgid "Uncheck all"
+msgstr "Debifează tot"
+
+msgid "User"
+msgstr "Utilizator"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "of"
+msgstr "din"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Permiteți tuturor profilurilor să genereze matricea de permisiuni?"
+
+msgid "Notice:"
+msgstr "Observa:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Pentru a acorda sau a elimina accesul unui anumit profil la matricea de "
+"permisiuni, accesați profilul dorit și ajustați această setare în fila "
+"„Matricea permisiunilor”."
+
+msgid "Security Recommendation:"
+msgstr "Recomandare de securitate:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Este recomandat să restricționați această permisiune numai la profilurile de"
+" super-administrator. Permiterea acestei opțiuni pentru toți permite "
+"utilizatorilor obișnuiți să vizualizeze date sensibile de atribuire și grup "
+"în întregul sistem."
+
+msgid "Saving..."
+msgstr "Economisire..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Permisiuni acordate tuturor profilurilor."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr ""
+"Permisiunile au fost eliminate din toate profilurile (cu excepția super-"
+"administratorului)."

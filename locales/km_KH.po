@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: km_KH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. អង្គភាពសម្រាប់ទម្រង់៖"
+
+msgid "2. Groups Entity:"
+msgstr "2. អង្គភាពសម្រាប់ក្រុម៖"
+
+msgid "Active"
+msgstr "សកម្ម"
+
+msgid "Back"
+msgstr "ត្រឡប់"
+
+msgid "Back to entities selection"
+msgstr "ត្រឡប់ទៅការជ្រើសរើសអង្គភាពវិញ"
+
+msgid "Can view the permissions matrix?"
+msgstr "តើអាចមើលម៉ាទ្រីសសិទ្ធិអនុញ្ញាតបានទេ?"
+
+msgid "Check all"
+msgstr "ធីកទាំងអស់"
+
+msgid "Download table in CSV format"
+msgstr "ទាញយកតារាងជាទម្រង់ CSV"
+
+msgid "Export to CSV"
+msgstr "នាំចេញទៅ CSV"
+
+msgid "First name"
+msgstr "នាមខ្លួន"
+
+msgid "Generate Permissions Matrix"
+msgstr "បង្កើតម៉ាទ្រីសសិទ្ធិអនុញ្ញាត"
+
+msgid "Groups:"
+msgstr "ក្រុម៖"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "លាក់/បង្ហាញជួរឈរ (តម្រងមើលឃើញ)"
+
+msgid "Last name"
+msgstr "នាមត្រកូល"
+
+msgid "No"
+msgstr "ទេ"
+
+msgid "Page"
+msgstr "ទំព័រ"
+
+msgid "Permissions Matrix"
+msgstr "ម៉ាទ្រីសសិទ្ធិអនុញ្ញាត"
+
+msgid "Permissions Matrix Generator"
+msgstr "ម៉ាស៊ីនបង្កើតម៉ាទ្រីសសិទ្ធិអនុញ្ញាត"
+
+msgid "Plugin Access Configuration"
+msgstr "ការកំណត់រចនាសម្ព័ន្ធការចូលប្រើកម្មវិធីជំនួយ"
+
+msgid "Profiles:"
+msgstr "ទម្រង់៖"
+
+msgid "Save"
+msgstr "រក្សាទុក"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "បង្ហាញ %1$s - %2$s នៃអ្នកប្រើប្រាស់ %3$s"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "កម្មវិធីជំនួយនេះទាមទារ GLPI 10.0.0 ឬខ្ពស់ជាងនេះ។"
+
+msgid "Total users found:"
+msgstr "អ្នកប្រើប្រាស់សរុបដែលបានរកឃើញ៖"
+
+msgid "Uncheck all"
+msgstr "ដោះធីកទាំងអស់"
+
+msgid "User"
+msgstr "អ្នកប្រើប្រាស់"
+
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgid "of"
+msgstr "នៃ"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "អនុញ្ញាតឱ្យទម្រង់ទាំងអស់បង្កើតម៉ាទ្រីសអនុញ្ញាត?"
+
+msgid "Notice:"
+msgstr "សេចក្តីជូនដំណឹង៖"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"ដើម្បីផ្តល់ ឬដកសិទ្ធិចូលប្រើសម្រាប់ទម្រង់ជាក់លាក់មួយចំពោះម៉ាទ្រីសអនុញ្ញាត "
+"សូមចូលទៅកាន់ទម្រង់ដែលចង់បាន ហើយកែតម្រូវការកំណត់នេះនៅក្នុងផ្ទាំង "
+"'ម៉ាទ្រីសអនុញ្ញាត'។"
+
+msgid "Security Recommendation:"
+msgstr "អនុសាសន៍សុវត្ថិភាព៖"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"វាត្រូវបានផ្ដល់អនុសាសន៍យ៉ាងខ្លាំងឱ្យដាក់កម្រិតការអនុញ្ញាតនេះចំពោះទម្រង់អ្នកគ្រប់គ្រងជាន់ខ្ពស់តែប៉ុណ្ណោះ។"
+" "
+"ការអនុញ្ញាតជម្រើសនេះសម្រាប់ទាំងអស់អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ធម្មតាមើលកិច្ចការរសើប"
+" និងទិន្នន័យជាក្រុមនៅទូទាំងប្រព័ន្ធទាំងមូល។"
+
+msgid "Saving..."
+msgstr "កំពុងរក្សាទុក..."
+
+msgid "Permissions granted to all profiles."
+msgstr "ការអនុញ្ញាតដែលបានផ្តល់ទៅគ្រប់ទម្រង់ទាំងអស់។"
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr ""
+"ការអនុញ្ញាតត្រូវបានដកចេញពីទម្រង់ទាំងអស់ (លើកលែងតែអ្នកគ្រប់គ្រងជាន់ខ្ពស់)។"

@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: is_IS\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Eining fyrir Prófíla:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Eining fyrir Hópa:"
+
+msgid "Active"
+msgstr "Virkur"
+
+msgid "Back"
+msgstr "Til baka"
+
+msgid "Back to entities selection"
+msgstr "Aftur í val á einingum"
+
+msgid "Can view the permissions matrix?"
+msgstr "Getur skoðað heimildafylkið?"
+
+msgid "Check all"
+msgstr "Velja allt"
+
+msgid "Download table in CSV format"
+msgstr "Hlaða niður töflu á CSV formi"
+
+msgid "Export to CSV"
+msgstr "Flytja út í CSV"
+
+msgid "First name"
+msgstr "Fornafn"
+
+msgid "Generate Permissions Matrix"
+msgstr "Búa til Heimildafylki"
+
+msgid "Groups:"
+msgstr "Hópar:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Fela/Sýna Dálka (Sjónræn Sía)"
+
+msgid "Last name"
+msgstr "Eftirnafn"
+
+msgid "No"
+msgstr "Nei"
+
+msgid "Page"
+msgstr "Síða"
+
+msgid "Permissions Matrix"
+msgstr "Heimildafylki"
+
+msgid "Permissions Matrix Generator"
+msgstr "Heimildafylkisrafall"
+
+msgid "Plugin Access Configuration"
+msgstr "Aðgangsstillingar fyrir Viðbót"
+
+msgid "Profiles:"
+msgstr "Prófílar:"
+
+msgid "Save"
+msgstr "Vista"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Sýnir %1$s - %2$s af %3$s notendum"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Þessi viðbót krefst GLPI 10.0.0 eða nýrri."
+
+msgid "Total users found:"
+msgstr "Samtals fundnir notendur:"
+
+msgid "Uncheck all"
+msgstr "Afvelja allt"
+
+msgid "User"
+msgstr "Notandi"
+
+msgid "Yes"
+msgstr "Já"
+
+msgid "of"
+msgstr "af"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Leyfa öllum prófílum að búa til heimildafylki?"
+
+msgid "Notice:"
+msgstr "Tilkynning:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Til að veita eða fjarlægja aðgang fyrir tiltekið snið að heimildafylki "
+"skaltu fara í viðkomandi snið og breyta þessari stillingu á flipanum "
+"'Heimildisfylki'."
+
+msgid "Security Recommendation:"
+msgstr "Öryggisráðgjöf:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Það er eindregið mælt með því að takmarka þetta leyfi við Super-Admin "
+"prófíla eingöngu. Með því að leyfa öllum þessum valmöguleika er venjulegum "
+"notendum kleift að skoða viðkvæm verkefni og hópgögn um allt kerfið."
+
+msgid "Saving..."
+msgstr "Vistar..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Heimildir veittar öllum prófílum."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Heimildir fjarlægðar af öllum prófílum (nema Super-Admin)."

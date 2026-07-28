@@ -1,0 +1,132 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Entitat per a Perfils:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Entitat per a Grups:"
+
+msgid "Active"
+msgstr "Actiu"
+
+msgid "Back"
+msgstr "Enrere"
+
+msgid "Back to entities selection"
+msgstr "Torna a la selecció d'entitats"
+
+msgid "Can view the permissions matrix?"
+msgstr "Pot veure la matriu de permisos?"
+
+msgid "Check all"
+msgstr "Marca-ho tot"
+
+msgid "Download table in CSV format"
+msgstr "Descarrega la taula en format CSV"
+
+msgid "Export to CSV"
+msgstr "Exporta a CSV"
+
+msgid "First name"
+msgstr "Nom"
+
+msgid "Generate Permissions Matrix"
+msgstr "Generar Matriu de Permisos"
+
+msgid "Groups:"
+msgstr "Grups:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Amaga/Mostra Columnes (Filtre Visual)"
+
+msgid "Last name"
+msgstr "Cognoms"
+
+msgid "No"
+msgstr "No"
+
+msgid "Page"
+msgstr "Pàgina"
+
+msgid "Permissions Matrix"
+msgstr "Matriu de Permisos"
+
+msgid "Permissions Matrix Generator"
+msgstr "Generador de Matriu de Permisos"
+
+msgid "Plugin Access Configuration"
+msgstr "Configuració d'Accés al Complement"
+
+msgid "Profiles:"
+msgstr "Perfils:"
+
+msgid "Save"
+msgstr "Desa"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Mostrant %1$s - %2$s de %3$s usuaris"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Aquest complement requereix GLPI 10.0.0 o superior."
+
+msgid "Total users found:"
+msgstr "Total d'usuaris trobats:"
+
+msgid "Uncheck all"
+msgstr "Desmarca-ho tot"
+
+msgid "User"
+msgstr "Usuari"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "of"
+msgstr "de"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Voleu permetre que tots els perfils generin la matriu de permisos?"
+
+msgid "Notice:"
+msgstr "Avís:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Per concedir o eliminar l'accés a un perfil específic a la matriu de "
+"permisos, aneu al perfil desitjat i ajusteu aquesta configuració a la "
+"pestanya \"Matriu de permisos\"."
+
+msgid "Security Recommendation:"
+msgstr "Recomanacions de seguretat:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"És molt recomanable restringir aquest permís només als perfils de "
+"superadministrador. Si permets aquesta opció per a tots, els usuaris "
+"habituals poden veure les dades confidencials de les assignacions i del grup"
+" a tot el sistema."
+
+msgid "Saving..."
+msgstr "S'està desant..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Permisos concedits a tots els perfils."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr ""
+"S'han eliminat els permisos de tots els perfils (excepte de "
+"superadministrador)."

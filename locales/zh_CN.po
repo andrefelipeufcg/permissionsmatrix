@@ -1,0 +1,123 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. 配置文件的实体："
+
+msgid "2. Groups Entity:"
+msgstr "2. 组的实体："
+
+msgid "Active"
+msgstr "活动"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Back to entities selection"
+msgstr "返回实体选择"
+
+msgid "Can view the permissions matrix?"
+msgstr "能否查看权限矩阵？"
+
+msgid "Check all"
+msgstr "全选"
+
+msgid "Download table in CSV format"
+msgstr "以CSV格式下载表格"
+
+msgid "Export to CSV"
+msgstr "导出为 CSV"
+
+msgid "First name"
+msgstr "名字"
+
+msgid "Generate Permissions Matrix"
+msgstr "生成权限矩阵"
+
+msgid "Groups:"
+msgstr "组："
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "隐藏/显示列（视觉过滤）"
+
+msgid "Last name"
+msgstr "姓氏"
+
+msgid "No"
+msgstr "否"
+
+msgid "Page"
+msgstr "页"
+
+msgid "Permissions Matrix"
+msgstr "权限矩阵"
+
+msgid "Permissions Matrix Generator"
+msgstr "权限矩阵生成器"
+
+msgid "Plugin Access Configuration"
+msgstr "插件访问配置"
+
+msgid "Profiles:"
+msgstr "配置文件："
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "显示 %1$s - %2$s 共 %3$s 个用户"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "此插件需要 GLPI 10.0.0 或更高版本。"
+
+msgid "Total users found:"
+msgstr "找到的用户总数："
+
+msgid "Uncheck all"
+msgstr "取消全选"
+
+msgid "User"
+msgstr "用户"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "of"
+msgstr "/"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "允许所有配置文件生成权限矩阵？"
+
+msgid "Notice:"
+msgstr "注意："
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr "要授予或删除特定配置文件对权限矩阵的访问权限，请转到所需的配置文件并在“权限矩阵”选项卡中调整此设置。"
+
+msgid "Security Recommendation:"
+msgstr "安全建议："
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr "强烈建议将此权限仅限于超级管理员配置文件。允许所有人使用此选项使常规用户能够查看整个系统中的敏感分配和组数据。"
+
+msgid "Saving..."
+msgstr "保存..."
+
+msgid "Permissions granted to all profiles."
+msgstr "授予所有配置文件的权限。"
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "从所有配置文件中删除权限（超级管理员除外）。"

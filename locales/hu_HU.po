@@ -1,0 +1,130 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Entitás Profilokhoz:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Entitás Csoportokhoz:"
+
+msgid "Active"
+msgstr "Aktív"
+
+msgid "Back"
+msgstr "Vissza"
+
+msgid "Back to entities selection"
+msgstr "Vissza az entitások kiválasztásához"
+
+msgid "Can view the permissions matrix?"
+msgstr "Megtekintheti a jogosultsági mátrixot?"
+
+msgid "Check all"
+msgstr "Összes kijelölése"
+
+msgid "Download table in CSV format"
+msgstr "Táblázat letöltése CSV formátumban"
+
+msgid "Export to CSV"
+msgstr "Exportálás CSV-be"
+
+msgid "First name"
+msgstr "Keresztnév"
+
+msgid "Generate Permissions Matrix"
+msgstr "Jogosultsági Mátrix Generálása"
+
+msgid "Groups:"
+msgstr "Csoportok:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Oszlopok Elrejtése/Megjelenítése (Vizuális Szűrő)"
+
+msgid "Last name"
+msgstr "Vezetéknév"
+
+msgid "No"
+msgstr "Nem"
+
+msgid "Page"
+msgstr "Oldal"
+
+msgid "Permissions Matrix"
+msgstr "Jogosultsági Mátrix"
+
+msgid "Permissions Matrix Generator"
+msgstr "Jogosultsági Mátrix Generátor"
+
+msgid "Plugin Access Configuration"
+msgstr "Bővítmény Hozzáférési Beállítások"
+
+msgid "Profiles:"
+msgstr "Profilok:"
+
+msgid "Save"
+msgstr "Mentés"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "%1$s - %2$s / %3$s felhasználó mutatása"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Ez a bővítmény GLPI 10.0.0 vagy újabb verziót igényel."
+
+msgid "Total users found:"
+msgstr "Összes megtalált felhasználó:"
+
+msgid "Uncheck all"
+msgstr "Összes kijelölés törlése"
+
+msgid "User"
+msgstr "Felhasználó"
+
+msgid "Yes"
+msgstr "Igen"
+
+msgid "of"
+msgstr "/"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Engedélyezi az összes profilnak az engedélymátrix létrehozását?"
+
+msgid "Notice:"
+msgstr "Értesítés:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Egy adott profil engedélymátrixhoz való hozzáférésének megadásához vagy "
+"eltávolításához lépjen a kívánt profilra, és módosítsa ezt a beállítást az "
+"„Engedélyek mátrixa” lapon."
+
+msgid "Security Recommendation:"
+msgstr "Biztonsági ajánlás:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Erősen ajánlott ezt az engedélyt csak a Super-Admin profilokra korlátozni. "
+"Ha ezt az opciót mindenki számára engedélyezi, a rendszeres felhasználók "
+"megtekinthetik a bizalmas hozzárendelési és csoportos adatokat a teljes "
+"rendszerben."
+
+msgid "Saving..."
+msgstr "Megtakarítás..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Az összes profilhoz adott engedélyek."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Az engedélyek eltávolítva az összes profilból (kivéve a Super-Admin)."

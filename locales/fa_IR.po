@@ -1,0 +1,128 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. موجودیت برای نمایه‌ها:"
+
+msgid "2. Groups Entity:"
+msgstr "2. موجودیت برای گروه‌ها:"
+
+msgid "Active"
+msgstr "فعال"
+
+msgid "Back"
+msgstr "بازگشت"
+
+msgid "Back to entities selection"
+msgstr "بازگشت به انتخاب موجودیت‌ها"
+
+msgid "Can view the permissions matrix?"
+msgstr "آیا می‌تواند ماتریس مجوزها را مشاهده کند؟"
+
+msgid "Check all"
+msgstr "انتخاب همه"
+
+msgid "Download table in CSV format"
+msgstr "دانلود جدول با فرمت CSV"
+
+msgid "Export to CSV"
+msgstr "خروجی گرفتن به عنوان CSV"
+
+msgid "First name"
+msgstr "نام"
+
+msgid "Generate Permissions Matrix"
+msgstr "تولید ماتریس مجوزها"
+
+msgid "Groups:"
+msgstr "گروه‌ها:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "مخفی/نمایش ستون‌ها (فیلتر دیداری)"
+
+msgid "Last name"
+msgstr "نام خانوادگی"
+
+msgid "No"
+msgstr "خیر"
+
+msgid "Page"
+msgstr "صفحه"
+
+msgid "Permissions Matrix"
+msgstr "ماتریس مجوزها"
+
+msgid "Permissions Matrix Generator"
+msgstr "تولیدکننده ماتریس مجوزها"
+
+msgid "Plugin Access Configuration"
+msgstr "پیکربندی دسترسی به افزونه"
+
+msgid "Profiles:"
+msgstr "نمایه‌ها:"
+
+msgid "Save"
+msgstr "ذخیره"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "نمایش %1$s - %2$s از %3$s کاربر"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "این افزونه به GLPI 10.0.0 یا بالاتر نیاز دارد."
+
+msgid "Total users found:"
+msgstr "مجموع کاربران یافت شده:"
+
+msgid "Uncheck all"
+msgstr "لغو انتخاب همه"
+
+msgid "User"
+msgstr "کاربر"
+
+msgid "Yes"
+msgstr "بله"
+
+msgid "of"
+msgstr "از"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "به همه نمایه‌ها اجازه می‌دهید ماتریس مجوزها را ایجاد کنند؟"
+
+msgid "Notice:"
+msgstr "توجه:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"برای اعطای یا حذف دسترسی یک نمایه خاص به ماتریس مجوزها، به نمایه مورد نظر "
+"بروید و این تنظیم را در برگه «ماتریس مجوزها» تنظیم کنید."
+
+msgid "Security Recommendation:"
+msgstr "توصیه امنیتی:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"اکیداً توصیه می شود که این مجوز را فقط به نمایه های Super-Admin محدود کنید. "
+"اجازه دادن به این گزینه برای همه به کاربران عادی امکان می‌دهد تا تکالیف حساس"
+" و داده‌های گروهی را در کل سیستم مشاهده کنند."
+
+msgid "Saving..."
+msgstr "در حال ذخیره..."
+
+msgid "Permissions granted to all profiles."
+msgstr "مجوزها به همه پروفایل ها داده شده است."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "مجوزها از همه نمایه ها (به جز Super-Admin) حذف شدند."

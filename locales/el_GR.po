@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: el_GR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Οντότητα για Προφίλ:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Οντότητα για Ομάδες:"
+
+msgid "Active"
+msgstr "Ενεργό"
+
+msgid "Back"
+msgstr "Πίσω"
+
+msgid "Back to entities selection"
+msgstr "Επιστροφή στην επιλογή οντοτήτων"
+
+msgid "Can view the permissions matrix?"
+msgstr "Μπορεί να δει τη μήτρα δικαιωμάτων;"
+
+msgid "Check all"
+msgstr "Επιλογή όλων"
+
+msgid "Download table in CSV format"
+msgstr "Λήψη πίνακα σε μορφή CSV"
+
+msgid "Export to CSV"
+msgstr "Εξαγωγή σε CSV"
+
+msgid "First name"
+msgstr "Όνομα"
+
+msgid "Generate Permissions Matrix"
+msgstr "Δημιουργία Μήτρας Δικαιωμάτων"
+
+msgid "Groups:"
+msgstr "Ομάδες:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Απόκρυψη/Εμφάνιση Στηλών (Οπτικό Φίλτρο)"
+
+msgid "Last name"
+msgstr "Επίθετο"
+
+msgid "No"
+msgstr "Όχι"
+
+msgid "Page"
+msgstr "Σελίδα"
+
+msgid "Permissions Matrix"
+msgstr "Μήτρα Δικαιωμάτων"
+
+msgid "Permissions Matrix Generator"
+msgstr "Γεννήτρια Μήτρας Δικαιωμάτων"
+
+msgid "Plugin Access Configuration"
+msgstr "Διαμόρφωση Πρόσβασης Πρόσθετου"
+
+msgid "Profiles:"
+msgstr "Προφίλ:"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Εμφάνιση %1$s - %2$s από %3$s χρήστες"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Αυτό το πρόσθετο απαιτεί GLPI 10.0.0 ή νεότερη έκδοση."
+
+msgid "Total users found:"
+msgstr "Σύνολο χρηστών που βρέθηκαν:"
+
+msgid "Uncheck all"
+msgstr "Κατάργηση επιλογής"
+
+msgid "User"
+msgstr "Χρήστης"
+
+msgid "Yes"
+msgstr "Ναι"
+
+msgid "of"
+msgstr "από"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Να επιτρέπεται σε όλα τα προφίλ να δημιουργούν τη μήτρα δικαιωμάτων;"
+
+msgid "Notice:"
+msgstr "Ανακοίνωση:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Για να εκχωρήσετε ή να καταργήσετε πρόσβαση για ένα συγκεκριμένο προφίλ στη "
+"μήτρα δικαιωμάτων, μεταβείτε στο επιθυμητό προφίλ και προσαρμόστε αυτήν τη "
+"ρύθμιση στην καρτέλα \"Πίνακας δικαιωμάτων\"."
+
+msgid "Security Recommendation:"
+msgstr "Σύσταση ασφαλείας:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Συνιστάται ανεπιφύλακτα να περιορίσετε αυτήν την άδεια μόνο στα προφίλ "
+"Super-Admin. Επιτρέποντας αυτήν την επιλογή για όλους, οι τακτικοί χρήστες "
+"μπορούν να προβάλλουν ευαίσθητα δεδομένα ανάθεσης και ομαδοποίησης σε "
+"ολόκληρο το σύστημα."
+
+msgid "Saving..."
+msgstr "Οικονομία..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Χορηγούνται δικαιώματα σε όλα τα προφίλ."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr ""
+"Τα δικαιώματα καταργήθηκαν από όλα τα προφίλ (εκτός από το Super-Admin)."

@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Ento por Profiloj:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Ento por Grupoj:"
+
+msgid "Active"
+msgstr "Aktiva"
+
+msgid "Back"
+msgstr "Reiri"
+
+msgid "Back to entities selection"
+msgstr "Reiri al enta elekto"
+
+msgid "Can view the permissions matrix?"
+msgstr "Ĉu povas vidi la rajtomatricon?"
+
+msgid "Check all"
+msgstr "Elekti ĉion"
+
+msgid "Download table in CSV format"
+msgstr "Elŝuti tabelon en CSV-formato"
+
+msgid "Export to CSV"
+msgstr "Eksporti al CSV"
+
+msgid "First name"
+msgstr "Antaŭnomo"
+
+msgid "Generate Permissions Matrix"
+msgstr "Generi Rajtomatricon"
+
+msgid "Groups:"
+msgstr "Grupoj:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Kaŝi/Montri Kolumnojn (Vida Filtrilo)"
+
+msgid "Last name"
+msgstr "Familia nomo"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "Page"
+msgstr "Paĝo"
+
+msgid "Permissions Matrix"
+msgstr "Rajtomatrico"
+
+msgid "Permissions Matrix Generator"
+msgstr "Rajtomatrica Generatoro"
+
+msgid "Plugin Access Configuration"
+msgstr "Kromaĵa Alira Agordo"
+
+msgid "Profiles:"
+msgstr "Profiloj:"
+
+msgid "Save"
+msgstr "Konservi"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Montrante %1$s - %2$s el %3$s uzantoj"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Ĉi tiu kromaĵo postulas GLPI 10.0.0 aŭ pli novan."
+
+msgid "Total users found:"
+msgstr "Sume trovitaj uzantoj:"
+
+msgid "Uncheck all"
+msgstr "Malselekti ĉion"
+
+msgid "User"
+msgstr "Uzanto"
+
+msgid "Yes"
+msgstr "Jes"
+
+msgid "of"
+msgstr "el"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Ĉu permesi ĉiujn profilojn generi la permes-matricon?"
+
+msgid "Notice:"
+msgstr "Noto:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Por doni aŭ forigi aliron por specifa profilo al la permesa matrico, iru al "
+"la dezirata profilo kaj ĝustigu ĉi tiun agordon en la langeto 'Permesaj "
+"Matrico'."
+
+msgid "Security Recommendation:"
+msgstr "Sekureca Rekomendo:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Estas forte rekomendite limigi ĉi tiun permeson nur al Super-Admin-profiloj."
+" Permesi ĉi tiun opcion por ĉiuj ebligas kutimajn uzantojn vidi sentemajn "
+"taskojn kaj grupajn datumojn tra la tuta sistemo."
+
+msgid "Saving..."
+msgstr "Konservante..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Permesoj donitaj al ĉiuj profiloj."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Permesoj forigitaj de ĉiuj profiloj (krom Super-Administranto)."
