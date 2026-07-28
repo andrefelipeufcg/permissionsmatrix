@@ -37,9 +37,12 @@ class Profile extends \CommonGLPI {
         
         \Glpi\Application\View\TemplateRenderer::getInstance()->display('@permissionsmatrix/profile_form.html.twig', [
             'url_form'      => $url_form,
+            'plugin_url'    => \Plugin::getWebDir('permissionsmatrix'),
             'csrf_token'    => \Session::getNewCSRFToken(),
             'profile_id'    => $profile_id,
-            'current_right' => $current_right
+            'current_right' => $current_right,
+            'inline_css'    => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/css/permissionsmatrix.css'),
+            'inline_js'     => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
         ]);
 
         return true;

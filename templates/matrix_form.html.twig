@@ -1,0 +1,32 @@
+<script>{{ inline_js|raw }}</script>
+
+<div class='center' style='margin-top: 20px;'>
+<form method='post' action='matrix.result.php' class='pm-save-form'>
+<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
+
+<table class='tab_cadre_fixe'>
+<tr><th colspan='2'>{{ __('Permissions Matrix Generator', 'permissionsmatrix') }}</th></tr>
+
+<tr class='tab_bg_1'>
+<td width='30%'><strong>{{ __('1. Profiles Entity:', 'permissionsmatrix') }}</strong></td>
+<td>
+    {{ dropdown_profiles | raw }}
+</td>
+</tr>
+
+<tr class='tab_bg_1'>
+<td><strong>{{ __('2. Groups Entity:', 'permissionsmatrix') }}</strong></td>
+<td>
+    {{ dropdown_groups | raw }}
+</td>
+</tr>
+
+<tr class='tab_bg_2'>
+<td colspan='2' class='center'>
+<button type='submit' name='gerar_matriz' class='vsubmit'>{{ __('Generate Permissions Matrix', 'permissionsmatrix') }}</button>
+</td>
+</tr>
+</table>
+</form>
+</div>
+

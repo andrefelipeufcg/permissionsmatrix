@@ -49,7 +49,7 @@ class Matriz extends \CommonGLPI {
         
         return [
             'title' => self::getMenuName(),
-            'page'  => '/plugins/permissionsmatrix/front/matriz.php',
+            'page'  => '/plugins/permissionsmatrix/front/matrix.form.php',
             'icon'  => self::getIcon()
         ];
     }
@@ -63,5 +63,20 @@ class Matriz extends \CommonGLPI {
     public static function canView(): bool {
         // Agora o GLPI só exibe o menu se o perfil tiver a permissão 1 (READ)
         return \Session::haveRight('plugin_permissionsmatrix', READ);
+    }
+
+    /**
+     * Sobrescreve a resolução de URL padrão do GLPI, já que o nome do arquivo mudou para matrix.form.php
+     */
+    public static function getSearchURL($full = true) {
+        return \Plugin::getWebDir('permissionsmatrix', $full) . '/front/matrix.form.php';
+    }
+
+    public static function getFormURLWithID($id = 0, $full = true) {
+        return \Plugin::getWebDir('permissionsmatrix', $full) . '/front/matrix.form.php';
+    }
+
+    public static function getFormURL($full = true) {
+        return \Plugin::getWebDir('permissionsmatrix', $full) . '/front/matrix.form.php';
     }
 }

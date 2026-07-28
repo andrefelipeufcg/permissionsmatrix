@@ -1,14 +1,16 @@
 <?php
-// Aumenta o limite de memória temporariamente para suportar entidades com milhares de usuários (Evita erro 500 no CSV)
-ini_set('memory_limit', '512M');
+// Limite de memória removido conforme revisão de segurança (Unbounded memory_limit override)
 
-include ("../../../inc/includes.php");
+$inc = __DIR__ . '/../../../inc/includes.php';
+if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
+if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
+include $inc;
 // Verifica se tem permissão (Security Fix)
 Session::checkRight('plugin_permissionsmatrix', READ);
 
 // Verifica se o formulário original, o botão de exportar ou a paginação foram acionados
 if (!isset($_POST['gerar_matriz']) && !isset($_POST['exportar_csv'])) {
-    Html::redirect("matriz.php");
+    Html::redirect("matrix.form.php");
     exit;
 }
 
@@ -36,7 +38,7 @@ foreach ($post_grupos as $id) {
 // Nesse caso, o GLPI geraria erro de "Empty IN". Vamos abortar e voltar.
 if (empty($entidade_perfis) || empty($entidade_grupos)) {
     Session::addMessageAfterRedirect(__('You do not have access to the requested entities.', 'permissionsmatrix'), false, ERROR);
-    Html::redirect("matriz.php");
+    Html::redirect("matrix.form.php");
     exit;
 }
 
@@ -180,8 +182,18 @@ if ($is_export) {
     $output = fopen('php://output', 'w');
     fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF)); 
 
+    // Função local para prevenir CSV Formula Injection
+    $escape_csv = function($val) {
+        $val = preg_replace('/^[\s\x00-\x1F]+/', '', (string)$val);
+        if (strlen($val) > 0 && in_array($val[0], ['=', '+', '-', '@', "\t", "\r"])) {
+            return "'" . $val;
+        }
+        return $val;
+    };
+
     // Cabeçalho do CSV
     $cabecalho = array_merge([__('Active', 'permissionsmatrix'), __('User', 'permissionsmatrix'), __('First name', 'permissionsmatrix'), __('Last name', 'permissionsmatrix')], $nomes_perfis, $nomes_grupos);
+    $cabecalho = array_map($escape_csv, $cabecalho);
     fputcsv($output, $cabecalho, ';'); 
 
     // O CSV continua exportando 100% da lista ($mapa_usuarios inteiro)
@@ -199,16 +211,8 @@ if ($is_export) {
 
         // Se a pessoa não tem 'X' nas colunas selecionadas, a linha não vai para o CSV
         if ($tem_x) {
-            // Função local para prevenir CSV Formula Injection
-            $escape_csv = function($val) {
-                if (is_string($val) && strlen($val) > 0 && in_array($val[0], ['=', '+', '-', '@'])) {
-                    return "'" . $val;
-                }
-                return $val;
-            };
-            
             $linha = [
-                $dados['ativo'] ?? __('No', 'permissionsmatrix'), 
+                $escape_csv($dados['ativo'] ?? __('No', 'permissionsmatrix')), 
                 $escape_csv($dados['login'] ?? ''), 
                 $escape_csv($dados['firstname'] ?? ''), 
                 $escape_csv($dados['realname'] ?? '')
@@ -227,6 +231,7 @@ if ($is_export) {
 // =========================================================
 use Glpi\Application\View\TemplateRenderer;
 
+
 Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", \GlpiPlugin\Permissionsmatrix\Matriz::class);
 
 // Fatiamento da tela (Paginação)
@@ -242,7 +247,7 @@ $texto_exibindo = sprintf(
     "<b>$total_usuarios</b>"
 );
 
-TemplateRenderer::getInstance()->display('@permissionsmatrix/matriz_result.html.twig', [
+TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result.html.twig', [
     'total_usuarios'   => $total_usuarios,
     'nomes_perfis'     => $nomes_perfis,
     'nomes_grupos'     => $nomes_grupos,
@@ -252,7 +257,9 @@ TemplateRenderer::getInstance()->display('@permissionsmatrix/matriz_result.html.
     'pagina_atual'     => $pagina_atual,
     'total_paginas'    => $total_paginas,
     'texto_exibindo'   => $texto_exibindo,
-    'csrf_token'       => Session::getNewCSRFToken()
+    'csrf_token'       => Session::getNewCSRFToken(),
+    'inline_css'       => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/css/permissionsmatrix.css'),
+    'inline_js'        => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
 ]);
 
 Html::footer();
