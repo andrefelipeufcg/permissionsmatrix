@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: gl_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Entidade para Perfís:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Entidade para Grupos:"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Back"
+msgstr "Volver"
+
+msgid "Back to entities selection"
+msgstr "Volver á selección de entidades"
+
+msgid "Can view the permissions matrix?"
+msgstr "Pode ver a matriz de permisos?"
+
+msgid "Check all"
+msgstr "Marcar todos"
+
+msgid "Download table in CSV format"
+msgstr "Descargar táboa en formato CSV"
+
+msgid "Export to CSV"
+msgstr "Exportar a CSV"
+
+msgid "First name"
+msgstr "Nome"
+
+msgid "Generate Permissions Matrix"
+msgstr "Xerar Matriz de Permisos"
+
+msgid "Groups:"
+msgstr "Grupos:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Ocultar/Mostrar Columnas (Filtro Visual)"
+
+msgid "Last name"
+msgstr "Apelidos"
+
+msgid "No"
+msgstr "Non"
+
+msgid "Page"
+msgstr "Páxina"
+
+msgid "Permissions Matrix"
+msgstr "Matriz de Permisos"
+
+msgid "Permissions Matrix Generator"
+msgstr "Xerador da Matriz de Permisos"
+
+msgid "Plugin Access Configuration"
+msgstr "Configuración de Acceso ao Engadido"
+
+msgid "Profiles:"
+msgstr "Perfís:"
+
+msgid "Save"
+msgstr "Gardar"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Mostrando %1$s - %2$s de %3$s usuarios"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Este engadido require GLPI 10.0.0 ou superior."
+
+msgid "Total users found:"
+msgstr "Total de usuarios atopados:"
+
+msgid "Uncheck all"
+msgstr "Desmarcar todos"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "Yes"
+msgstr "Si"
+
+msgid "of"
+msgstr "de"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Queres permitir que todos os perfís xeren a matriz de permisos?"
+
+msgid "Notice:"
+msgstr "Aviso:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Para conceder ou eliminar o acceso a un perfil específico á matriz de "
+"permisos, vai ao perfil desexado e axusta esta configuración na pestana "
+"\"Matriz de permisos\"."
+
+msgid "Security Recommendation:"
+msgstr "Recomendación de seguridade:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Recoméndase encarecidamente restrinxir este permiso só aos perfís de "
+"superadministrador. Ao permitir esta opción para todos, os usuarios "
+"habituais poden ver os datos confidenciais de asignacións e grupos en todo o"
+" sistema."
+
+msgid "Saving..."
+msgstr "Gardando..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Permisos concedidos a todos os perfís."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr ""
+"Permisos eliminados de todos os perfís (excepto de superadministrador)."

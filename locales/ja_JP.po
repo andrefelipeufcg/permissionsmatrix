@@ -1,0 +1,127 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. プロファイルのエンティティ:"
+
+msgid "2. Groups Entity:"
+msgstr "2. グループのエンティティ:"
+
+msgid "Active"
+msgstr "アクティブ"
+
+msgid "Back"
+msgstr "戻る"
+
+msgid "Back to entities selection"
+msgstr "エンティティ選択に戻る"
+
+msgid "Can view the permissions matrix?"
+msgstr "権限マトリックスを表示できますか？"
+
+msgid "Check all"
+msgstr "すべてチェック"
+
+msgid "Download table in CSV format"
+msgstr "CSV形式でテーブルをダウンロード"
+
+msgid "Export to CSV"
+msgstr "CSVにエクスポート"
+
+msgid "First name"
+msgstr "名"
+
+msgid "Generate Permissions Matrix"
+msgstr "権限マトリックスを生成"
+
+msgid "Groups:"
+msgstr "グループ:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "列の表示/非表示（視覚フィルター）"
+
+msgid "Last name"
+msgstr "姓"
+
+msgid "No"
+msgstr "いいえ"
+
+msgid "Page"
+msgstr "ページ"
+
+msgid "Permissions Matrix"
+msgstr "権限マトリックス"
+
+msgid "Permissions Matrix Generator"
+msgstr "権限マトリックスジェネレーター"
+
+msgid "Plugin Access Configuration"
+msgstr "プラグインアクセス構成"
+
+msgid "Profiles:"
+msgstr "プロファイル:"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "%3$s人中 %1$s - %2$s ユーザーを表示"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "このプラグインにはGLPI 10.0.0以降が必要です。"
+
+msgid "Total users found:"
+msgstr "見つかった総ユーザー数:"
+
+msgid "Uncheck all"
+msgstr "すべてのチェックを外す"
+
+msgid "User"
+msgstr "ユーザー"
+
+msgid "Yes"
+msgstr "はい"
+
+msgid "of"
+msgstr "/"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "すべてのプロファイルに権限マトリックスの生成を許可しますか?"
+
+msgid "Notice:"
+msgstr "知らせ："
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"特定のプロファイルに対する権限マトリックスへのアクセスを許可または削除するには、目的のプロファイルに移動し、[権限マトリックス] "
+"タブでこの設定を調整します。"
+
+msgid "Security Recommendation:"
+msgstr "セキュリティに関する推奨事項:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"この権限をスーパー管理者プロファイルのみに制限することを強くお勧めします。このオプションをすべてに許可すると、通常のユーザーは機密の割り当てとシステム全体のグループ"
+" データを表示できるようになります。"
+
+msgid "Saving..."
+msgstr "保存中..."
+
+msgid "Permissions granted to all profiles."
+msgstr "すべてのプロファイルに付与される権限。"
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "すべてのプロファイルから権限が削除されました (スーパー管理者を除く)。"

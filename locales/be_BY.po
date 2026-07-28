@@ -1,0 +1,130 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: be_BY\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Сутнасць для Профіляў:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Сутнасць для Груп:"
+
+msgid "Active"
+msgstr "Актыўны"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Back to entities selection"
+msgstr "Вярнуцца да выбару сутнасцяў"
+
+msgid "Can view the permissions matrix?"
+msgstr "Можа праглядаць матрыцу дазволаў?"
+
+msgid "Check all"
+msgstr "Выбраць усё"
+
+msgid "Download table in CSV format"
+msgstr "Спампаваць табліцу ў фармаце CSV"
+
+msgid "Export to CSV"
+msgstr "Экспарт у CSV"
+
+msgid "First name"
+msgstr "Імя"
+
+msgid "Generate Permissions Matrix"
+msgstr "Згенераваць Матрыцу Дазволаў"
+
+msgid "Groups:"
+msgstr "Групы:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Схаваць/Паказаць Слупкі (Візуальны Фільтр)"
+
+msgid "Last name"
+msgstr "Прозвішча"
+
+msgid "No"
+msgstr "Не"
+
+msgid "Page"
+msgstr "Старонка"
+
+msgid "Permissions Matrix"
+msgstr "Матрыца Дазволаў"
+
+msgid "Permissions Matrix Generator"
+msgstr "Генератар Матрыцы Дазволаў"
+
+msgid "Plugin Access Configuration"
+msgstr "Канфігурацыя Доступу да Плагіна"
+
+msgid "Profiles:"
+msgstr "Профілі:"
+
+msgid "Save"
+msgstr "Захаваць"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Паказана %1$s - %2$s з %3$s карыстальнікаў"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Для гэтага плагіна патрабуецца GLPI 10.0.0 або вышэй."
+
+msgid "Total users found:"
+msgstr "Усяго знойдзена карыстальнікаў:"
+
+msgid "Uncheck all"
+msgstr "Адмяніць выбар"
+
+msgid "User"
+msgstr "Карыстальнік"
+
+msgid "Yes"
+msgstr "Так"
+
+msgid "of"
+msgstr "з"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Дазволіць усім профілям ствараць матрыцу дазволаў?"
+
+msgid "Notice:"
+msgstr "Заўвага:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Каб даць або выдаліць доступ для пэўнага профілю да матрыцы дазволаў, "
+"перайдзіце да патрэбнага профілю і наладзьце гэты параметр на ўкладцы "
+"«Матрыца дазволаў»."
+
+msgid "Security Recommendation:"
+msgstr "Рэкамендацыя па бяспецы:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Настойліва рэкамендуецца абмежаваць гэты дазвол толькі профілямі "
+"суперадміністратара. Дазволіўшы гэты параметр для ўсіх, звычайныя "
+"карыстальнікі змогуць праглядаць канфідэнцыяльныя даныя прызначэння і групы "
+"ва ўсёй сістэме."
+
+msgid "Saving..."
+msgstr "Захаванне..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Дазволы прадастаўлены ўсім профілям."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Дазволы выдалены з усіх профіляў (акрамя супер-адміністратара)."

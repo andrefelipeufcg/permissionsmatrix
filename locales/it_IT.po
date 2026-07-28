@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Entità per Profili:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Entità per Gruppi:"
+
+msgid "Active"
+msgstr "Attivo"
+
+msgid "Back"
+msgstr "Indietro"
+
+msgid "Back to entities selection"
+msgstr "Torna alla selezione delle entità"
+
+msgid "Can view the permissions matrix?"
+msgstr "Può visualizzare la matrice delle autorizzazioni?"
+
+msgid "Check all"
+msgstr "Seleziona tutto"
+
+msgid "Download table in CSV format"
+msgstr "Scarica tabella in formato CSV"
+
+msgid "Export to CSV"
+msgstr "Esporta in CSV"
+
+msgid "First name"
+msgstr "Nome"
+
+msgid "Generate Permissions Matrix"
+msgstr "Genera Matrice Autorizzazioni"
+
+msgid "Groups:"
+msgstr "Gruppi:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Nascondi/Mostra Colonne (Filtro Visivo)"
+
+msgid "Last name"
+msgstr "Cognome"
+
+msgid "No"
+msgstr "No"
+
+msgid "Page"
+msgstr "Pagina"
+
+msgid "Permissions Matrix"
+msgstr "Matrice delle Autorizzazioni"
+
+msgid "Permissions Matrix Generator"
+msgstr "Generatore Matrice delle Autorizzazioni"
+
+msgid "Plugin Access Configuration"
+msgstr "Configurazione Accesso Plugin"
+
+msgid "Profiles:"
+msgstr "Profili:"
+
+msgid "Save"
+msgstr "Salva"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Visualizzazione di %1$s - %2$s su %3$s utenti"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Questo plugin richiede GLPI 10.0.0 o superiore."
+
+msgid "Total users found:"
+msgstr "Utenti totali trovati:"
+
+msgid "Uncheck all"
+msgstr "Deseleziona tutto"
+
+msgid "User"
+msgstr "Utente"
+
+msgid "Yes"
+msgstr "Sì"
+
+msgid "of"
+msgstr "di"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr ""
+"Consentire a tutti i profili di generare la matrice delle autorizzazioni?"
+
+msgid "Notice:"
+msgstr "Avviso:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Per concedere o rimuovere l'accesso per un profilo specifico alla matrice "
+"delle autorizzazioni, vai al profilo desiderato e modifica questa "
+"impostazione nella scheda \"Matrice delle autorizzazioni\"."
+
+msgid "Security Recommendation:"
+msgstr "Raccomandazione sulla sicurezza:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Si consiglia vivamente di limitare questa autorizzazione solo ai profili "
+"Super-Admin. Consentire questa opzione per tutti consente agli utenti "
+"regolari di visualizzare assegnazioni sensibili e dati di gruppo nell'intero"
+" sistema."
+
+msgid "Saving..."
+msgstr "Risparmio..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Autorizzazioni concesse a tutti i profili."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Autorizzazioni rimosse da tutti i profili (eccetto Super-Admin)."

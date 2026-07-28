@@ -1,0 +1,133 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: kn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. ಪ್ರೊಫೈಲ್‌ಗಳಿಗಾಗಿ ಅಸ್ತಿತ್ವ:"
+
+msgid "2. Groups Entity:"
+msgstr "2. ಗುಂಪುಗಳಿಗಾಗಿ ಅಸ್ತಿತ್ವ:"
+
+msgid "Active"
+msgstr "ಸಕ್ರಿಯ"
+
+msgid "Back"
+msgstr "ಹಿಂದೆ"
+
+msgid "Back to entities selection"
+msgstr "ಅಸ್ತಿತ್ವ ಆಯ್ಕೆಗೆ ಹಿಂತಿರುಗಿ"
+
+msgid "Can view the permissions matrix?"
+msgstr "ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ವೀಕ್ಷಿಸಬಹುದೇ?"
+
+msgid "Check all"
+msgstr "ಎಲ್ಲವನ್ನೂ ಪರಿಶೀಲಿಸಿ"
+
+msgid "Download table in CSV format"
+msgstr "CSV ಸ್ವರೂಪದಲ್ಲಿ ಕೋಷ್ಟಕವನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+
+msgid "Export to CSV"
+msgstr "CSV ಗೆ ರಫ್ತು ಮಾಡಿ"
+
+msgid "First name"
+msgstr "ಮೊದಲ ಹೆಸರು"
+
+msgid "Generate Permissions Matrix"
+msgstr "ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ರಚಿಸಿ"
+
+msgid "Groups:"
+msgstr "ಗುಂಪುಗಳು:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "ಕಾಲಮ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ/ತೋರಿಸಿ (ವಿಷುಯಲ್ ಫಿಲ್ಟರ್)"
+
+msgid "Last name"
+msgstr "ಕೊನೆಯ ಹೆಸರು"
+
+msgid "No"
+msgstr "ಇಲ್ಲ"
+
+msgid "Page"
+msgstr "ಪುಟ"
+
+msgid "Permissions Matrix"
+msgstr "ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್"
+
+msgid "Permissions Matrix Generator"
+msgstr "ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ಜನರೇಟರ್"
+
+msgid "Plugin Access Configuration"
+msgstr "ಪ್ಲಗಿನ್ ಪ್ರವೇಶ ಕಾನ್ಫಿಗರೇಶನ್"
+
+msgid "Profiles:"
+msgstr "ಪ್ರೊಫೈಲ್‌ಗಳು:"
+
+msgid "Save"
+msgstr "ಉಳಿಸಿ"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "%3$s ಬಳಕೆದಾರರಲ್ಲಿ %1$s - %2$s ಅನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "ಈ ಪ್ಲಗಿನ್‌ಗೆ GLPI 10.0.0 ಅಥವಾ ಹೆಚ್ಚಿನದು ಅಗತ್ಯವಿದೆ."
+
+msgid "Total users found:"
+msgstr "ಒಟ್ಟು ಬಳಕೆದಾರರು ಕಂಡುಬಂದಿದ್ದಾರೆ:"
+
+msgid "Uncheck all"
+msgstr "ಎಲ್ಲವನ್ನೂ ಅನ್‌ಚೆಕ್ ಮಾಡಿ"
+
+msgid "User"
+msgstr "ಬಳಕೆದಾರ"
+
+msgid "Yes"
+msgstr "ಹೌದು"
+
+msgid "of"
+msgstr "ರ"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr ""
+"ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ಅನ್ನು ರಚಿಸಲು ಎಲ್ಲಾ ಪ್ರೊಫೈಲ್‌ಗಳನ್ನು ಅನುಮತಿಸುವುದೇ?"
+
+msgid "Notice:"
+msgstr "ಸೂಚನೆ:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್‌ಗೆ ನಿರ್ದಿಷ್ಟ ಪ್ರೊಫೈಲ್‌ಗೆ ಪ್ರವೇಶವನ್ನು ನೀಡಲು ಅಥವಾ "
+"ತೆಗೆದುಹಾಕಲು, ಬಯಸಿದ ಪ್ರೊಫೈಲ್‌ಗೆ ಹೋಗಿ ಮತ್ತು 'ಅನುಮತಿಗಳ ಮ್ಯಾಟ್ರಿಕ್ಸ್' "
+"ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಈ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಹೊಂದಿಸಿ."
+
+msgid "Security Recommendation:"
+msgstr "ಭದ್ರತಾ ಶಿಫಾರಸು:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"ಈ ಅನುಮತಿಯನ್ನು ಸೂಪರ್-ನಿರ್ವಾಹಕ ಪ್ರೊಫೈಲ್‌ಗಳಿಗೆ ಮಾತ್ರ ನಿರ್ಬಂಧಿಸಲು ಬಲವಾಗಿ ಶಿಫಾರಸು"
+" ಮಾಡಲಾಗಿದೆ. ಎಲ್ಲರಿಗೂ ಈ ಆಯ್ಕೆಯನ್ನು ಅನುಮತಿಸುವುದರಿಂದ ಸಾಮಾನ್ಯ ಬಳಕೆದಾರರಿಗೆ "
+"ಸಂಪೂರ್ಣ ಸಿಸ್ಟಂನಾದ್ಯಂತ ಸೂಕ್ಷ್ಮ ನಿಯೋಜನೆ ಮತ್ತು ಗುಂಪು ಡೇಟಾವನ್ನು ವೀಕ್ಷಿಸಲು "
+"ಸಾಧ್ಯವಾಗುತ್ತದೆ."
+
+msgid "Saving..."
+msgstr "ಉಳಿಸಲಾಗುತ್ತಿದೆ..."
+
+msgid "Permissions granted to all profiles."
+msgstr "ಎಲ್ಲಾ ಪ್ರೊಫೈಲ್‌ಗಳಿಗೆ ಅನುಮತಿಗಳನ್ನು ನೀಡಲಾಗಿದೆ."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr ""
+"ಎಲ್ಲಾ ಪ್ರೊಫೈಲ್‌ಗಳಿಂದ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ (ಸೂಪರ್-ನಿರ್ವಾಹಕರನ್ನು "
+"ಹೊರತುಪಡಿಸಿ)."

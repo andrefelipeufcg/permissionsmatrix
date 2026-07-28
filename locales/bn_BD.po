@@ -1,0 +1,130 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: bn_BD\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "১. প্রোফাইলের জন্য সত্তা:"
+
+msgid "2. Groups Entity:"
+msgstr "২. গ্রুপের জন্য সত্তা:"
+
+msgid "Active"
+msgstr "সক্রিয়"
+
+msgid "Back"
+msgstr "ফিরে যান"
+
+msgid "Back to entities selection"
+msgstr "সত্তা নির্বাচনে ফিরে যান"
+
+msgid "Can view the permissions matrix?"
+msgstr "অনুমতি ম্যাট্রিক্স দেখতে পারে কি?"
+
+msgid "Check all"
+msgstr "সব চেক করুন"
+
+msgid "Download table in CSV format"
+msgstr "CSV ফরম্যাটে টেবিল ডাউনলোড করুন"
+
+msgid "Export to CSV"
+msgstr "CSV তে এক্সপোর্ট করুন"
+
+msgid "First name"
+msgstr "প্রথম নাম"
+
+msgid "Generate Permissions Matrix"
+msgstr "অনুমতি ম্যাট্রিক্স তৈরি করুন"
+
+msgid "Groups:"
+msgstr "গ্রুপ:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "কলাম লুকান/দেখান (ভিজ্যুয়াল ফিল্টার)"
+
+msgid "Last name"
+msgstr "শেষ নাম"
+
+msgid "No"
+msgstr "না"
+
+msgid "Page"
+msgstr "পৃষ্ঠা"
+
+msgid "Permissions Matrix"
+msgstr "অনুমতি ম্যাট্রিক্স"
+
+msgid "Permissions Matrix Generator"
+msgstr "অনুমতি ম্যাট্রিক্স জেনারেটর"
+
+msgid "Plugin Access Configuration"
+msgstr "প্লাগিন অ্যাক্সেস কনফিগারেশন"
+
+msgid "Profiles:"
+msgstr "প্রোফাইল:"
+
+msgid "Save"
+msgstr "সংরক্ষণ করুন"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "%3$s জন ব্যবহারকারীর মধ্যে %1$s - %2$s দেখানো হচ্ছে"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "এই প্লাগিনটির জন্য GLPI 10.0.0 বা উচ্চতর সংস্করণ প্রয়োজন।"
+
+msgid "Total users found:"
+msgstr "মোট ব্যবহারকারী পাওয়া গেছে:"
+
+msgid "Uncheck all"
+msgstr "সব আনচেক করুন"
+
+msgid "User"
+msgstr "ব্যবহারকারী"
+
+msgid "Yes"
+msgstr "হ্যাঁ"
+
+msgid "of"
+msgstr "এর"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "সমস্ত প্রোফাইলকে অনুমতি ম্যাট্রিক্স তৈরি করার অনুমতি দেবেন?"
+
+msgid "Notice:"
+msgstr "বিজ্ঞপ্তি:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"অনুমতি ম্যাট্রিক্সে একটি নির্দিষ্ট প্রোফাইলের অ্যাক্সেস মঞ্জুর করতে বা "
+"সরাতে, পছন্দসই প্রোফাইলে যান এবং 'অনুমতি ম্যাট্রিক্স' ট্যাবে এই সেটিংটি "
+"সামঞ্জস্য করুন৷"
+
+msgid "Security Recommendation:"
+msgstr "নিরাপত্তা সুপারিশ:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"এই অনুমতি শুধুমাত্র সুপার-অ্যাডমিন প্রোফাইলে সীমাবদ্ধ রাখার জন্য দৃঢ়ভাবে "
+"সুপারিশ করা হচ্ছে। এই বিকল্পটিকে সকলের জন্য অনুমতি দিলে নিয়মিত "
+"ব্যবহারকারীরা সমগ্র সিস্টেম জুড়ে সংবেদনশীল অ্যাসাইনমেন্ট এবং গ্রুপ ডেটা "
+"দেখতে সক্ষম হয়।"
+
+msgid "Saving..."
+msgstr "সংরক্ষণ করা হচ্ছে..."
+
+msgid "Permissions granted to all profiles."
+msgstr "সমস্ত প্রোফাইলে অনুমতি দেওয়া হয়েছে।"
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "সমস্ত প্রোফাইল থেকে অনুমতি সরানো হয়েছে (সুপার-অ্যাডমিন ছাড়া)।"

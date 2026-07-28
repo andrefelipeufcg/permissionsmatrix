@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Profiles Entity:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Groups Entity:"
+
+msgid "Active"
+msgstr "Active"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Back to entities selection"
+msgstr "Back to entities selection"
+
+msgid "Can view the permissions matrix?"
+msgstr "Can view the permissions matrix?"
+
+msgid "Check all"
+msgstr "Check all"
+
+msgid "Download table in CSV format"
+msgstr "Download table in CSV format"
+
+msgid "Export to CSV"
+msgstr "Export to CSV"
+
+msgid "First name"
+msgstr "First name"
+
+msgid "Generate Permissions Matrix"
+msgstr "Generate Permissions Matrix"
+
+msgid "Groups:"
+msgstr "Groups:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Hide/Show Columns (Visual Filter)"
+
+msgid "Last name"
+msgstr "Last name"
+
+msgid "No"
+msgstr "No"
+
+msgid "Page"
+msgstr "Page"
+
+msgid "Permissions Matrix"
+msgstr "Permissions Matrix"
+
+msgid "Permissions Matrix Generator"
+msgstr "Permissions Matrix Generator"
+
+msgid "Plugin Access Configuration"
+msgstr "Plugin Access Configuration"
+
+msgid "Profiles:"
+msgstr "Profiles:"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Showing %1$s - %2$s of %3$s users"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "This plugin requires GLPI 10.0.0 or higher."
+
+msgid "Total users found:"
+msgstr "Total users found:"
+
+msgid "Uncheck all"
+msgstr "Uncheck all"
+
+msgid "User"
+msgstr "User"
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "of"
+msgstr "of"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Allow all profiles to generate the permissions matrix?"
+
+msgid "Notice:"
+msgstr "Notice:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+
+msgid "Security Recommendation:"
+msgstr "Security Recommendation:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+
+msgid "Saving..."
+msgstr "Saving..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Permissions granted to all profiles."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Permissions removed from all profiles (except Super-Admin)."

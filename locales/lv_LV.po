@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: lv_LV\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Entītija Profiliem:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Entītija Grupām:"
+
+msgid "Active"
+msgstr "Aktīvs"
+
+msgid "Back"
+msgstr "Atpakaļ"
+
+msgid "Back to entities selection"
+msgstr "Atpakaļ uz entītiju izvēli"
+
+msgid "Can view the permissions matrix?"
+msgstr "Vai var skatīt atļauju matricu?"
+
+msgid "Check all"
+msgstr "Atzīmēt visu"
+
+msgid "Download table in CSV format"
+msgstr "Lejupielādēt tabulu CSV formātā"
+
+msgid "Export to CSV"
+msgstr "Eksportēt uz CSV"
+
+msgid "First name"
+msgstr "Vārds"
+
+msgid "Generate Permissions Matrix"
+msgstr "Ģenerēt Atļauju Matricu"
+
+msgid "Groups:"
+msgstr "Grupas:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Paslēpt/Rādīt Kolonnas (Vizuālais Filtrs)"
+
+msgid "Last name"
+msgstr "Uzvārds"
+
+msgid "No"
+msgstr "Nē"
+
+msgid "Page"
+msgstr "Lapa"
+
+msgid "Permissions Matrix"
+msgstr "Atļauju Matrica"
+
+msgid "Permissions Matrix Generator"
+msgstr "Atļauju Matricas Ģenerators"
+
+msgid "Plugin Access Configuration"
+msgstr "Spraudņa Piekļuves Konfigurācija"
+
+msgid "Profiles:"
+msgstr "Profili:"
+
+msgid "Save"
+msgstr "Saglabāt"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Rāda %1$s - %2$s no %3$s lietotājiem"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Šim spraudnim nepieciešama GLPI 10.0.0 vai jaunāka versija."
+
+msgid "Total users found:"
+msgstr "Kopā atrasti lietotāji:"
+
+msgid "Uncheck all"
+msgstr "Noņemt atzīmi visiem"
+
+msgid "User"
+msgstr "Lietotājs"
+
+msgid "Yes"
+msgstr "Jā"
+
+msgid "of"
+msgstr "no"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Vai atļaut visiem profiliem ģenerēt atļauju matricu?"
+
+msgid "Notice:"
+msgstr "Paziņojums:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Lai piešķirtu vai noņemtu piekļuvi konkrētam profilam atļauju matricai, "
+"dodieties uz vajadzīgo profilu un pielāgojiet šo iestatījumu cilnē Atļauju "
+"matrica."
+
+msgid "Security Recommendation:"
+msgstr "Drošības ieteikums:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Ir ļoti ieteicams ierobežot šo atļauju tikai Super-Admin profiliem. Atļaujot"
+" šo opciju visiem, regulāri lietotāji var skatīt sensitīvus uzdevumus un "
+"grupēt datus visā sistēmā."
+
+msgid "Saving..."
+msgstr "Notiek saglabāšana..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Atļaujas piešķirtas visiem profiliem."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Atļaujas noņemtas no visiem profiliem (izņemot Super-Admin)."

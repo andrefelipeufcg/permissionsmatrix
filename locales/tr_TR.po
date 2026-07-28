@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Profiller için Varlık:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Gruplar için Varlık:"
+
+msgid "Active"
+msgstr "Aktif"
+
+msgid "Back"
+msgstr "Geri"
+
+msgid "Back to entities selection"
+msgstr "Varlık seçimine geri dön"
+
+msgid "Can view the permissions matrix?"
+msgstr "Yetki matrisini görüntüleyebilir mi?"
+
+msgid "Check all"
+msgstr "Tümünü işaretle"
+
+msgid "Download table in CSV format"
+msgstr "Tabloyu CSV formatında indir"
+
+msgid "Export to CSV"
+msgstr "CSV'ye Dışa Aktar"
+
+msgid "First name"
+msgstr "İsim"
+
+msgid "Generate Permissions Matrix"
+msgstr "Yetki Matrisi Oluştur"
+
+msgid "Groups:"
+msgstr "Gruplar:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Sütunları Gizle/Göster (Görsel Filtre)"
+
+msgid "Last name"
+msgstr "Soyisim"
+
+msgid "No"
+msgstr "Hayır"
+
+msgid "Page"
+msgstr "Sayfa"
+
+msgid "Permissions Matrix"
+msgstr "Yetki Matrisi"
+
+msgid "Permissions Matrix Generator"
+msgstr "Yetki Matrisi Oluşturucu"
+
+msgid "Plugin Access Configuration"
+msgstr "Eklenti Erişim Yapılandırması"
+
+msgid "Profiles:"
+msgstr "Profiller:"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "%3$s kullanıcıdan %1$s - %2$s arası gösteriliyor"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Bu eklenti GLPI 10.0.0 veya üstünü gerektirir."
+
+msgid "Total users found:"
+msgstr "Bulunan toplam kullanıcı:"
+
+msgid "Uncheck all"
+msgstr "Tümünün işaretini kaldır"
+
+msgid "User"
+msgstr "Kullanıcı"
+
+msgid "Yes"
+msgstr "Evet"
+
+msgid "of"
+msgstr "/"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Tüm profillerin izin matrisi oluşturmasına izin verilsin mi?"
+
+msgid "Notice:"
+msgstr "Fark etme:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Belirli bir profile izin matrisine erişim vermek veya erişimi kaldırmak için"
+" istediğiniz profile gidin ve 'İzin Matrisi' sekmesinde bu ayarı yapın."
+
+msgid "Security Recommendation:"
+msgstr "Güvenlik Önerisi:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Bu iznin yalnızca Süper Yönetici profilleriyle sınırlandırılması önemle "
+"tavsiye edilir. Bu seçeneğe herkes için izin verilmesi, normal "
+"kullanıcıların tüm sistemdeki hassas atama ve grup verilerini "
+"görüntülemesine olanak tanır."
+
+msgid "Saving..."
+msgstr "Kaydediliyor..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Tüm profillere izinler verildi."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Tüm profillerden (Süper Yönetici hariç) izinler kaldırıldı."

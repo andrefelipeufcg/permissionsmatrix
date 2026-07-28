@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MatrizPermissoes 1.0\n"
+"Language: sl_SI\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "1. Profiles Entity:"
+msgstr "1. Entiteta za Profile:"
+
+msgid "2. Groups Entity:"
+msgstr "2. Entiteta za Skupine:"
+
+msgid "Active"
+msgstr "Aktivno"
+
+msgid "Back"
+msgstr "Nazaj"
+
+msgid "Back to entities selection"
+msgstr "Nazaj na izbiro entitet"
+
+msgid "Can view the permissions matrix?"
+msgstr "Ali lahko pregleduje matriko dovoljenj?"
+
+msgid "Check all"
+msgstr "Označi vse"
+
+msgid "Download table in CSV format"
+msgstr "Prenesi tabelo v formatu CSV"
+
+msgid "Export to CSV"
+msgstr "Izvozi v CSV"
+
+msgid "First name"
+msgstr "Ime"
+
+msgid "Generate Permissions Matrix"
+msgstr "Generiraj Matriko Dovoljenj"
+
+msgid "Groups:"
+msgstr "Skupine:"
+
+msgid "Hide/Show Columns (Visual Filter)"
+msgstr "Skrij/Prikaži Stolpce (Vizualni Filter)"
+
+msgid "Last name"
+msgstr "Priimek"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "Page"
+msgstr "Stran"
+
+msgid "Permissions Matrix"
+msgstr "Matrika Dovoljenj"
+
+msgid "Permissions Matrix Generator"
+msgstr "Generator Matrike Dovoljenj"
+
+msgid "Plugin Access Configuration"
+msgstr "Konfiguracija Dostopa do Vtičnika"
+
+msgid "Profiles:"
+msgstr "Profili:"
+
+msgid "Save"
+msgstr "Shrani"
+
+msgid "Showing %1$s - %2$s of %3$s users"
+msgstr "Prikazano %1$s - %2$s od %3$s uporabnikov"
+
+msgid "This plugin requires GLPI 10.0.0 or higher."
+msgstr "Ta vtičnik zahteva GLPI 10.0.0 ali novejši."
+
+msgid "Total users found:"
+msgstr "Skupno najdenih uporabnikov:"
+
+msgid "Uncheck all"
+msgstr "Odznači vse"
+
+msgid "User"
+msgstr "Uporabnik"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "of"
+msgstr "od"
+
+msgid "Allow all profiles to generate the permissions matrix?"
+msgstr "Želite vsem profilom dovoliti ustvarjanje matrike dovoljenj?"
+
+msgid "Notice:"
+msgstr "Obvestilo:"
+
+msgid ""
+"To grant or remove access for a specific profile to the permissions matrix, "
+"go to the desired profile and adjust this setting in the 'Permissions "
+"Matrix' tab."
+msgstr ""
+"Če želite določenemu profilu dodeliti ali odstraniti dostop do matrike "
+"dovoljenj, pojdite na želeni profil in prilagodite to nastavitev v zavihku "
+"'Matrika dovoljenj'."
+
+msgid "Security Recommendation:"
+msgstr "Varnostno priporočilo:"
+
+msgid ""
+"It is strongly recommended to restrict this permission to Super-Admin "
+"profiles only. Allowing this option for all enables regular users to view "
+"sensitive assignment and group data across the entire system."
+msgstr ""
+"Močno priporočamo, da to dovoljenje omejite samo na profile superskrbnikov. "
+"Če omogočite to možnost za vse, običajnim uporabnikom omogočite ogled "
+"občutljivih podatkov o dodelitvah in skupinah v celotnem sistemu."
+
+msgid "Saving..."
+msgstr "Shranjevanje ..."
+
+msgid "Permissions granted to all profiles."
+msgstr "Dovoljenja dodeljena vsem profilom."
+
+msgid "Permissions removed from all profiles (except Super-Admin)."
+msgstr "Dovoljenja so odstranjena iz vseh profilov (razen super-skrbnika)."
