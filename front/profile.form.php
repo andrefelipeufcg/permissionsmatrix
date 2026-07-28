@@ -8,6 +8,13 @@ global $DB;
 
 if (isset($_POST['update_matriz_right'])) {
     $profile_id = intval($_POST['profiles_id']);
+    
+    $profile = new Profile();
+    if (!$profile->getFromDB($profile_id)) {
+        Session::addMessageAfterRedirect(__('Invalid profile', 'permissionsmatrix'), false, ERROR);
+        Html::back();
+    }
+    
     $right = (isset($_POST['matriz_read']) && $_POST['matriz_read'] == '1') ? 1 : 0;
     
     // Remove a permissão antiga
