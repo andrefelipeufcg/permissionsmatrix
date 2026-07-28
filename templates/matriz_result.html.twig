@@ -1,62 +1,17 @@
-<style>
-    .freeze-col {
-        position: -webkit-sticky;
-        position: sticky;
-        z-index: 2;
-        background-color: #f4f4f4;
-    }
-    .headerRow th {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
-        z-index: 3;
-        box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2);
-    }
-    .headerRow th.freeze-col {
-        z-index: 4;
-        background-color: #e0e0e0;
-        color: #333;
-    }
-    .freeze-shadow {
-        border-right: 1px solid #999;
-        box-shadow: 3px 0px 5px -1px rgba(0,0,0,0.2);
-    }
-    .btn-paginacao {
-        padding: 5px 15px;
-        border-radius: 4px;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        cursor: pointer;
-        border: none;
-    }
-    .btn-paginacao:hover {
-        opacity: 0.8;
-    }
-    .cell-profile {
-        background-color: #e0e0e0;
-    }
-    .cell-group {
-        background-color: #cfe2f3;
-    }
-    .tab_cadre_fixehov tr.tab_bg_1:hover td,
-    .tab_cadre_fixehov tr:hover td.freeze-col,
-    .tab_cadre_fixehov tr:hover td.cell-profile,
-    .tab_cadre_fixehov tr:hover td.cell-group {
-        background-color: #d1d1d1 !important;
-        transition: background-color 0.2s;
-    }
-</style>
 
-<div class='center' style='margin-top: 20px; width: 95%; margin-left: auto; margin-right: auto;'>
 
-<div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px;'>
+<style>{{ inline_css|raw }}</style>
+<script>{{ inline_js|raw }}</script>
+
+<div class='center pm-table-container' style='box-shadow: none;'>
+
+<div class='pm-flex-between pm-box-header'>
     <div style='font-size: 15px; font-weight: bold; color: #333;'>
         <i class='fas fa-users' style='margin-right: 5px; color: #1d5ea3;'></i> {{ __('Total users found:', 'permissionsmatrix') }} <span style='color: #1d5ea3; font-size: 16px;'>{{ total_usuarios }}</span>
     </div>
 
     <div style='display: flex; gap: 10px;'>
-        <a href='matriz.php' class='vsubmit' style='background-color: #555555; color: white; text-decoration: none; padding: 5px 15px; display: inline-flex; align-items: center;' title='{{ __('Back to entities selection', 'permissionsmatrix') }}'>⬅️ {{ __('Back', 'permissionsmatrix') }}</a>
+        <a href='matriz.php' class='vsubmit pm-btn-dark' style='display: inline-flex; align-items: center;' title='{{ __('Back to entities selection', 'permissionsmatrix') }}'>⬅️ {{ __('Back', 'permissionsmatrix') }}</a>
 
         <form id='form-exportar' method='post' action='processa_matriz.php' style='margin: 0;'>
             <input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
@@ -71,17 +26,17 @@
             <input type='hidden' name='perfis_ativos' id='input_perfis_ativos' value=''>
             <input type='hidden' name='grupos_ativos' id='input_grupos_ativos' value=''>
             
-            <button type='submit' name='exportar_csv' value='1' class='vsubmit' style='background-color: #2e7d32; color: white;' title='{{ __('Download table in CSV format', 'permissionsmatrix') }}'>📥 {{ __('Export to CSV', 'permissionsmatrix') }}</button>
+            <button type='submit' name='exportar_csv' value='1' class='vsubmit pm-btn-green' title='{{ __('Download table in CSV format', 'permissionsmatrix') }}'>📥 {{ __('Export to CSV', 'permissionsmatrix') }}</button>
         </form>
     </div>
 </div>
 
-<div style='margin-bottom: 15px; padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px;'>
+<div class='pm-box-header'>
     <div id='btn-toggle-filtro' style='cursor: pointer; text-align: center; color: #1d5ea3; font-weight: bold; font-size: 14px; padding: 5px;'>
         <i class='fas fa-filter'></i> {{ __('Hide/Show Columns (Visual Filter)', 'permissionsmatrix') }} <i class='fas fa-caret-down'></i>
     </div>
 
-    <div id='conteudo-filtro' style='display: none; border-top: 1px solid #ccc; margin-top: 10px; padding-top: 15px;'>
+    <div id='conteudo-filtro' class='pm-filter-panel'>
         <div style='display: flex; gap: 20px; flex-wrap: wrap;'>
             
             <div style='flex: 1; min-width: 250px; text-align: left;'>
@@ -92,10 +47,10 @@
                         <a href='#' class='acao-massa-perfil' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>{{ __('Uncheck all', 'permissionsmatrix') }}</a>
                     </div>
                 </div>
-                <div id='caixa-perfis' style='max-height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; background: #fff; border-radius: 3px;'>
+                <div id='caixa-perfis' class='pm-filter-box'>
                     {% set col_index = 4 %}
                     {% for p in nomes_perfis %}
-                        <label style='display: block; margin-bottom: 4px; cursor: pointer; font-size: 13px; text-align: left; color: #333333;'>
+                        <label class='pm-filter-label'>
                             <input type='checkbox' class='col-filter' data-colindex='{{ col_index }}' value='{{ p }}' checked style='margin-right: 5px;'> {{ p }}
                         </label>
                         {% set col_index = col_index + 1 %}
@@ -111,9 +66,9 @@
                         <a href='#' class='acao-massa-grupo' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>{{ __('Uncheck all', 'permissionsmatrix') }}</a>
                     </div>
                 </div>
-                <div id='caixa-grupos' style='max-height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; background: #fff; border-radius: 3px;'>
+                <div id='caixa-grupos' class='pm-filter-box'>
                     {% for g in nomes_grupos %}
-                        <label style='display: block; margin-bottom: 4px; cursor: pointer; font-size: 13px; text-align: left; color: #333333;'>
+                        <label class='pm-filter-label'>
                             <input type='checkbox' class='col-filter' data-colindex='{{ col_index }}' value='{{ g }}' checked style='margin-right: 5px;'> {{ g }}
                         </label>
                         {% set col_index = col_index + 1 %}
@@ -125,13 +80,13 @@
     </div>
 </div>
 
-<div style='overflow-x: auto; max-height: 70vh; box-shadow: 0 0 5px rgba(0,0,0,0.1);'>
-    <table class='tab_cadre_fixehov' style='margin: 0; min-width: 100%; width: max-content; table-layout: auto; border-collapse: separate; border-spacing: 0;'>
-        <tr class='headerRow'>
-            <th class='freeze-col' data-colindex='0' style='text-align: center;'>{{ __('Active', 'permissionsmatrix') }}</th>
-            <th class='freeze-col' data-colindex='1' style='text-align: left;'>{{ __('User', 'permissionsmatrix') }}</th>
-            <th class='freeze-col' data-colindex='2' style='text-align: left;'>{{ __('First name', 'permissionsmatrix') }}</th>
-            <th class='freeze-col freeze-shadow' data-colindex='3' style='text-align: left;'>{{ __('Last name', 'permissionsmatrix') }}</th>
+<div class='pm-table-container'>
+    <table class='tab_cadre_fixehov pm-table-auto'>
+        <tr class='pm-headerRow'>
+            <th class='pm-freeze-col' data-colindex='0' style='text-align: center;'>{{ __('Active', 'permissionsmatrix') }}</th>
+            <th class='pm-freeze-col' data-colindex='1' style='text-align: left;'>{{ __('User', 'permissionsmatrix') }}</th>
+            <th class='pm-freeze-col' data-colindex='2' style='text-align: left;'>{{ __('First name', 'permissionsmatrix') }}</th>
+            <th class='pm-freeze-col pm-freeze-shadow' data-colindex='3' style='text-align: left;'>{{ __('Last name', 'permissionsmatrix') }}</th>
             
             {% for p in nomes_perfis %}
                 <th style='background-color: #999999; color: white; white-space: nowrap; text-align: center; padding: 5px 15px;'>{{ p }}</th>
@@ -147,13 +102,13 @@
                 {% set cur_ativo = dados.ativo ?? __('No', 'permissionsmatrix') %}
                 {% set cor_ativo = cur_ativo == ativo_str ? 'color: #274e13; font-weight: bold; text-align: center;' : 'color: #990000; text-align: center;' %}
 
-                <td class='freeze-col' data-colindex='0' style='{{ cor_ativo }}'>{{ cur_ativo }}</td>
-                <td class='freeze-col' data-colindex='1' style='white-space: nowrap; text-align: left; color: #333333;'>{{ dados.login ?? '' }}</td>
-                <td class='freeze-col' data-colindex='2' style='white-space: nowrap; text-align: left; color: #333333;'>{{ dados.firstname ?? '' }}</td>
-                <td class='freeze-col freeze-shadow' data-colindex='3' style='white-space: nowrap; text-align: left; color: #333333;'>{{ dados.realname ?? '' }}</td>
+                <td class='pm-freeze-col' data-colindex='0' style='{{ cor_ativo }}'>{{ cur_ativo }}</td>
+                <td class='pm-freeze-col' data-colindex='1' style='white-space: nowrap; text-align: left; color: #333333;'>{{ dados.login ?? '' }}</td>
+                <td class='pm-freeze-col' data-colindex='2' style='white-space: nowrap; text-align: left; color: #333333;'>{{ dados.firstname ?? '' }}</td>
+                <td class='pm-freeze-col pm-freeze-shadow' data-colindex='3' style='white-space: nowrap; text-align: left; color: #333333;'>{{ dados.realname ?? '' }}</td>
                 
                 {% for p in nomes_perfis %}
-                    <td class='center cell-profile' style='text-align: center;'>
+                    <td class='center pm-cell-profile' style='text-align: center;'>
                         {% if dados.perfis[p] is defined %}
                             <b style='color: #333;'>X</b>
                         {% endif %}
@@ -161,7 +116,7 @@
                 {% endfor %}
                 
                 {% for g in nomes_grupos %}
-                    <td class='center cell-group' style='text-align: center;'>
+                    <td class='center pm-cell-group' style='text-align: center;'>
                         {% if dados.grupos[g] is defined %}
                             <b style='color: #0b5394;'>X</b>
                         {% endif %}
@@ -173,20 +128,20 @@
 </div> 
 
 {% if total_paginas > 1 %}
-    <div style='display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 15px; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #ddd;'>
-        <div style='display: flex; justify-content: center; align-items: center; gap: 15px;'>
+    <div class='pm-box-header pm-flex-center' style='flex-direction: column; gap: 10px; margin-bottom: 15px; background: #fff;'>
+        <div class='pm-flex-center' style='gap: 15px;'>
             {% if pagina_atual > 1 %}
-                <button onclick='irParaPagina(1)' class='btn-paginacao' style='background-color: #555;'><i class='fas fa-angle-double-left'></i></button>
-                <button onclick='irParaPagina({{ pagina_atual - 1 }})' class='btn-paginacao' style='background-color: #1d5ea3;'><i class='fas fa-chevron-left'></i></button>
+                <button data-page-action='go' data-page='1' class='pm-btn-paginacao pm-btn-dark'><i class='fas fa-angle-double-left'></i></button>
+                <button data-page-action='go' data-page='{{ pagina_atual - 1 }}' class='pm-btn-paginacao pm-btn-blue'><i class='fas fa-chevron-left'></i></button>
             {% endif %}
             
             <span style='font-size: 14px; color: #555;'>{{ __('Page', 'permissionsmatrix') }} 
-            <input type='number' value='{{ pagina_atual }}' min='1' max='{{ total_paginas }}' style='width: 60px; text-align: center; padding: 3px; border: 1px solid #ccc; border-radius: 4px; font-weight: bold;' onchange='pularParaPagina(this.value, {{ total_paginas }})'> 
+            <input type='number' data-page-action='jump' data-max-page='{{ total_paginas }}' value='{{ pagina_atual }}' min='1' max='{{ total_paginas }}' style='width: 60px; text-align: center; padding: 3px; border: 1px solid #ccc; border-radius: 4px; font-weight: bold;'> 
             {{ __('of', 'permissionsmatrix') }} <b>{{ total_paginas }}</b></span>
             
             {% if pagina_atual < total_paginas %}
-                <button onclick='irParaPagina({{ pagina_atual + 1 }})' class='btn-paginacao' style='background-color: #1d5ea3;'><i class='fas fa-chevron-right'></i></button>
-                <button onclick='irParaPagina({{ total_paginas }})' class='btn-paginacao' style='background-color: #555;'><i class='fas fa-angle-double-right'></i></button>
+                <button data-page-action='go' data-page='{{ pagina_atual + 1 }}' class='pm-btn-paginacao pm-btn-blue'><i class='fas fa-chevron-right'></i></button>
+                <button data-page-action='go' data-page='{{ total_paginas }}' class='pm-btn-paginacao pm-btn-dark'><i class='fas fa-angle-double-right'></i></button>
             {% endif %}
         </div>
         <span style='font-size: 14px; color: #333;'>{{ texto_exibindo | raw }}</span>
@@ -207,114 +162,4 @@
     {% endfor %}
 </form>
 
-<script type='text/javascript'>
-function irParaPagina(p) {
-    $('.btn-paginacao').prop('disabled', true).css('cursor', 'not-allowed').css('opacity', '0.5');
-    $('input[type=number]').prop('disabled', true);
-    document.getElementById('input_pagina').value = p;
-    document.getElementById('form-paginacao').submit();
-}
-
-function pularParaPagina(valor, maximo) {
-    var p = parseInt(valor);
-    if (isNaN(p) || p < 1) { p = 1; }
-    if (p > maximo) { p = maximo; }
-    irParaPagina(p);
-}
-
-$(document).ready(function() {
-    function recalcularPosicoesFixas() {
-        var leftPositions = [];
-        var currentLeft = 0;
-        
-        $('.headerRow th.freeze-col').each(function() {
-            leftPositions.push(currentLeft);
-            currentLeft += $(this).outerWidth();
-        });
-
-        $('.freeze-col').each(function() {
-            var index = $(this).data('colindex');
-            $(this).css('left', leftPositions[index] + 'px');
-        });
-    }
-
-    recalcularPosicoesFixas();
-
-    function atualizaInputsExportacao() {
-        var perfis = [];
-        $('#caixa-perfis .col-filter:checked').each(function() {
-            perfis.push($(this).val());
-        });
-        $('#input_perfis_ativos').val(JSON.stringify(perfis));
-
-        var grupos = [];
-        $('#caixa-grupos .col-filter:checked').each(function() {
-            grupos.push($(this).val());
-        });
-        $('#input_grupos_ativos').val(JSON.stringify(grupos));
-    }
-
-    atualizaInputsExportacao();
-
-    $('.col-filter').on('change', function() {
-        var colIndex = $(this).data('colindex');
-        var isVisible = $(this).is(':checked');
-        var nth = colIndex + 1; 
-        
-        if (isVisible) {
-            $('.tab_cadre_fixehov tr').find('th:nth-child(' + nth + '), td:nth-child(' + nth + ')').show();
-        } else {
-            $('.tab_cadre_fixehov tr').find('th:nth-child(' + nth + '), td:nth-child(' + nth + ')').hide();
-        }
-
-        var colunasVisiveis = [];
-        $('.col-filter:checked').each(function() {
-            colunasVisiveis.push($(this).data('colindex') + 1);
-        });
-
-        $('.tab_cadre_fixehov tr.tab_bg_1').each(function() {
-            var tr_linha = $(this);
-            var linhaTemX = false;
-
-            if (colunasVisiveis.length > 0) {
-                for (var i = 0; i < colunasVisiveis.length; i++) {
-                    var textoCelula = tr_linha.find('td:nth-child(' + colunasVisiveis[i] + ')').text().trim();
-                    if (textoCelula === 'X') {
-                        linhaTemX = true;
-                        break; 
-                    }
-                }
-            }
-
-            if (linhaTemX) {
-                tr_linha.show();
-            } else {
-                tr_linha.hide();
-            }
-        });
-
-        atualizaInputsExportacao();
-
-        setTimeout(function() {
-            recalcularPosicoesFixas();
-        }, 50);
-    });
-
-    $('#btn-toggle-filtro').on('click', function() {
-        $('#conteudo-filtro').slideToggle('fast');
-    });
-
-    $('.acao-massa-perfil').on('click', function(e) {
-        e.preventDefault(); 
-        var marcar = $(this).data('acao') === 'marcar';
-        $('#caixa-perfis .col-filter').prop('checked', marcar).trigger('change');
-    });
-
-    $('.acao-massa-grupo').on('click', function(e) {
-        e.preventDefault(); 
-        var marcar = $(this).data('acao') === 'marcar';
-        $('#caixa-grupos .col-filter').prop('checked', marcar).trigger('change');
-    });
-
-});
-</script>
+</form>

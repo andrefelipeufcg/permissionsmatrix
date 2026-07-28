@@ -10,7 +10,9 @@ Session::checkRight('plugin_permissionsmatrix', READ);
 
 use Glpi\Application\View\TemplateRenderer;
 
-// 3. Renderiza o cabeçalho nativo do GLPI
+
+
+// 4. Renderiza o cabeçalho nativo do GLPI
 Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", \GlpiPlugin\Permissionsmatrix\Matriz::class);
 
 ob_start();
@@ -30,7 +32,8 @@ $dropdown_groups = ob_get_clean();
 TemplateRenderer::getInstance()->display('@permissionsmatrix/matriz_form.html.twig', [
     'dropdown_profiles' => $dropdown_profiles,
     'dropdown_groups'   => $dropdown_groups,
-    'csrf_token'        => Session::getNewCSRFToken()
+    'csrf_token'        => Session::getNewCSRFToken(),
+    'inline_js'         => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
 ]);
 
 Html::footer();

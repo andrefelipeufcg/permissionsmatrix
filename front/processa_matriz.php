@@ -231,6 +231,7 @@ if ($is_export) {
 // =========================================================
 use Glpi\Application\View\TemplateRenderer;
 
+
 Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", \GlpiPlugin\Permissionsmatrix\Matriz::class);
 
 // Fatiamento da tela (Paginação)
@@ -256,7 +257,9 @@ TemplateRenderer::getInstance()->display('@permissionsmatrix/matriz_result.html.
     'pagina_atual'     => $pagina_atual,
     'total_paginas'    => $total_paginas,
     'texto_exibindo'   => $texto_exibindo,
-    'csrf_token'       => Session::getNewCSRFToken()
+    'csrf_token'       => Session::getNewCSRFToken(),
+    'inline_css'       => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/css/permissionsmatrix.css'),
+    'inline_js'        => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
 ]);
 
 Html::footer();

@@ -1,4 +1,7 @@
-<form method='post' action='{{ action_url }}' id='config_form'>
+<style>{{ inline_css|raw }}</style>
+<script>{{ inline_js|raw }}</script>
+
+<form method='post' action='{{ action_url }}' id='config_form' class='pm-save-form'>
 <input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
 <div class='center'>
     <table class='tab_cadre_fixehov'>
@@ -12,10 +15,10 @@
         </tr>
         <tr class='tab_bg_2'>
             <td colspan='2' style='padding: 0 15px 15px 15px; border-top: 0;'>
-                <div style='background-color: #d1ecf1; color: #0c5460; padding: 12px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #bee5eb; font-size: 0.9em; text-align: center;'>
+                <div class='pm-notice-box'>
                     <strong>{{ __('Notice:', 'permissionsmatrix') }}</strong> {{ __("To grant or remove access for a specific profile to the permissions matrix, go to the desired profile and adjust this setting in the 'Permissions Matrix' tab.", 'permissionsmatrix') | raw }}
                 </div>
-                <div style='background-color: #fff3cd; color: #856404; padding: 12px; border-radius: 4px; border: 1px solid #ffeeba; font-size: 0.9em; text-align: center;'>
+                <div class='pm-warning-box'>
                     <strong>{{ __('Security Recommendation:', 'permissionsmatrix') }}</strong> {{ __("It is strongly recommended to restrict this permission to Super-Admin profiles only. Allowing this option for all enables regular users to view sensitive assignment and group data across the entire system.", 'permissionsmatrix') }}
                 </div>
             </td>
@@ -23,23 +26,9 @@
         <tr class='tab_bg_2'>
             <td colspan='2' class='center'>
                 <input type='hidden' name='update' value='1'>
-                <button type='submit' class='vsubmit'>{{ __('Save', 'permissionsmatrix') }}</button>
+                <button type='submit' class='vsubmit' data-saving-text='{{ __('Saving...', 'permissionsmatrix') }}'>{{ __('Save', 'permissionsmatrix') }}</button>
             </td>
         </tr>
     </table>
 </div>
 </form>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#config_form').on('submit', function() {
-        var btn = $(this).find('.vsubmit');
-        // Usar setTimeout garante que a submissão nativa não seja interrompida
-        setTimeout(function() {
-            btn.text('{{ __('Saving...', 'permissionsmatrix') }}');
-            btn.css('pointer-events', 'none');
-            btn.css('opacity', '0.7');
-        }, 10);
-    });
-});
-</script>

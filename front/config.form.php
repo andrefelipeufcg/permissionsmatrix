@@ -88,12 +88,15 @@ if ($result['cpt'] > count((array)$superadmin_ids)) {
     $allow_all_state = 1;
 }
 
+
 Html::header(__('Permissions Matrix', 'permissionsmatrix'), 'config.form.php', "config", "plugins");
 
 \Glpi\Application\View\TemplateRenderer::getInstance()->display('@permissionsmatrix/config_form.html.twig', [
     'action_url' => 'config.form.php',
     'csrf_token' => Session::getNewCSRFToken(),
-    'allow_all'  => $allow_all_state
+    'allow_all'  => $allow_all_state,
+    'inline_css' => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/css/permissionsmatrix.css'),
+    'inline_js'  => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
 ]);
 
 Html::footer();
