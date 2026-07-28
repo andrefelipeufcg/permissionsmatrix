@@ -1,8 +1,10 @@
 <?php
-// Aumenta o limite de memória temporariamente para suportar entidades com milhares de usuários (Evita erro 500 no CSV)
-ini_set('memory_limit', '512M');
+// Limite de memória removido conforme revisão de segurança (Unbounded memory_limit override)
 
-include ("../../../inc/includes.php");
+$inc = __DIR__ . '/../../../inc/includes.php';
+if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
+if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
+include $inc;
 // Verifica se tem permissão (Security Fix)
 Session::checkRight('plugin_permissionsmatrix', READ);
 
@@ -180,8 +182,18 @@ if ($is_export) {
     $output = fopen('php://output', 'w');
     fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF)); 
 
+    // Função local para prevenir CSV Formula Injection
+    $escape_csv = function($val) {
+        $val = preg_replace('/^[\s\x00-\x1F]+/', '', (string)$val);
+        if (strlen($val) > 0 && in_array($val[0], ['=', '+', '-', '@', "\t", "\r"])) {
+            return "'" . $val;
+        }
+        return $val;
+    };
+
     // Cabeçalho do CSV
     $cabecalho = array_merge([__('Active', 'permissionsmatrix'), __('User', 'permissionsmatrix'), __('First name', 'permissionsmatrix'), __('Last name', 'permissionsmatrix')], $nomes_perfis, $nomes_grupos);
+    $cabecalho = array_map($escape_csv, $cabecalho);
     fputcsv($output, $cabecalho, ';'); 
 
     // O CSV continua exportando 100% da lista ($mapa_usuarios inteiro)
@@ -199,16 +211,8 @@ if ($is_export) {
 
         // Se a pessoa não tem 'X' nas colunas selecionadas, a linha não vai para o CSV
         if ($tem_x) {
-            // Função local para prevenir CSV Formula Injection
-            $escape_csv = function($val) {
-                if (is_string($val) && strlen($val) > 0 && in_array($val[0], ['=', '+', '-', '@'])) {
-                    return "'" . $val;
-                }
-                return $val;
-            };
-            
             $linha = [
-                $dados['ativo'] ?? __('No', 'permissionsmatrix'), 
+                $escape_csv($dados['ativo'] ?? __('No', 'permissionsmatrix')), 
                 $escape_csv($dados['login'] ?? ''), 
                 $escape_csv($dados['firstname'] ?? ''), 
                 $escape_csv($dados['realname'] ?? '')
