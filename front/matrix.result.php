@@ -10,7 +10,7 @@ Session::checkRight('plugin_permissionsmatrix', READ);
 
 // Verifica se o formulário original, o botão de exportar ou a paginação foram acionados
 if (!isset($_POST['gerar_matriz']) && !isset($_POST['exportar_csv'])) {
-    Html::redirect("matriz.php");
+    Html::redirect("matrix.form.php");
     exit;
 }
 
@@ -38,7 +38,7 @@ foreach ($post_grupos as $id) {
 // Nesse caso, o GLPI geraria erro de "Empty IN". Vamos abortar e voltar.
 if (empty($entidade_perfis) || empty($entidade_grupos)) {
     Session::addMessageAfterRedirect(__('You do not have access to the requested entities.', 'permissionsmatrix'), false, ERROR);
-    Html::redirect("matriz.php");
+    Html::redirect("matrix.form.php");
     exit;
 }
 
@@ -247,7 +247,7 @@ $texto_exibindo = sprintf(
     "<b>$total_usuarios</b>"
 );
 
-TemplateRenderer::getInstance()->display('@permissionsmatrix/matriz_result.html.twig', [
+TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result.html.twig', [
     'total_usuarios'   => $total_usuarios,
     'nomes_perfis'     => $nomes_perfis,
     'nomes_grupos'     => $nomes_grupos,

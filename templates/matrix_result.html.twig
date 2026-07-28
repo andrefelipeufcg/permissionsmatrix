@@ -11,9 +11,9 @@
     </div>
 
     <div style='display: flex; gap: 10px;'>
-        <a href='matriz.php' class='vsubmit pm-btn-dark' style='display: inline-flex; align-items: center;' title='{{ __('Back to entities selection', 'permissionsmatrix') }}'>⬅️ {{ __('Back', 'permissionsmatrix') }}</a>
+        <a href='matrix.form.php' class='vsubmit pm-btn-dark' style='display: inline-flex; align-items: center;' title='{{ __('Back to entities selection', 'permissionsmatrix') }}'>⬅️ {{ __('Back', 'permissionsmatrix') }}</a>
 
-        <form id='form-exportar' method='post' action='processa_matriz.php' style='margin: 0;'>
+        <form id='form-exportar' method='post' action='matrix.result.php' style='margin: 0;'>
             <input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
             
             {% for id_perfil in entidade_perfis %}
@@ -150,7 +150,7 @@
 
 </div>
 
-<form id='form-paginacao' method='post' action='processa_matriz.php' style='display:none;'>
+<form id='form-paginacao' method='post' action='matrix.result.php' style='display:none;'>
     <input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
     <input type='hidden' name='gerar_matriz' value='1'>
     <input type='hidden' name='pagina' id='input_pagina' value='1'>
