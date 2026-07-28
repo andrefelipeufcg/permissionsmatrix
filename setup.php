@@ -13,6 +13,7 @@ function plugin_init_permissionsmatrix() {
     $PLUGIN_HOOKS['menu_toadd']['permissionsmatrix'] = ['tools' => 'GlpiPlugin\Permissionsmatrix\Matriz'];
     Plugin::registerClass('GlpiPlugin\Permissionsmatrix\Profile', ['addtabon' => 'Profile']);
     Plugin::registerClass('GlpiPlugin\Permissionsmatrix\Matriz');
+    $PLUGIN_HOOKS['config_page']['permissionsmatrix'] = 'front/config.form.php';
 }
 
 /**
