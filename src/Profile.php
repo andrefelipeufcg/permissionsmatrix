@@ -41,8 +41,8 @@ class Profile extends \CommonGLPI {
             'csrf_token'    => \Session::getNewCSRFToken(),
             'profile_id'    => $profile_id,
             'current_right' => $current_right,
-            'inline_css'    => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/css/permissionsmatrix.css'),
-            'inline_js'     => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
+            'inline_css'    => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
+            'inline_js'     => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
         ]);
 
         return true;

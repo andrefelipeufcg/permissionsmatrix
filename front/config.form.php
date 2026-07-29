@@ -95,8 +95,8 @@ Html::header(__('Permissions Matrix', 'permissionsmatrix'), 'config.form.php', "
     'action_url' => 'config.form.php',
     'csrf_token' => Session::getNewCSRFToken(),
     'allow_all'  => $allow_all_state,
-    'inline_css' => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/css/permissionsmatrix.css'),
-    'inline_js'  => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
+    'inline_css' => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
+    'inline_js'  => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
 ]);
 
 Html::footer();

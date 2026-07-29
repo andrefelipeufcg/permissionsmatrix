@@ -33,7 +33,7 @@ TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_form.html.tw
     'dropdown_profiles' => $dropdown_profiles,
     'dropdown_groups'   => $dropdown_groups,
     'csrf_token'        => Session::getNewCSRFToken(),
-    'inline_js'         => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
+    'inline_js'         => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
 ]);
 
 Html::footer();
