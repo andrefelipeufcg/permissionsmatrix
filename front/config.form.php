@@ -30,7 +30,7 @@ if (isset($_POST['update'])) {
     
     if ($allow_all == 1) {
         // Sim: conceder para todos
-        // Delete existing rights for the plugin first
+        // Remove os direitos existentes do plugin primeiro
         $DB->delete('glpi_profilerights', ['name' => 'plugin_permissionsmatrix']);
         
         $iterator = $DB->request(['SELECT' => 'id', 'FROM' => 'glpi_profiles']);

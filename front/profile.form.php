@@ -1,5 +1,8 @@
 <?php
-include("../../../inc/includes.php");
+$inc = __DIR__ . '/../../../inc/includes.php';
+if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
+if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
+include $inc;
 
 // Verifica se está logado e se tem permissão de gerenciar perfis
 Session::checkRight("profile", UPDATE);

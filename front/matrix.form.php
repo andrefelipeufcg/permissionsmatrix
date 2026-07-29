@@ -1,18 +1,18 @@
 <?php
-// 1. Inicializa o ambiente do GLPI
+// Inicializa o ambiente do GLPI
 $inc = __DIR__ . '/../../../inc/includes.php';
 if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
 if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
 include $inc;
 
-// 2. Trava de segurança: Garante que quem tem permissão pode acessar
+// Trava de segurança: Garante que quem tem permissão pode acessar
 Session::checkRight('plugin_permissionsmatrix', READ);
 
 use Glpi\Application\View\TemplateRenderer;
 
 
 
-// 4. Renderiza o cabeçalho nativo do GLPI
+// Renderiza o cabeçalho nativo do GLPI
 Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", \GlpiPlugin\Permissionsmatrix\Matriz::class);
 
 ob_start();
