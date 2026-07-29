@@ -187,4 +187,25 @@ $(document).ready(function() {
         });
     }
 
+    // ==========================================
+    // 6. Altura Dinâmica do Layout (Correção Cross-version)
+    // ==========================================
+    function ajustarAlturaMatriz() {
+        var $wrapper = $('.pm-app-wrapper');
+        if ($wrapper.length > 0) {
+            var topOffset = $wrapper.offset().top;
+            // Calcula o espaço restante com precisão
+            var alturaDisponivel = window.innerHeight - topOffset - 25; // 25px de margem inferior
+            if (alturaDisponivel < 400) { alturaDisponivel = 400; } // Altura mínima de segurança
+            $wrapper.css('height', alturaDisponivel + 'px');
+        }
+    }
+
+    if ($('.pm-app-wrapper').length > 0) {
+        ajustarAlturaMatriz();
+        $(window).on('resize', ajustarAlturaMatriz);
+        // Ocasionalmente o GLPI carrega imagens ou menus com delay, então recalcula após 500ms
+        setTimeout(ajustarAlturaMatriz, 500); 
+    }
+
 });
