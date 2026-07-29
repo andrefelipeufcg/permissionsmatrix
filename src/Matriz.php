@@ -49,7 +49,7 @@ class Matriz extends \CommonGLPI {
         
         return [
             'title' => self::getMenuName(),
-            'page'  => '/plugins/permissionsmatrix/front/matrix.form.php',
+            'page'  => '/' . \Plugin::getWebDir('permissionsmatrix', false) . '/front/matrix.form.php',
             'icon'  => self::getIcon()
         ];
     }
