@@ -128,9 +128,17 @@
     border-radius: 4px;
 }
 
+.pm-app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 210px); /* Adjusts to fill screen minus GLPI header padding */
+}
+
 .pm-table-container {
     overflow-x: auto; 
-    max-height: 70vh; 
+    overflow-y: auto; 
+    flex: 1; /* Absorbs remaining space */
+    min-height: 0; /* Allows shrinking */
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
