@@ -258,8 +258,8 @@ TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result.html.
     'total_paginas'    => $total_paginas,
     'texto_exibindo'   => $texto_exibindo,
     'csrf_token'       => Session::getNewCSRFToken(),
-    'inline_css'       => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/css/permissionsmatrix.css'),
-    'inline_js'        => file_get_contents(GLPI_ROOT . '/plugins/permissionsmatrix/js/permissionsmatrix.js')
+    'inline_css'       => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
+    'inline_js'        => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
 ]);
 
 Html::footer();
