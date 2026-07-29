@@ -151,27 +151,91 @@ uasort($mapa_usuarios, function($a, $b) {
     return strcmp($nomeA_limpo, $nomeB_limpo);
 });
 
-// Cálculos de Paginação
+// =========================================================
+// 5. FILTRO DE COLUNAS (Server-Side)
+// =========================================================
+// Usa arrays nativos do PHP (name='perfis_ativos[]') em vez de JSON
+// para evitar problemas de sanitização do GLPI 10
+$filtro_perfis_ativos = $nomes_perfis; // Padrão: todos os perfis ativos
+$filtro_grupos_ativos = $nomes_grupos; // Padrão: todos os grupos ativos
+$filtro_ativo = isset($_POST['filtro_ativo']) && $_POST['filtro_ativo'] === '1';
+
+if ($filtro_ativo) {
+    // Quando o filtro está ativo, lê os arrays do POST
+    // Se o array não existir no POST, significa que o usuário desmarcou todos
+    $post_perfis = isset($_POST['perfis_ativos']) ? (array)$_POST['perfis_ativos'] : [];
+    $post_grupos = isset($_POST['grupos_ativos']) ? (array)$_POST['grupos_ativos'] : [];
+
+    // Limpa valores sanitizados pelo GLPI 10 (stripslashes + html_entity_decode)
+    $limpar = function($v) {
+        $v = is_string($v) ? stripslashes($v) : (string)$v;
+        return html_entity_decode($v, ENT_QUOTES, 'UTF-8');
+    };
+    $post_perfis = array_map($limpar, $post_perfis);
+    $post_grupos = array_map($limpar, $post_grupos);
+
+    // Intersecta com os nomes reais do banco para segurança
+    $filtro_perfis_ativos = array_values(array_intersect($nomes_perfis, $post_perfis));
+    $filtro_grupos_ativos = array_values(array_intersect($nomes_grupos, $post_grupos));
+}
+
+// Aplica o filtro: remove usuários que não tem nenhum X nas colunas selecionadas
+if ($filtro_ativo) {
+    $mapa_usuarios_filtrado = [];
+    foreach ($mapa_usuarios as $uid => $dados) {
+        $tem_x = false;
+        foreach ($filtro_perfis_ativos as $p) {
+            if (isset($dados['perfis'][$p])) { $tem_x = true; break; }
+        }
+        if (!$tem_x) {
+            foreach ($filtro_grupos_ativos as $g) {
+                if (isset($dados['grupos'][$g])) { $tem_x = true; break; }
+            }
+        }
+        if ($tem_x) {
+            $mapa_usuarios_filtrado[$uid] = $dados;
+        }
+    }
+    $mapa_usuarios = $mapa_usuarios_filtrado;
+}
+
+// Cálculos de Paginação (agora sobre os dados já filtrados)
 $total_usuarios = count($mapa_usuarios);
-$total_paginas = ceil($total_usuarios / $limite_por_pagina);
+$total_paginas = max(1, ceil($total_usuarios / $limite_por_pagina));
+if ($pagina_atual > $total_paginas) { $pagina_atual = $total_paginas; }
+
+// Fatiamento da tela (Paginação)
+$usuarios_pagina = array_slice($mapa_usuarios, ($pagina_atual - 1) * $limite_por_pagina, $limite_por_pagina, true);
+
+// Cálculos para exibir a posição atual (Exibindo X - Y de Z usuários)
+$inicio_exibicao = (($pagina_atual - 1) * $limite_por_pagina) + 1;
+$fim_exibicao = min($pagina_atual * $limite_por_pagina, $total_usuarios);
+if ($total_usuarios == 0) { $inicio_exibicao = 0; $fim_exibicao = 0; }
+$texto_exibindo = sprintf(
+    __('Showing %1$s - %2$s of %3$s users', 'permissionsmatrix'), 
+    "<b>$inicio_exibicao</b>", 
+    "<b>$fim_exibicao</b>", 
+    "<b>$total_usuarios</b>"
+);
+
+use Glpi\Application\View\TemplateRenderer;
+
+$dados_tabela = [
+    'filtro_perfis_ativos' => $filtro_perfis_ativos,
+    'filtro_grupos_ativos' => $filtro_grupos_ativos,
+    'usuarios_pagina'      => $usuarios_pagina,
+    'pagina_atual'         => $pagina_atual,
+    'total_paginas'        => $total_paginas,
+    'texto_exibindo'       => $texto_exibindo,
+];
 
 // =========================================================
-// 5. MODO EXPORTAÇÃO (Se o botão de Download foi clicado)
+// 6. MODO EXPORTAÇÃO (Se o botão de Download foi clicado)
 // =========================================================
 if ($is_export) {
-    // O PHP lê os filtros que o JS enviou e descarta as colunas não selecionadas
-    if (isset($_POST['perfis_ativos']) && $_POST['perfis_ativos'] !== '') {
-        $perfis_ativos = json_decode($_POST['perfis_ativos'], true);
-        if (is_array($perfis_ativos)) {
-            $nomes_perfis = array_intersect($nomes_perfis, $perfis_ativos);
-        }
-    }
-    if (isset($_POST['grupos_ativos']) && $_POST['grupos_ativos'] !== '') {
-        $grupos_ativos = json_decode($_POST['grupos_ativos'], true);
-        if (is_array($grupos_ativos)) {
-            $nomes_grupos = array_intersect($nomes_grupos, $grupos_ativos);
-        }
-    }
+    // Na exportação, usa os filtros já aplicados acima
+    $nomes_perfis_csv = $filtro_perfis_ativos;
+    $nomes_grupos_csv = $filtro_grupos_ativos;
 
     $nome_arquivo = "matriz_permissoes_" . date("Ymd_His") . ".csv";
     header('Content-Type: text/csv; charset=UTF-8');
@@ -192,74 +256,61 @@ if ($is_export) {
     };
 
     // Cabeçalho do CSV
-    $cabecalho = array_merge([__('Active', 'permissionsmatrix'), __('User', 'permissionsmatrix'), __('First name', 'permissionsmatrix'), __('Last name', 'permissionsmatrix')], $nomes_perfis, $nomes_grupos);
+    $cabecalho = array_merge([__('Active', 'permissionsmatrix'), __('User', 'permissionsmatrix'), __('First name', 'permissionsmatrix'), __('Last name', 'permissionsmatrix')], $nomes_perfis_csv, $nomes_grupos_csv);
     $cabecalho = array_map($escape_csv, $cabecalho);
     fputcsv($output, $cabecalho, ';'); 
 
-    // O CSV continua exportando 100% da lista ($mapa_usuarios inteiro)
+    // O CSV exporta 100% dos usuários filtrados (sem paginação)
     foreach ($mapa_usuarios as $uid => $dados) {
-        // Verifica se o usuário tem X em ALGUMA das colunas que sobraram ativas no filtro
-        $tem_x = false;
-        foreach ($nomes_perfis as $p) {
-            if (isset($dados['perfis'][$p])) { $tem_x = true; break; }
-        }
-        if (!$tem_x) {
-            foreach ($nomes_grupos as $g) {
-                if (isset($dados['grupos'][$g])) { $tem_x = true; break; }
-            }
-        }
-
-        // Se a pessoa não tem 'X' nas colunas selecionadas, a linha não vai para o CSV
-        if ($tem_x) {
-            $linha = [
-                $escape_csv($dados['ativo'] ?? __('No', 'permissionsmatrix')), 
-                $escape_csv($dados['login'] ?? ''), 
-                $escape_csv($dados['firstname'] ?? ''), 
-                $escape_csv($dados['realname'] ?? '')
-            ];
-            foreach ($nomes_perfis as $p) $linha[] = isset($dados['perfis'][$p]) ? 'X' : '';
-            foreach ($nomes_grupos as $g) $linha[] = isset($dados['grupos'][$g]) ? 'X' : '';
-            fputcsv($output, $linha, ';');
-        }
+        $linha = [
+            $escape_csv($dados['ativo'] ?? __('No', 'permissionsmatrix')), 
+            $escape_csv($dados['login'] ?? ''), 
+            $escape_csv($dados['firstname'] ?? ''), 
+            $escape_csv($dados['realname'] ?? '')
+        ];
+        foreach ($nomes_perfis_csv as $p) $linha[] = isset($dados['perfis'][$p]) ? 'X' : '';
+        foreach ($nomes_grupos_csv as $g) $linha[] = isset($dados['grupos'][$g]) ? 'X' : '';
+        fputcsv($output, $linha, ';');
     }
     fclose($output);
     exit;
 }
 
 // =========================================================
-// 6. MODO VISUALIZAÇÃO (Tela HTML do GLPI)
+// 7. MODO AJAX (Requisição assíncrona do JavaScript)
 // =========================================================
-use Glpi\Application\View\TemplateRenderer;
+$is_ajax = !empty($_POST['pm_ajax']);
 
+if ($is_ajax) {
+    // Limpa qualquer saída anterior do GLPI
+    while (ob_get_level() > 0) { ob_end_clean(); }
 
+    ob_start();
+    TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result_table.html.twig', $dados_tabela);
+    $html = ob_get_clean();
+
+    header('Content-Type: application/json; charset=UTF-8');
+    echo json_encode([
+        'html'            => $html,
+        'total_usuarios'  => $total_usuarios,
+    ]);
+    exit;
+}
+
+// =========================================================
+// 8. MODO VISUALIZAÇÃO (Tela HTML do GLPI - Carga inicial)
+// =========================================================
 Html::header(__('Permissions Matrix', 'permissionsmatrix'), $_SERVER['PHP_SELF'], "tools", \GlpiPlugin\Permissionsmatrix\Matriz::class);
 
-// Fatiamento da tela (Paginação)
-$usuarios_pagina = array_slice($mapa_usuarios, ($pagina_atual - 1) * $limite_por_pagina, $limite_por_pagina, true);
-
-// Cálculos para exibir a posição atual (Exibindo X - Y de Z usuários)
-$inicio_exibicao = (($pagina_atual - 1) * $limite_por_pagina) + 1;
-$fim_exibicao = min($pagina_atual * $limite_por_pagina, $total_usuarios);
-$texto_exibindo = sprintf(
-    __('Showing %1$s - %2$s of %3$s users', 'permissionsmatrix'), 
-    "<b>$inicio_exibicao</b>", 
-    "<b>$fim_exibicao</b>", 
-    "<b>$total_usuarios</b>"
-);
-
-TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result.html.twig', [
-    'total_usuarios'   => $total_usuarios,
-    'nomes_perfis'     => $nomes_perfis,
-    'nomes_grupos'     => $nomes_grupos,
-    'entidade_perfis'  => $entidade_perfis,
-    'entidade_grupos'  => $entidade_grupos,
-    'usuarios_pagina'  => $usuarios_pagina,
-    'pagina_atual'     => $pagina_atual,
-    'total_paginas'    => $total_paginas,
-    'texto_exibindo'   => $texto_exibindo,
-    'csrf_token'       => Session::getNewCSRFToken(),
-    'inline_css'       => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
-    'inline_js'        => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
-]);
+TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result.html.twig', array_merge($dados_tabela, [
+    'total_usuarios'      => $total_usuarios,
+    'nomes_perfis'        => $nomes_perfis,
+    'nomes_grupos'        => $nomes_grupos,
+    'entidade_perfis'     => $entidade_perfis,
+    'entidade_grupos'     => $entidade_grupos,
+    'csrf_token'          => Session::getNewCSRFToken(),
+    'inline_css'          => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
+    'inline_js'           => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
+]));
 
 Html::footer();
