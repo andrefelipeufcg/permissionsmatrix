@@ -3,41 +3,105 @@
  */
 
 $(document).ready(function() {
-    
+
     // ==========================================
-    // 1. Pagination Logic (Matriz Result)
+    // 1. Requisição AJAX (Filtro + Paginação)
     // ==========================================
-    window.irParaPagina = function(p) {
-        $('.pm-btn-paginacao').prop('disabled', true).addClass('pm-btn-paginacao-disabled');
-        $('input[type=number]').prop('disabled', true);
-        var inputPagina = document.getElementById('input_pagina');
-        if(inputPagina) {
-            inputPagina.value = p;
-            document.getElementById('form-paginacao').submit();
+    var ajaxEmAndamento = null; // Referência para cancelar requisição anterior
+
+    function carregarResultadoAjax(pagina) {
+        // Cancela requisição anterior se ainda estiver em andamento
+        if (ajaxEmAndamento && ajaxEmAndamento.readyState !== 4) {
+            ajaxEmAndamento.abort();
         }
-    };
 
-    window.pularParaPagina = function(valor, maximo) {
-        var p = parseInt(valor);
-        if (isNaN(p) || p < 1) { p = 1; }
-        if (p > maximo) { p = maximo; }
-        irParaPagina(p);
-    };
+        $('#pm-loading-overlay').show();
 
-    // Replace onclick attributes dynamically if needed, or rely on global scope for existing HTML
-    $('[data-page-action="go"]').on('click', function() {
-        var p = $(this).data('page');
-        if(p) irParaPagina(p);
-    });
-    
-    $('[data-page-action="jump"]').on('change', function() {
-        var valor = $(this).val();
-        var maximo = $(this).data('max-page');
-        if(valor && maximo) pularParaPagina(valor, maximo);
-    });
+        var $dados = $('#pm-dados-ajax');
+        if ($dados.length === 0) return;
+
+        var url = $dados.data('url');
+        var entidadesPerfis = String($dados.data('entidades-perfis')).split(',');
+        var entidadesGrupos = String($dados.data('entidades-grupos')).split(',');
+
+        // Coleta filtros marcados
+        var perfis = [];
+        $('#caixa-perfis .col-filter:checked').each(function() {
+            perfis.push($(this).val());
+        });
+        var grupos = [];
+        $('#caixa-grupos .col-filter:checked').each(function() {
+            grupos.push($(this).val());
+        });
+
+        // Monta os dados do POST como array de {name, value}
+        // para que o jQuery serialize corretamente como arrays PHP
+        var postData = [];
+        postData.push({name: 'gerar_matriz', value: '1'});
+        postData.push({name: 'pm_ajax', value: '1'});
+        postData.push({name: 'filtro_ativo', value: '1'});
+        postData.push({name: 'pagina', value: pagina});
+
+        for (var i = 0; i < entidadesPerfis.length; i++) {
+            if (entidadesPerfis[i] !== '') {
+                postData.push({name: 'entities_id_profiles[]', value: entidadesPerfis[i]});
+            }
+        }
+        for (var i = 0; i < entidadesGrupos.length; i++) {
+            if (entidadesGrupos[i] !== '') {
+                postData.push({name: 'entities_id_groups[]', value: entidadesGrupos[i]});
+            }
+        }
+        for (var i = 0; i < perfis.length; i++) {
+            postData.push({name: 'perfis_ativos[]', value: perfis[i]});
+        }
+        for (var i = 0; i < grupos.length; i++) {
+            postData.push({name: 'grupos_ativos[]', value: grupos[i]});
+        }
+
+        ajaxEmAndamento = $.ajax({
+            url: url,
+            type: 'POST',
+            data: postData,
+            dataType: 'json',
+            success: function(response) {
+                // Substitui a tabela e paginação
+                $('#pm-resultado').html(response.html);
+
+                // Atualiza o contador de usuários
+                $('#pm-total-usuarios').text(response.total_usuarios);
+
+                // Atualiza os inputs do formulário de exportação
+                atualizarFormExportacao(perfis, grupos);
+
+                // Recalcula colunas congeladas e altura do layout
+                recalcularPosicoesFixas();
+                ajustarAlturaMatriz();
+
+                $('#pm-loading-overlay').hide();
+            },
+            error: function(xhr, status) {
+                if (status !== 'abort') {
+                    $('#pm-loading-overlay').hide();
+                }
+            }
+        });
+    }
+
+    // Atualiza os inputs hidden do formulário de exportação CSV
+    function atualizarFormExportacao(perfis, grupos) {
+        var $container = $('#pm-export-filtros');
+        $container.empty();
+        for (var i = 0; i < perfis.length; i++) {
+            $('<input>').attr({type: 'hidden', name: 'perfis_ativos[]', value: perfis[i]}).appendTo($container);
+        }
+        for (var i = 0; i < grupos.length; i++) {
+            $('<input>').attr({type: 'hidden', name: 'grupos_ativos[]', value: grupos[i]}).appendTo($container);
+        }
+    }
 
     // ==========================================
-    // 2. Frozen Columns Recalculation
+    // 2. Recálculo de Colunas Congeladas
     // ==========================================
     function recalcularPosicoesFixas() {
         var leftPositions = [];
@@ -61,88 +125,53 @@ $(document).ready(function() {
     }
 
     // ==========================================
-    // 3. Visual Filters (Hide/Show Columns)
+    // 3. Filtro de Colunas (AJAX assíncrono)
     // ==========================================
-    function atualizaInputsExportacao() {
-        var perfis = [];
-        $('#caixa-perfis .col-filter:checked').each(function() {
-            perfis.push($(this).val());
-        });
-        $('#input_perfis_ativos').val(JSON.stringify(perfis));
-
-        var grupos = [];
-        $('#caixa-grupos .col-filter:checked').each(function() {
-            grupos.push($(this).val());
-        });
-        $('#input_grupos_ativos').val(JSON.stringify(grupos));
-    }
-
-    if($('#caixa-perfis').length > 0) {
-        atualizaInputsExportacao();
-    }
-
+    // Ao marcar/desmarcar qualquer checkbox, faz AJAX (volta à página 1)
     $('.col-filter').on('change', function() {
-        var colIndex = $(this).data('colindex');
-        var isVisible = $(this).is(':checked');
-        var nth = colIndex + 1; 
-        
-        if (isVisible) {
-            $('.tab_cadre_fixehov tr').find('th:nth-child(' + nth + '), td:nth-child(' + nth + ')').show();
-        } else {
-            $('.tab_cadre_fixehov tr').find('th:nth-child(' + nth + '), td:nth-child(' + nth + ')').hide();
-        }
-
-        var colunasVisiveis = [];
-        $('.col-filter:checked').each(function() {
-            colunasVisiveis.push($(this).data('colindex') + 1);
-        });
-
-        $('.tab_cadre_fixehov tr.tab_bg_1').each(function() {
-            var tr_linha = $(this);
-            var linhaTemX = false;
-
-            if (colunasVisiveis.length > 0) {
-                for (var i = 0; i < colunasVisiveis.length; i++) {
-                    var textoCelula = tr_linha.find('td:nth-child(' + colunasVisiveis[i] + ')').text().trim();
-                    if (textoCelula === 'X') {
-                        linhaTemX = true;
-                        break; 
-                    }
-                }
-            }
-
-            if (linhaTemX) {
-                tr_linha.show();
-            } else {
-                tr_linha.hide();
-            }
-        });
-
-        atualizaInputsExportacao();
-
-        setTimeout(function() {
-            recalcularPosicoesFixas();
-        }, 50);
+        carregarResultadoAjax(1);
     });
 
+    // Toggle do painel de filtros
     $('#btn-toggle-filtro').on('click', function() {
         $('#conteudo-filtro').slideToggle('fast');
     });
 
+    // Marcar/Desmarcar todos (Perfis)
     $('.acao-massa-perfil').on('click', function(e) {
-        e.preventDefault(); 
+        e.preventDefault();
         var marcar = $(this).data('acao') === 'marcar';
-        $('#caixa-perfis .col-filter').prop('checked', marcar).trigger('change');
+        $('#caixa-perfis .col-filter').prop('checked', marcar);
+        carregarResultadoAjax(1);
     });
 
+    // Marcar/Desmarcar todos (Grupos)
     $('.acao-massa-grupo').on('click', function(e) {
-        e.preventDefault(); 
+        e.preventDefault();
         var marcar = $(this).data('acao') === 'marcar';
-        $('#caixa-grupos .col-filter').prop('checked', marcar).trigger('change');
+        $('#caixa-grupos .col-filter').prop('checked', marcar);
+        carregarResultadoAjax(1);
     });
 
     // ==========================================
-    // 4. Save Buttons Feedback (Config & Profile Forms)
+    // 4. Paginação (AJAX com Event Delegation)
+    // ==========================================
+    // Usa delegação de eventos porque os botões são recriados a cada AJAX
+    $('#pm-resultado').on('click', '[data-page-action="go"]', function() {
+        var p = $(this).data('page');
+        if (p) carregarResultadoAjax(p);
+    });
+
+    $('#pm-resultado').on('change', '[data-page-action="jump"]', function() {
+        var valor = parseInt($(this).val());
+        var maximo = parseInt($(this).data('max-page'));
+        if (isNaN(valor) || valor < 1) valor = 1;
+        if (valor > maximo) valor = maximo;
+        carregarResultadoAjax(valor);
+    });
+
+    // ==========================================
+    // 5. Feedback nos Botões de Salvar (Config & Profile Forms)
     // ==========================================
     $('.pm-save-form').on('submit', function() {
         var btn = $(this).find('button[type="submit"], input[type="submit"]');
@@ -160,7 +189,7 @@ $(document).ready(function() {
     });
 
     // ==========================================
-    // 5. Select2 Sync (Generator Form)
+    // 6. Sincronização de Select2 (Formulário Gerador)
     // ==========================================
     var $selectPerfil = $('select[name="entities_id_profiles"]');
     var $selectGrupo = $('select[name="entities_id_groups"]');
@@ -185,6 +214,27 @@ $(document).ready(function() {
                 $selectGrupo.val(valorSelecionado).trigger('change');
             }
         });
+    }
+
+    // ==========================================
+    // 7. Altura Dinâmica do Layout (Correção Cross-version)
+    // ==========================================
+    function ajustarAlturaMatriz() {
+        var $wrapper = $('.pm-app-wrapper');
+        if ($wrapper.length > 0) {
+            var topOffset = $wrapper.offset().top;
+            // Calcula o espaço restante com precisão
+            var alturaDisponivel = window.innerHeight - topOffset - 25; // 25px de margem inferior
+            if (alturaDisponivel < 400) { alturaDisponivel = 400; } // Altura mínima de segurança
+            $wrapper.css('height', alturaDisponivel + 'px');
+        }
+    }
+
+    if ($('.pm-app-wrapper').length > 0) {
+        ajustarAlturaMatriz();
+        $(window).on('resize', ajustarAlturaMatriz);
+        // Ocasionalmente o GLPI carrega imagens ou menus com delay, então recalcula após 500ms
+        setTimeout(ajustarAlturaMatriz, 500); 
     }
 
 });

@@ -151,7 +151,7 @@
     <homepage>https://github.com/andrefelipeufcg/permissionsmatrix</homepage>
     <download>https://github.com/andrefelipeufcg/permissionsmatrix/releases</download>
     <issues>https://github.com/andrefelipeufcg/permissionsmatrix/issues</issues>
-    <readme>https://raw.githubusercontent.com/andrefelipeufcg/permissionsmatrix/main/README.md</readme>
+    <readme>https://github.com/andrefelipeufcg/permissionsmatrix/blob/main/README.md</readme>
     <changelog>https://github.com/andrefelipeufcg/permissionsmatrix/releases</changelog>
     
     <authors>
@@ -159,6 +159,11 @@
     </authors>
     
     <versions>
+        <version>
+            <num>1.1.9</num> 
+            <compatibility>&gt;=10.0.0</compatibility> 
+            <download_url>https://github.com/andrefelipeufcg/permissionsmatrix/releases/download/v1.1.9/glpi-permissionsmatrix-v1.1.9.zip</download_url>
+        </version>
         <version>
             <num>1.1.8</num> 
             <compatibility>&gt;=10.0.0</compatibility> 

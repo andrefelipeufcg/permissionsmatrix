@@ -1,7 +1,7 @@
 <?php
 // O nome das funções DEVE conter o nome exato da pasta do plugin (plugin_permissionsmatrix)
 
-define('PERMISSIONSMATRIX_VERSION', '1.1.8');
+define('PERMISSIONSMATRIX_VERSION', '1.1.9');
 define('PERMISSIONSMATRIX_MIN_GLPI_VERSION', '10.0.0'); // Funciona para a v10 e v11
 
 /**
@@ -14,9 +14,6 @@ function plugin_init_permissionsmatrix() {
     Plugin::registerClass('GlpiPlugin\Permissionsmatrix\Profile', ['addtabon' => 'Profile']);
     Plugin::registerClass('GlpiPlugin\Permissionsmatrix\Matriz');
     $PLUGIN_HOOKS['config_page']['permissionsmatrix'] = 'front/config.form.php';
-    
-    $PLUGIN_HOOKS['add_css']['permissionsmatrix'] = ['css/permissionsmatrix.css'];
-    $PLUGIN_HOOKS['add_javascript']['permissionsmatrix'] = ['js/permissionsmatrix.js'];
 }
 
 /**
