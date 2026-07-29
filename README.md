@@ -17,7 +17,7 @@ Developed to facilitate access auditing and the extraction of structured reports
 * **Smart Entity Filter:** Selection fields integrated with the native GLPI Select2 API. When selecting the profile entity, the group entity is automatically synchronized.
 * **Advanced UX (Sticky Columns):** Dynamic freezing of the header row and user identification columns (Active, User, First name, Last name), allowing scrolling through extensive matrices without losing reference.
 * **CSV Export:** Download the generated matrix in `.csv` format (UTF-8 encoding) with a single click, ready to be opened in Excel or spreadsheets.
-* **Compatibility and Security:** Fully adapted for the GLPI 11 engine, using strict PHP 8 typing (`: bool`) and the new session token system (`_glpi_csrf_token`).
+* **Compatibility and Security:** Fully adapted for the GLPI 11 engine and the new **GLPI Marketplace**, using strict PHP 8 typing (`: bool`), the new session token system (`_glpi_csrf_token`), and Twig templates.
 
 ## 📋 Prerequisites
 
@@ -27,6 +27,10 @@ Developed to facilitate access auditing and the extraction of structured reports
 
 ## 🚀 How to Install
 
+### Option 1: GLPI Marketplace (Recommended)
+You can find and install "Permissions Matrix" directly from your GLPI's **Setup > Plugins** menu using the integrated Marketplace.
+
+### Option 2: Manual Installation
 1. **Download the plugin** and extract the files.
 2. **Rename the folder** strictly to `permissionsmatrix` (no special characters or underscores, as required by GLPI).
 3. Upload the folder to your GLPI server's plugin directory:
@@ -75,11 +79,11 @@ If you want another specific profile (e.g. admin, observer) to have access to th
 ## 🛠️ Directory Structure
 
 * `setup.php` and `hook.php`: Initialization and hook registrations in the GLPI ecosystem, including the initial injection of permissions into the database.
-* `inc/matriz.class.php`: Main control class and top menu rendering.
-* `inc/profile.class.php`: Injection of the configuration tab into the native Profiles screen.
-* `front/matriz.php`: Main generator visual interface (entity selection).
-* `front/processa_matriz.php`: Database search engine, HTML table generation with advanced UX, and CSV export.
-* `front/profile.form.php`: Permissions saving processor.
+* `src/Matriz.php`: Main control class and top menu rendering.
+* `src/Profile.php`: Injection of the configuration tab into the native Profiles screen.
+* `front/matrix.form.php`: Main generator visual interface (entity selection).
+* `front/matrix.result.php`: Database search engine, HTML table generation with advanced UX, and CSV export.
+* `front/profile.form.php` and `front/config.form.php`: Processors for saving permissions and configuration.
 
 ## 📄 License
 
@@ -102,7 +106,7 @@ Développé pour faciliter l'audit des accès et l'extraction de rapports struct
 * **Filtre Intelligent par Entité :** Champs de sélection intégrés avec l'API Select2 native de GLPI. Lors de la sélection de l'entité du profil, l'entité du groupe est automatiquement synchronisée.
 * **UX Avancée (Colonnes figées) :** Figeage dynamique de la ligne d'en-tête et des colonnes d'identification de l'utilisateur (Actif, Utilisateur, Prénom, Nom), permettant de faire défiler de longues matrices sans perdre la référence.
 * **Exportation CSV :** Téléchargement de la matrice générée au format `.csv` (encodage UTF-8) en un seul clic, prête à être ouverte dans Excel ou d'autres tableurs.
-* **Compatibilité et Sécurité :** Totalement adapté au moteur de GLPI 11, utilisant le typage strict de PHP 8 (`: bool`) et le nouveau système de jetons de session (`_glpi_csrf_token`).
+* **Compatibilité et Sécurité :** Totalement adapté au moteur de GLPI 11 et au nouveau **GLPI Marketplace**, utilisant le typage strict de PHP 8 (`: bool`), le nouveau système de jetons de session (`_glpi_csrf_token`), et des modèles Twig.
 
 ## 📋 Prérequis
 
@@ -112,6 +116,10 @@ Développé pour faciliter l'audit des accès et l'extraction de rapports struct
 
 ## 🚀 Comment l'installer
 
+### Option 1 : GLPI Marketplace (Recommandé)
+Vous pouvez trouver et installer "Matrice de Permissions" directement depuis le menu **Configuration > Plugins** de votre GLPI en utilisant le Marketplace intégré.
+
+### Option 2 : Installation Manuelle
 1. **Téléchargez le plugin** et extrayez les fichiers.
 2. **Renommez le dossier** obligatoirement en `permissionsmatrix` (sans caractères spéciaux ni tirets bas, comme exigé par GLPI).
 3. Envoyez le dossier dans le répertoire des plugins de votre serveur GLPI :
@@ -160,11 +168,11 @@ Si vous souhaitez qu'un autre profil spécifique (par exemple, admin, observateu
 ## 🛠️ Structure des Répertoires
 
 * `setup.php` et `hook.php` : Initialisation et enregistrement des hooks dans l'écosystème GLPI, y compris l'injection initiale des permissions dans la base de données.
-* `inc/matriz.class.php` : Classe de contrôle principale et rendu du menu supérieur.
-* `inc/profile.class.php` : Injection de l'onglet de configuration dans l'écran natif des Profils.
-* `front/matriz.php` : Interface visuelle principale du générateur (sélection des entités).
-* `front/processa_matriz.php` : Moteur de recherche dans la base de données, génération du tableau HTML avec une UX avancée et exportation CSV.
-* `front/profile.form.php` : Processeur de sauvegarde des permissions.
+* `src/Matriz.php` : Classe de contrôle principale et rendu du menu supérieur.
+* `src/Profile.php` : Injection de l'onglet de configuration dans l'écran natif des Profils.
+* `front/matrix.form.php` : Interface visuelle principale du générateur (sélection des entités).
+* `front/matrix.result.php` : Moteur de recherche dans la base de données, génération du tableau HTML avec une UX avancée et exportation CSV.
+* `front/profile.form.php` et `front/config.form.php` : Processeurs de sauvegarde des permissions et configuration.
 
 ## 📄 Licence
 
@@ -187,7 +195,7 @@ Desarrollado para facilitar la auditoría de accesos y la extracción de informe
 * **Filtro de Entidades Inteligente:** Campos de selección integrados con la API nativa Select2 de GLPI. Al seleccionar la entidad del perfil, la entidad del grupo se sincroniza automáticamente.
 * **UX Avanzada (Columnas Adhesivas):** Congelación dinámica de la fila de encabezado y de las columnas de identificación del usuario (Activo, Usuario, Nombre, Apellido), lo que permite desplazarse por matrices extensas sin perder la referencia.
 * **Exportación CSV:** Descargue la matriz generada en formato `.csv` (codificación UTF-8) con un solo clic, lista para abrirse en Excel o hojas de cálculo.
-* **Compatibilidad y Seguridad:** Totalmente adaptado para el motor GLPI 11, utilizando el tipado estricto de PHP 8 (`: bool`) y el nuevo sistema de tokens de sesión (`_glpi_csrf_token`).
+* **Compatibilidad y Seguridad:** Totalmente adaptado para el motor GLPI 11 y el nuevo **GLPI Marketplace**, utilizando el tipado estricto de PHP 8 (`: bool`), el nuevo sistema de tokens de sesión (`_glpi_csrf_token`), y plantillas Twig.
 
 ## 📋 Requisitos Previos
 
@@ -197,6 +205,10 @@ Desarrollado para facilitar la auditoría de accesos y la extracción de informe
 
 ## 🚀 Cómo Instalar
 
+### Opción 1: GLPI Marketplace (Recomendado)
+Puede encontrar e instalar "Matriz de Permisos" directamente desde el menú **Configuración > Complementos** de su GLPI usando el Marketplace integrado.
+
+### Opción 2: Instalación Manual
 1. **Descargue el plugin** y extraiga los archivos.
 2. **Renombre la carpeta** estrictamente a `permissionsmatrix` (sin caracteres especiales ni guiones bajos, como lo requiere GLPI).
 3. Suba la carpeta al directorio de plugins de su servidor GLPI:
@@ -245,11 +257,11 @@ Si desea que otro perfil específico (ej. admin, observador) tenga acceso a la h
 ## 🛠️ Estructura de Directorios
 
 * `setup.php` y `hook.php`: Inicialización y registros de hooks en el ecosistema de GLPI, incluyendo la inyección inicial de permisos en la base de datos.
-* `inc/matriz.class.php`: Clase de control principal y renderizado del menú superior.
-* `inc/profile.class.php`: Inyección de la pestaña de configuración en la pantalla nativa de Perfiles.
-* `front/matriz.php`: Interfaz visual del generador principal (selección de entidades).
-* `front/processa_matriz.php`: Motor de búsqueda en base de datos, generación de tabla HTML con UX avanzada y exportación CSV.
-* `front/profile.form.php`: Procesador de guardado de permisos.
+* `src/Matriz.php`: Clase de control principal y renderizado del menú superior.
+* `src/Profile.php`: Inyección de la pestaña de configuración en la pantalla nativa de Perfiles.
+* `front/matrix.form.php`: Interfaz visual del generador principal (selección de entidades).
+* `front/matrix.result.php`: Motor de búsqueda en base de datos, generación de tabla HTML con UX avanzada y exportación CSV.
+* `front/profile.form.php` y `front/config.form.php`: Procesadores de guardado de permisos y configuración.
 
 ## 📄 Licencia
 
@@ -272,7 +284,7 @@ Desenvolvido para facilitar a auditoria de acessos e a extração de relatórios
 * **Filtro Inteligente por Entidade:** Campos de seleção integrados com a API do Select2 nativa do GLPI. Ao selecionar a entidade do perfil, a entidade do grupo é sincronizada automaticamente.
 * **UX Avançada (Sticky Columns):** Congelamento dinâmico da linha de cabeçalho e das colunas de identificação do usuário (Ativo, Usuário, Nome, Sobrenome), permitindo rolar matrizes extensas sem perder a referência.
 * **Exportação para CSV:** Download da matriz gerada em formato `.csv` (codificação UTF-8) com um único clique, pronta para ser aberta no Excel ou planilhas.
-* **Compatibilidade e Segurança:** Totalmente adaptado para o motor do GLPI 11, utilizando tipagem estrita do PHP 8 (`: bool`) e o novo sistema de tokens de sessão (`_glpi_csrf_token`).
+* **Compatibilidade e Segurança:** Totalmente adaptado para o motor do GLPI 11 e para o novo **Marketplace do GLPI**, utilizando tipagem estrita do PHP 8 (`: bool`), o novo sistema de tokens de sessão (`_glpi_csrf_token`), e templates Twig.
 
 ## 📋 Pré-requisitos
 
@@ -282,6 +294,10 @@ Desenvolvido para facilitar a auditoria de acessos e a extração de relatórios
 
 ## 🚀 Como Instalar
 
+### Opção 1: Marketplace do GLPI (Recomendado)
+Você pode encontrar e instalar a "Matriz de Permissões" diretamente pelo menu **Configurar > Plugins** do seu GLPI utilizando o Marketplace integrado.
+
+### Opção 2: Instalação Manual
 1. **Faça o download do plugin** e extraia os arquivos.
 2. **Renomeie a pasta** obrigatoriamente para `permissionsmatrix` (sem caracteres especiais ou sublinhados, exigência do GLPI).
 3. Envie a pasta para o diretório de plugins do seu servidor GLPI:
@@ -330,11 +346,11 @@ Caso deseje que algum outro perfil específico (ex: admin, observador) tenha ace
 ## 🛠️ Estrutura de Diretórios
 
 * `setup.php` e `hook.php`: Inicialização e registros de hooks no ecossistema do GLPI, incluindo a injeção inicial de permissões no banco de dados.
-* `inc/matriz.class.php`: Classe de controle principal e renderização do menu superior.
-* `inc/profile.class.php`: Injeção da aba de configuração na tela nativa de Perfis.
-* `front/matriz.php`: Interface visual do gerador principal (seleção de entidades).
-* `front/processa_matriz.php`: Motor de busca no banco de dados, geração da tabela HTML com UX avançada e exportação CSV.
-* `front/profile.form.php`: Processador de salvamento das permissões.
+* `src/Matriz.php`: Classe de controle principal e renderização do menu superior.
+* `src/Profile.php`: Injeção da aba de configuração na tela nativa de Perfis.
+* `front/matrix.form.php`: Interface visual do gerador principal (seleção de entidades).
+* `front/matrix.result.php`: Motor de busca no banco de dados, geração da tabela HTML com UX avançada e exportação CSV.
+* `front/profile.form.php` e `front/config.form.php`: Processadores de salvamento das permissões e configuração.
 
 ## 📄 Licença
 
