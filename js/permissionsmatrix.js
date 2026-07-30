@@ -15,7 +15,7 @@ $(document).ready(function() {
             ajaxEmAndamento.abort();
         }
 
-        $('#pm-loading-overlay').show();
+        $('#pm-loading-overlay').css('display', 'flex');
 
         var $dados = $('#pm-dados-ajax');
         if ($dados.length === 0) return;
@@ -38,6 +38,12 @@ $(document).ready(function() {
         // para que o jQuery serialize corretamente como arrays PHP
         var postData = [];
         postData.push({name: 'gerar_matriz', value: '1'});
+        
+        // Coleta o token CSRF da página (essencial para o GLPI não bloquear o POST AJAX)
+        var csrfToken = $('input[name="_glpi_csrf_token"]').val();
+        if (csrfToken) {
+            postData.push({name: '_glpi_csrf_token', value: csrfToken});
+        }
         postData.push({name: 'pm_ajax', value: '1'});
         postData.push({name: 'filtro_ativo', value: '1'});
         postData.push({name: 'pagina', value: pagina});
@@ -78,11 +84,12 @@ $(document).ready(function() {
                 recalcularPosicoesFixas();
                 ajustarAlturaMatriz();
 
-                $('#pm-loading-overlay').hide();
+                $('#pm-loading-overlay').css('display', 'none');
             },
             error: function(xhr, status) {
                 if (status !== 'abort') {
-                    $('#pm-loading-overlay').hide();
+                    $('#pm-loading-overlay').css('display', 'none');
+                    console.error("PermissionsMatrix AJAX Error:", status, xhr.responseText);
                 }
             }
         });
