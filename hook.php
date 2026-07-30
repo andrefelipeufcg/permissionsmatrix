@@ -35,6 +35,15 @@ function plugin_permissionsmatrix_install() {
         }
     }
     
+    // Limpa o cache do GLPI (templates, traduções, etc) automaticamente
+    global $GLPI_CACHE;
+    if (isset($GLPI_CACHE)) {
+        $GLPI_CACHE->clear();
+    }
+    if (class_exists('Toolbox') && method_exists('Toolbox', 'clearCache')) {
+        \Toolbox::clearCache();
+    }
+    
     return true; 
 }
 
