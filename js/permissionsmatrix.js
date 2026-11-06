@@ -39,7 +39,7 @@ $(document).ready(function() {
         var postData = [];
         postData.push({name: 'gerar_matriz', value: '1'});
         
-        // Coleta o token CSRF da página (essencial para o GLPI não bloquear o POST AJAX)
+        // GLPI 10/11 require a CSRF token; GLPI 12 checks request origin instead.
         var csrfToken = $('input[name="_glpi_csrf_token"]').val();
         if (csrfToken) {
             postData.push({name: '_glpi_csrf_token', value: csrfToken});

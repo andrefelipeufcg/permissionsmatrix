@@ -2,7 +2,7 @@
 <script>{{ inline_js|raw }}</script>
 
 <form method='post' action='{{ url_form }}' id='profile_form' class='pm-save-form'>
-<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
+{% if csrf_token %}<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>{% endif %}
 <input type='hidden' name='profiles_id' value='{{ profile_id }}'>
 <input type='hidden' name='update_matriz_right' value='1'>
 

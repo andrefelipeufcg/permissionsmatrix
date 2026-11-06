@@ -3,7 +3,7 @@
 
 <div class='center' style='margin-top: 20px;'>
 <form method='post' action='matrix.result.php' class='pm-save-form'>
-<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
+{% if csrf_token %}<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>{% endif %}
 
 <table class='tab_cadre_fixe'>
 <tr><th colspan='2'>{{ __('Permissions Matrix Generator', 'permissionsmatrix') }}</th></tr>
@@ -30,4 +30,3 @@
 </table>
 </form>
 </div>
-

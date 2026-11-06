@@ -25,7 +25,7 @@
         <a href='matrix.form.php' class='vsubmit pm-btn-dark' style='display: inline-flex; align-items: center;' title='{{ __('Back to entities selection', 'permissionsmatrix') }}'>⬅️ {{ __('Back', 'permissionsmatrix') }}</a>
 
         <form id='form-exportar' method='post' action='matrix.result.php' style='margin: 0;'>
-            <input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
+            {% if csrf_token %}<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>{% endif %}
             <input type='hidden' name='filtro_ativo' value='1'>
             
             {% for id_perfil in entidade_perfis %}

@@ -53,10 +53,9 @@ class Matriz extends MatrizBase {
             return false;
         }
         
-        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', false) : \Plugin::getPhpDir('permissionsmatrix', false);
         return [
             'title' => self::getMenuName(),
-            'page'  => $dir . '/front/matrix.form.php',
+            'page'  => self::getFormURL(false),
             'icon'  => self::getIcon()
         ];
     }
@@ -75,18 +74,35 @@ class Matriz extends MatrizBase {
     /**
      * Sobrescreve a resolução de URL padrão do GLPI, já que o nome do arquivo mudou para matrix.form.php
      */
+    public static function getPluginURL($full = true) {
+        global $CFG_GLPI;
+
+        if (version_compare(GLPI_VERSION, '11.0.0', '<')) {
+            $dir = \Plugin::getWebDir('permissionsmatrix', $full);
+            if ($dir === false) {
+                throw new \RuntimeException('Permissions Matrix plugin directory not found.');
+            }
+            return '/' . ltrim($dir, '/');
+        }
+
+        return ($full ? rtrim($CFG_GLPI['root_doc'], '/') : '') . '/plugins/permissionsmatrix';
+    }
+
+    public static function getCSRFToken() {
+        return version_compare(GLPI_VERSION, '12.0.0', '>=')
+            ? ''
+            : \Session::getNewCSRFToken();
+    }
+
     public static function getSearchURL($full = true) {
-        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', $full) : \Plugin::getPhpDir('permissionsmatrix', false);
-        return $dir . '/front/matrix.form.php';
+        return self::getFormURL($full);
     }
 
     public static function getFormURL($full = true) {
-        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', $full) : \Plugin::getPhpDir('permissionsmatrix', false);
-        return $dir . '/front/matrix.form.php';
+        return self::getPluginURL($full) . '/front/matrix.form.php';
     }
 
     public static function getFormURLWithID($id = 0, $full = true) {
-        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', $full) : \Plugin::getPhpDir('permissionsmatrix', false);
-        return $dir . '/front/matrix.form.php?id=' . $id;
+        return self::getFormURL($full) . '?id=' . (int) $id;
     }
 }

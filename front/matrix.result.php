@@ -1,17 +1,19 @@
 <?php
 // Limite de memória removido conforme revisão de segurança (Unbounded memory_limit override)
 
-$inc = __DIR__ . '/../../../inc/includes.php';
-if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
-if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
-include $inc;
+if (!defined('GLPI_ROOT')) {
+    $inc = __DIR__ . '/../../../inc/includes.php';
+    if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
+    if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
+    require $inc;
+}
 // Verifica se tem permissão (Security Fix)
 Session::checkRight('plugin_permissionsmatrix', READ);
 
 // Verifica se o formulário original, o botão de exportar ou a paginação foram acionados
 if (!isset($_POST['gerar_matriz']) && !isset($_POST['exportar_csv'])) {
     Html::redirect("matrix.form.php");
-    exit;
+    return;
 }
 
 $is_export = isset($_POST['exportar_csv']);
@@ -39,7 +41,7 @@ foreach ($post_grupos as $id) {
 if (empty($entidade_perfis) || empty($entidade_grupos)) {
     Session::addMessageAfterRedirect(__('You do not have access to the requested entities.', 'permissionsmatrix'), false, ERROR);
     Html::redirect("matrix.form.php");
-    exit;
+    return;
 }
 
 // Controle de Paginação
@@ -273,7 +275,7 @@ if ($is_export) {
         fputcsv($output, $linha, ';');
     }
     fclose($output);
-    exit;
+    return;
 }
 
 // =========================================================
@@ -282,9 +284,6 @@ if ($is_export) {
 $is_ajax = !empty($_POST['pm_ajax']);
 
 if ($is_ajax) {
-    // Limpa qualquer saída anterior do GLPI
-    while (ob_get_level() > 0) { ob_end_clean(); }
-
     ob_start();
     TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result_table.html.twig', $dados_tabela);
     $html = ob_get_clean();
@@ -294,7 +293,7 @@ if ($is_ajax) {
         'html'            => $html,
         'total_usuarios'  => $total_usuarios,
     ]);
-    exit;
+    return;
 }
 
 // =========================================================
@@ -308,7 +307,7 @@ TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_result.html.
     'nomes_grupos'        => $nomes_grupos,
     'entidade_perfis'     => $entidade_perfis,
     'entidade_grupos'     => $entidade_grupos,
-    'csrf_token'          => Session::getNewCSRFToken(),
+    'csrf_token'          => \GlpiPlugin\Permissionsmatrix\Matriz::getCSRFToken(),
     'inline_css'          => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
     'inline_js'           => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
 ]));
