@@ -32,12 +32,12 @@ class Profile extends \CommonGLPI {
             $current_right = $row['rights'];
         }
 
-        // Desenha o Formulário
-        $url_form = \Plugin::getWebDir('permissionsmatrix') . '/front/profile.form.php';
+        $plugin_dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', false) : \Plugin::getPhpDir('permissionsmatrix', false);
+        $url_form = $plugin_dir . '/front/profile.form.php';
         
         \Glpi\Application\View\TemplateRenderer::getInstance()->display('@permissionsmatrix/profile_form.html.twig', [
             'url_form'      => $url_form,
-            'plugin_url'    => \Plugin::getWebDir('permissionsmatrix'),
+            'plugin_url'    => $plugin_dir,
             'csrf_token'    => \Session::getNewCSRFToken(),
             'profile_id'    => $profile_id,
             'current_right' => $current_right,

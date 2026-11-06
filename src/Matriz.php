@@ -4,18 +4,24 @@ namespace GlpiPlugin\Permissionsmatrix;
 
 // Trava de segurança padrão do GLPI para impedir acesso direto ao arquivo
 if (!defined('GLPI_ROOT')) {
-    die("Desculpe. Você não pode acessar este arquivo diretamente");
+    die("Sorry. You can't access directly to this file");
+}
+
+// GLPI 12 exige $rightname tipada (string); GLPI 10/11 proíbe o tipo.
+if ((new \ReflectionProperty(\CommonGLPI::class, 'rightname'))->hasType()) {
+    abstract class MatrizBase extends \CommonGLPI {
+        public static string $rightname = 'plugin_permissionsmatrix';
+    }
+} else {
+    abstract class MatrizBase extends \CommonGLPI {
+        public static $rightname = 'plugin_permissionsmatrix';
+    }
 }
 
 /**
  * Classe principal do plugin.
  */
-class Matriz extends \CommonGLPI {
-    
-    /**
-     * Define o nome interno do direito de permissão no banco
-     */
-    public static $rightname = 'plugin_permissionsmatrix';
+class Matriz extends MatrizBase {
 
     /**
      * Define o nome que vai aparecer no menu do GLPI
@@ -47,9 +53,10 @@ class Matriz extends \CommonGLPI {
             return false;
         }
         
+        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', false) : \Plugin::getPhpDir('permissionsmatrix', false);
         return [
             'title' => self::getMenuName(),
-            'page'  => '/' . \Plugin::getWebDir('permissionsmatrix', false) . '/front/matrix.form.php',
+            'page'  => $dir . '/front/matrix.form.php',
             'icon'  => self::getIcon()
         ];
     }
@@ -69,14 +76,17 @@ class Matriz extends \CommonGLPI {
      * Sobrescreve a resolução de URL padrão do GLPI, já que o nome do arquivo mudou para matrix.form.php
      */
     public static function getSearchURL($full = true) {
-        return \Plugin::getWebDir('permissionsmatrix', $full) . '/front/matrix.form.php';
-    }
-
-    public static function getFormURLWithID($id = 0, $full = true) {
-        return \Plugin::getWebDir('permissionsmatrix', $full) . '/front/matrix.form.php';
+        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', $full) : \Plugin::getPhpDir('permissionsmatrix', false);
+        return $dir . '/front/matrix.form.php';
     }
 
     public static function getFormURL($full = true) {
-        return \Plugin::getWebDir('permissionsmatrix', $full) . '/front/matrix.form.php';
+        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', $full) : \Plugin::getPhpDir('permissionsmatrix', false);
+        return $dir . '/front/matrix.form.php';
+    }
+
+    public static function getFormURLWithID($id = 0, $full = true) {
+        $dir = method_exists('\Plugin', 'getWebDir') ? \Plugin::getWebDir('permissionsmatrix', $full) : \Plugin::getPhpDir('permissionsmatrix', false);
+        return $dir . '/front/matrix.form.php?id=' . $id;
     }
 }
