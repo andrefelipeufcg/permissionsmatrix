@@ -17,8 +17,8 @@
 </div>
 
 <div class='pm-flex-between pm-box-header'>
-    <div style='font-size: 15px; font-weight: bold; color: #333;'>
-        <i class='fas fa-users' style='margin-right: 5px; color: #1d5ea3;'></i> {{ __('Total users found:', 'permissionsmatrix') }} <span id='pm-total-usuarios' style='color: #1d5ea3; font-size: 16px;'>{{ total_usuarios }}</span>
+    <div class='pm-total-label' style='font-size: 15px; font-weight: bold;'>
+        <i class='fas fa-users pm-accent' style='margin-right: 5px;'></i> {{ __('Total users found:', 'permissionsmatrix') }} <span id='pm-total-usuarios' class='pm-accent' style='font-size: 16px;'>{{ total_usuarios }}</span>
     </div>
 
     <div style='display: flex; gap: 10px;'>
@@ -51,7 +51,7 @@
 </div>
 
 <div class='pm-box-header'>
-    <div id='btn-toggle-filtro' style='cursor: pointer; text-align: center; color: #1d5ea3; font-weight: bold; font-size: 14px; padding: 5px;'>
+    <div id='btn-toggle-filtro' class='pm-accent' style='cursor: pointer; text-align: center; font-weight: bold; font-size: 14px; padding: 5px;'>
         <i class='fas fa-filter'></i> {{ __('Hide/Show Columns (Visual Filter)', 'permissionsmatrix') }} <i class='fas fa-caret-down'></i>
     </div>
 
@@ -60,10 +60,10 @@
             
             <div style='flex: 1; min-width: 250px; text-align: left;'>
                 <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-                    <strong style='color: #555;'>{{ __('Profiles:', 'permissionsmatrix') }}</strong>
+                    <strong class='pm-muted-label'>{{ __('Profiles:', 'permissionsmatrix') }}</strong>
                     <div style='font-size: 12px;'>
-                        <a href='#' class='acao-massa-perfil' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>{{ __('Check all', 'permissionsmatrix') }}</a> | 
-                        <a href='#' class='acao-massa-perfil' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>{{ __('Uncheck all', 'permissionsmatrix') }}</a>
+                        <a href='#' class='acao-massa-perfil pm-accent' data-acao='marcar' style='text-decoration: none;'>{{ __('Check all', 'permissionsmatrix') }}</a> |
+                        <a href='#' class='acao-massa-perfil pm-negative' data-acao='desmarcar' style='text-decoration: none;'>{{ __('Uncheck all', 'permissionsmatrix') }}</a>
                     </div>
                 </div>
                 <div id='caixa-perfis' class='pm-filter-box'>
@@ -77,10 +77,10 @@
 
             <div style='flex: 1; min-width: 250px; text-align: left;'>
                 <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-                    <strong style='color: #555;'>{{ __('Groups:', 'permissionsmatrix') }}</strong>
+                    <strong class='pm-muted-label'>{{ __('Groups:', 'permissionsmatrix') }}</strong>
                     <div style='font-size: 12px;'>
-                        <a href='#' class='acao-massa-grupo' data-acao='marcar' style='color: #1d5ea3; text-decoration: none;'>{{ __('Check all', 'permissionsmatrix') }}</a> | 
-                        <a href='#' class='acao-massa-grupo' data-acao='desmarcar' style='color: #990000; text-decoration: none;'>{{ __('Uncheck all', 'permissionsmatrix') }}</a>
+                        <a href='#' class='acao-massa-grupo pm-accent' data-acao='marcar' style='text-decoration: none;'>{{ __('Check all', 'permissionsmatrix') }}</a> |
+                        <a href='#' class='acao-massa-grupo pm-negative' data-acao='desmarcar' style='text-decoration: none;'>{{ __('Uncheck all', 'permissionsmatrix') }}</a>
                     </div>
                 </div>
                 <div id='caixa-grupos' class='pm-filter-box'>

@@ -4,6 +4,12 @@
 
 $(document).ready(function() {
 
+    // O GLPI 10 informa o tema por uma variável CSS, em vez do atributo usado no GLPI 11 e posteriores.
+    if ($('.pm-app-wrapper').length > 0 && !document.documentElement.hasAttribute('data-glpi-theme-dark')) {
+        var temaEscuro = window.getComputedStyle(document.documentElement).getPropertyValue('--is-dark').trim() === 'true';
+        $('.pm-app-wrapper').attr('data-pm-dark', temaEscuro ? '1' : '0');
+    }
+
     // ==========================================
     // 1. Requisição AJAX (Filtro + Paginação)
     // ==========================================

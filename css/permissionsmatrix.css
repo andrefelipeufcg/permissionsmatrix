@@ -2,12 +2,52 @@
  * Plugin Permissions Matrix - Estilos Globais
  */
 
+.pm-app-wrapper {
+    --pm-text: #333333;
+    --pm-muted: #555555;
+    --pm-accent: #1d5ea3;
+    --pm-negative: #990000;
+    --pm-positive: #274e13;
+    --pm-panel-bg: #f8f9fa;
+    --pm-input-bg: #ffffff;
+    --pm-border: #cccccc;
+    --pm-freeze-bg: #f4f4f4;
+    --pm-freeze-heading-bg: #e0e0e0;
+    --pm-profile-bg: #e0e0e0;
+    --pm-group-bg: #cfe2f3;
+    --pm-group-text: #0b5394;
+    --pm-profile-heading-bg: #999999;
+    --pm-group-heading-bg: #0b5394;
+    --pm-hover-bg: #d1d1d1;
+}
+
+html[data-glpi-theme-dark="1"] .pm-app-wrapper,
+.pm-app-wrapper[data-pm-dark="1"] {
+    --pm-text: #e2e8f0;
+    --pm-muted: #c6d1df;
+    --pm-accent: #a4d0ff;
+    --pm-negative: #ffaaaa;
+    --pm-positive: #a2e3b1;
+    --pm-panel-bg: var(--tblr-bg-surface, #263445);
+    --pm-input-bg: var(--input-bg, #1d2938);
+    --pm-border: #59697d;
+    --pm-freeze-bg: #263445;
+    --pm-freeze-heading-bg: #34445a;
+    --pm-profile-bg: #364252;
+    --pm-group-bg: #1f4059;
+    --pm-group-text: #b7dcff;
+    --pm-profile-heading-bg: #4a5a6e;
+    --pm-group-heading-bg: #14577d;
+    --pm-hover-bg: #485c70;
+}
+
 /* Matriz Result - Colunas Congeladas */
 .pm-freeze-col {
     position: -webkit-sticky;
     position: sticky;
     z-index: 2;
-    background-color: #f4f4f4;
+    background-color: var(--pm-freeze-bg);
+    color: var(--pm-text);
 }
 
 .pm-headerRow th {
@@ -18,10 +58,11 @@
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
-.pm-headerRow th.pm-freeze-col {
+.pm-headerRow th.pm-freeze-col,
+:root .pm-app-wrapper #pm-resultado .pm-table-auto .pm-headerRow th.pm-freeze-col {
     z-index: 4;
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: var(--pm-freeze-heading-bg);
+    color: var(--pm-text);
 }
 
 .pm-freeze-shadow {
@@ -66,25 +107,77 @@
 
 /* Efeitos de Hover para as linhas */
 .pm-cell-profile {
-    background-color: #e0e0e0;
+    background-color: var(--pm-profile-bg);
+    color: var(--pm-text);
 }
 
 .pm-cell-group {
-    background-color: #cfe2f3;
+    background-color: var(--pm-group-bg);
+    color: var(--pm-group-text);
+}
+
+.pm-profile-heading,
+.pm-group-heading,
+:root .pm-app-wrapper #pm-resultado .pm-table-auto .pm-headerRow th.pm-profile-heading,
+:root .pm-app-wrapper #pm-resultado .pm-table-auto .pm-headerRow th.pm-group-heading {
+    color: white;
+    white-space: nowrap;
+    text-align: center;
+    padding: 5px 15px;
+}
+
+.pm-profile-heading,
+:root .pm-app-wrapper #pm-resultado .pm-table-auto .pm-headerRow th.pm-profile-heading {
+    background-color: var(--pm-profile-heading-bg);
+}
+
+.pm-group-heading,
+:root .pm-app-wrapper #pm-resultado .pm-table-auto .pm-headerRow th.pm-group-heading {
+    background-color: var(--pm-group-heading-bg);
+}
+
+.pm-user-cell {
+    white-space: nowrap;
+    text-align: left;
+}
+
+.pm-status {
+    text-align: center;
+}
+
+.pm-positive {
+    color: var(--pm-positive);
+    font-weight: bold;
+}
+
+.pm-negative {
+    color: var(--pm-negative);
+}
+
+.pm-accent {
+    color: var(--pm-accent);
+}
+
+.pm-total-label {
+    color: var(--pm-text);
+}
+
+.pm-muted-label {
+    color: var(--pm-muted);
 }
 
 .tab_cadre_fixehov tr.tab_bg_1:hover td,
 .tab_cadre_fixehov tr:hover td.pm-freeze-col,
 .tab_cadre_fixehov tr:hover td.pm-cell-profile,
 .tab_cadre_fixehov tr:hover td.pm-cell-group {
-    background-color: #d1d1d1 !important;
+    background-color: var(--pm-hover-bg) !important;
     transition: background-color 0.2s;
 }
 
 /* Layout Visual do Filtro */
 .pm-filter-panel {
     display: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--pm-border);
     margin-top: 10px;
     padding-top: 15px;
 }
@@ -92,9 +185,9 @@
 .pm-filter-box {
     max-height: 120px;
     overflow-y: auto;
-    border: 1px solid #ccc;
+    border: 1px solid var(--pm-border);
     padding: 8px;
-    background: #fff;
+    background: var(--pm-input-bg);
     border-radius: 3px;
 }
 
@@ -104,7 +197,7 @@
     cursor: pointer;
     font-size: 13px;
     text-align: left;
-    color: #333333;
+    color: var(--pm-text);
 }
 
 /* Layouts Gerais */
@@ -123,9 +216,21 @@
 .pm-box-header {
     margin-bottom: 15px;
     padding: 10px;
-    background: #f8f9fa;
-    border: 1px solid #ddd;
+    background: var(--pm-panel-bg);
+    border: 1px solid var(--pm-border);
     border-radius: 4px;
+    color: var(--pm-text);
+}
+
+.pm-page-input {
+    width: 60px;
+    text-align: center;
+    padding: 3px;
+    border: 1px solid var(--pm-border);
+    border-radius: 4px;
+    font-weight: bold;
+    background: var(--pm-input-bg);
+    color: var(--pm-text);
 }
 
 .pm-app-wrapper {
