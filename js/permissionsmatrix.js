@@ -39,11 +39,6 @@ $(document).ready(function() {
         var postData = [];
         postData.push({name: 'gerar_matriz', value: '1'});
         
-        // GLPI 10/11 require a CSRF token; GLPI 12 checks request origin instead.
-        var csrfToken = $('input[name="_glpi_csrf_token"]').val();
-        if (csrfToken) {
-            postData.push({name: '_glpi_csrf_token', value: csrfToken});
-        }
         postData.push({name: 'pm_ajax', value: '1'});
         postData.push({name: 'filtro_ativo', value: '1'});
         postData.push({name: 'pagina', value: pagina});
