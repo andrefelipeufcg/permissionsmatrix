@@ -5,7 +5,7 @@
 <a id="english"></a>
 # GLPI Plugin - Permissions Matrix
 
-A native GLPI plugin (compatible with versions 10 and 11) that generates a quick and exportable visualization of user permissions, crossing Profiles and Groups according to the selected Entities.
+A native GLPI plugin for versions 10, 11 and 12 that generates a quick and exportable visualization of user permissions, crossing Profiles and Groups according to the selected Entities.
 
 Developed to facilitate access auditing and the extraction of structured reports.
 
@@ -17,12 +17,13 @@ Developed to facilitate access auditing and the extraction of structured reports
 * **Smart Entity Filter:** Selection fields integrated with the native GLPI Select2 API. When selecting the profile entity, the group entity is automatically synchronized.
 * **Advanced UX (Sticky Columns):** Dynamic freezing of the header row and user identification columns (Active, User, First name, Last name), allowing scrolling through extensive matrices without losing reference.
 * **CSV Export:** Download the generated matrix in `.csv` format (UTF-8 encoding) with a single click, ready to be opened in Excel or spreadsheets.
-* **Compatibility and Security:** Fully adapted for the GLPI 11 engine and the new **GLPI Marketplace**, using strict PHP 8 typing (`: bool`), the new session token system (`_glpi_csrf_token`), and Twig templates.
+* **Compatibility and Security:** Supports GLPI's Marketplace, Twig templates, and CSRF protection (session tokens in GLPI 10/11 and origin checks in GLPI 12).
 
 ## 📋 Prerequisites
 
 * **GLPI:** Version 10.0.0 or higher.
 * **PHP:** Version 8.0 or higher.
+  GLPI 12 requires PHP 8.3 or higher.
 * Web server access (SSH terminal) for permissions adjustment.
 
 ## 🚀 How to Install
@@ -85,6 +86,10 @@ If you want another specific profile (e.g. admin, observer) to have access to th
 * `front/matrix.result.php`: Database search engine, HTML table generation with advanced UX, and CSV export.
 * `front/profile.form.php` and `front/config.form.php`: Processors for saving permissions and configuration.
 
+## Compatibility checks
+
+Run `php tests/compatibility.php 10`, `php tests/compatibility.php 11`, and `php tests/compatibility.php 12` for the simulated compatibility checks. With a GLPI 12 installation available, run `php tests/glpi12-integration.php <GLPI_ROOT>` from a checkout named `permissionsmatrix` to check its classes, routes, queries, and Twig templates. These checks do not replace testing installation and usage in a running GLPI instance.
+
 ## 📄 License
 
 This project is licensed under the GPLv2+ license, following the standard of the GLPI framework.
@@ -94,7 +99,7 @@ This project is licensed under the GPLv2+ license, following the standard of the
 <a id="français"></a>
 # Plugin GLPI - Matrice de Permissions
 
-Un plugin natif pour GLPI (compatible avec les versions 10 et 11) qui génère une visualisation rapide et exportable des permissions des utilisateurs, en croisant les Profils et les Groupes selon les Entités sélectionnées.
+Un plugin natif pour GLPI (versions 10, 11 et 12) qui génère une visualisation rapide et exportable des permissions des utilisateurs, en croisant les Profils et les Groupes selon les Entités sélectionnées.
 
 Développé pour faciliter l'audit des accès et l'extraction de rapports structurés.
 
@@ -106,12 +111,13 @@ Développé pour faciliter l'audit des accès et l'extraction de rapports struct
 * **Filtre Intelligent par Entité :** Champs de sélection intégrés avec l'API Select2 native de GLPI. Lors de la sélection de l'entité du profil, l'entité du groupe est automatiquement synchronisée.
 * **UX Avancée (Colonnes figées) :** Figeage dynamique de la ligne d'en-tête et des colonnes d'identification de l'utilisateur (Actif, Utilisateur, Prénom, Nom), permettant de faire défiler de longues matrices sans perdre la référence.
 * **Exportation CSV :** Téléchargement de la matrice générée au format `.csv` (encodage UTF-8) en un seul clic, prête à être ouverte dans Excel ou d'autres tableurs.
-* **Compatibilité et Sécurité :** Totalement adapté au moteur de GLPI 11 et au nouveau **GLPI Marketplace**, utilisant le typage strict de PHP 8 (`: bool`), le nouveau système de jetons de session (`_glpi_csrf_token`), et des modèles Twig.
+* **Compatibilité et Sécurité :** Prend en charge le Marketplace GLPI, les modèles Twig et la protection CSRF (jetons de session dans GLPI 10/11 et vérification de l'origine dans GLPI 12).
 
 ## 📋 Prérequis
 
 * **GLPI :** Version 10.0.0 ou supérieure.
 * **PHP :** Version 8.0 ou supérieure.
+  GLPI 12 nécessite PHP 8.3 ou une version supérieure.
 * Accès au serveur web (terminal SSH) pour l'ajustement des permissions.
 
 ## 🚀 Comment l'installer
@@ -183,7 +189,7 @@ Ce projet est sous licence GPLv2+, suivant le standard du framework GLPI.
 <a id="español"></a>
 # GLPI Plugin - Permissions Matrix (Matriz de Permisos)
 
-Un plugin nativo de GLPI (compatible con las versiones 10 y 11) que genera una visualización rápida y exportable de los permisos de los usuarios, cruzando Perfiles y Grupos según las Entidades seleccionadas.
+Un plugin nativo de GLPI (versiones 10, 11 y 12) que genera una visualización rápida y exportable de los permisos de los usuarios, cruzando Perfiles y Grupos según las Entidades seleccionadas.
 
 Desarrollado para facilitar la auditoría de accesos y la extracción de informes estructurados.
 
@@ -195,12 +201,13 @@ Desarrollado para facilitar la auditoría de accesos y la extracción de informe
 * **Filtro de Entidades Inteligente:** Campos de selección integrados con la API nativa Select2 de GLPI. Al seleccionar la entidad del perfil, la entidad del grupo se sincroniza automáticamente.
 * **UX Avanzada (Columnas Adhesivas):** Congelación dinámica de la fila de encabezado y de las columnas de identificación del usuario (Activo, Usuario, Nombre, Apellido), lo que permite desplazarse por matrices extensas sin perder la referencia.
 * **Exportación CSV:** Descargue la matriz generada en formato `.csv` (codificación UTF-8) con un solo clic, lista para abrirse en Excel o hojas de cálculo.
-* **Compatibilidad y Seguridad:** Totalmente adaptado para el motor GLPI 11 y el nuevo **GLPI Marketplace**, utilizando el tipado estricto de PHP 8 (`: bool`), el nuevo sistema de tokens de sesión (`_glpi_csrf_token`), y plantillas Twig.
+* **Compatibilidad y Seguridad:** Compatible con el Marketplace de GLPI, plantillas Twig y protección CSRF (tokens de sesión en GLPI 10/11 y comprobación del origen en GLPI 12).
 
 ## 📋 Requisitos Previos
 
 * **GLPI:** Versión 10.0.0 o superior.
 * **PHP:** Versión 8.0 o superior.
+  GLPI 12 requiere PHP 8.3 o superior.
 * Acceso al servidor web (terminal SSH) para ajuste de permisos.
 
 ## 🚀 Cómo Instalar
@@ -272,7 +279,7 @@ Este proyecto está licenciado bajo la licencia GPLv2+, siguiendo el estándar d
 <a id="português"></a>
 # Plugin GLPI - Matriz de Permissões
 
-Um plugin nativo para o GLPI (compatível com as versões 10 e 11) que gera uma visualização rápida e exportável das permissões dos usuários, cruzando Perfis e Grupos de acordo com as Entidades selecionadas.
+Um plugin nativo para o GLPI (versões 10, 11 e 12) que gera uma visualização rápida e exportável das permissões dos usuários, cruzando Perfis e Grupos de acordo com as Entidades selecionadas.
 
 Desenvolvido para facilitar a auditoria de acessos e a extração de relatórios estruturados.
 
@@ -284,12 +291,13 @@ Desenvolvido para facilitar a auditoria de acessos e a extração de relatórios
 * **Filtro Inteligente por Entidade:** Campos de seleção integrados com a API do Select2 nativa do GLPI. Ao selecionar a entidade do perfil, a entidade do grupo é sincronizada automaticamente.
 * **UX Avançada (Sticky Columns):** Congelamento dinâmico da linha de cabeçalho e das colunas de identificação do usuário (Ativo, Usuário, Nome, Sobrenome), permitindo rolar matrizes extensas sem perder a referência.
 * **Exportação para CSV:** Download da matriz gerada em formato `.csv` (codificação UTF-8) com um único clique, pronta para ser aberta no Excel ou planilhas.
-* **Compatibilidade e Segurança:** Totalmente adaptado para o motor do GLPI 11 e para o novo **Marketplace do GLPI**, utilizando tipagem estrita do PHP 8 (`: bool`), o novo sistema de tokens de sessão (`_glpi_csrf_token`), e templates Twig.
+* **Compatibilidade e Segurança:** Suporte ao Marketplace do GLPI, templates Twig e proteção CSRF (tokens de sessão no GLPI 10/11 e verificação de origem no GLPI 12).
 
 ## 📋 Pré-requisitos
 
 * **GLPI:** Versão 10.0.0 ou superior.
 * **PHP:** Versão 8.0 ou superior.
+  O GLPI 12 exige PHP 8.3 ou superior.
 * Acesso ao servidor web (terminal SSH) para ajuste de permissões.
 
 ## 🚀 Como Instalar
@@ -351,6 +359,10 @@ Caso deseje que algum outro perfil específico (ex: admin, observador) tenha ace
 * `front/matrix.form.php`: Interface visual do gerador principal (seleção de entidades).
 * `front/matrix.result.php`: Motor de busca no banco de dados, geração da tabela HTML com UX avançada e exportação CSV.
 * `front/profile.form.php` e `front/config.form.php`: Processadores de salvamento das permissões e configuração.
+
+## Verificações de compatibilidade
+
+Execute `php tests/compatibility.php 10`, `php tests/compatibility.php 11` e `php tests/compatibility.php 12` para os testes simulados. Com uma instalação do GLPI 12 disponível, execute `php tests/glpi12-integration.php <GLPI_ROOT>` a partir de um checkout chamado `permissionsmatrix` para verificar classes, rotas, consultas e templates Twig. Essas verificações não substituem o teste de instalação e uso em uma instância GLPI em execução.
 
 ## 📄 Licença
 

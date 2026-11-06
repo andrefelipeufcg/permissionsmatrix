@@ -2,7 +2,7 @@
 <script>{{ inline_js|raw }}</script>
 
 <form method='post' action='{{ action_url }}' id='config_form' class='pm-save-form'>
-<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>
+{% if csrf_token %}<input type='hidden' name='_glpi_csrf_token' value='{{ csrf_token }}'>{% endif %}
 <div class='center'>
     <table class='tab_cadre_fixehov'>
         <tr class='tab_bg_1'><th colspan='2'>{{ __('Plugin Access Configuration', 'permissionsmatrix') }}</th></tr>

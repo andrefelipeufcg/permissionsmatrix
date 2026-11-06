@@ -15,8 +15,10 @@ class Profile extends \CommonGLPI {
 
     function getTabNameForItem(\CommonGLPI $item, $withtemplate = 0) {
         if ($item->getType() == 'Profile') {
-            // Usa o construtor oficial do GLPI para alinhar o ícone e o texto perfeitamente
-            return self::createTabEntry(self::getTypeName(), 0, self::getIcon());
+            if (version_compare(GLPI_VERSION, '11.0.0', '>=')) {
+                return self::createTabEntry(self::getTypeName(), 0, null, self::getIcon());
+            }
+            return self::createTabEntry(self::getTypeName());
         }
         return '';
     }
@@ -27,18 +29,21 @@ class Profile extends \CommonGLPI {
 
         // Busca o status atual no banco
         $current_right = 0;
-        $res = $DB->request('glpi_profilerights', ['profiles_id' => $profile_id, 'name' => 'plugin_permissionsmatrix']);
+        $res = $DB->request([
+            'FROM' => 'glpi_profilerights',
+            'WHERE' => ['profiles_id' => $profile_id, 'name' => 'plugin_permissionsmatrix']
+        ]);
         if ($row = $res->current()) {
             $current_right = $row['rights'];
         }
 
-        // Desenha o Formulário
-        $url_form = \Plugin::getWebDir('permissionsmatrix') . '/front/profile.form.php';
+        $plugin_dir = Matriz::getPluginURL();
+        $url_form = $plugin_dir . '/front/profile.form.php';
         
         \Glpi\Application\View\TemplateRenderer::getInstance()->display('@permissionsmatrix/profile_form.html.twig', [
             'url_form'      => $url_form,
-            'plugin_url'    => \Plugin::getWebDir('permissionsmatrix'),
-            'csrf_token'    => \Session::getNewCSRFToken(),
+            'plugin_url'    => $plugin_dir,
+            'csrf_token'    => Matriz::getCSRFToken(),
             'profile_id'    => $profile_id,
             'current_right' => $current_right,
             'inline_css'    => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),

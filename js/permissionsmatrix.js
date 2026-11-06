@@ -4,6 +4,12 @@
 
 $(document).ready(function() {
 
+    // O GLPI 10 informa o tema por uma variável CSS, em vez do atributo usado no GLPI 11 e posteriores.
+    if ($('.pm-app-wrapper').length > 0 && !document.documentElement.hasAttribute('data-glpi-theme-dark')) {
+        var temaEscuro = window.getComputedStyle(document.documentElement).getPropertyValue('--is-dark').trim() === 'true';
+        $('.pm-app-wrapper').attr('data-pm-dark', temaEscuro ? '1' : '0');
+    }
+
     // ==========================================
     // 1. Requisição AJAX (Filtro + Paginação)
     // ==========================================
@@ -39,11 +45,6 @@ $(document).ready(function() {
         var postData = [];
         postData.push({name: 'gerar_matriz', value: '1'});
         
-        // Coleta o token CSRF da página (essencial para o GLPI não bloquear o POST AJAX)
-        var csrfToken = $('input[name="_glpi_csrf_token"]').val();
-        if (csrfToken) {
-            postData.push({name: '_glpi_csrf_token', value: csrfToken});
-        }
         postData.push({name: 'pm_ajax', value: '1'});
         postData.push({name: 'filtro_ativo', value: '1'});
         postData.push({name: 'pagina', value: pagina});

@@ -1,9 +1,11 @@
 <?php
 // Inicializa o ambiente do GLPI
-$inc = __DIR__ . '/../../../inc/includes.php';
-if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
-if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
-include $inc;
+if (!defined('GLPI_ROOT')) {
+    $inc = __DIR__ . '/../../../inc/includes.php';
+    if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
+    if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
+    require $inc;
+}
 
 // Trava de segurança: Garante que quem tem permissão pode acessar
 Session::checkRight('plugin_permissionsmatrix', READ);
@@ -32,7 +34,7 @@ $dropdown_groups = ob_get_clean();
 TemplateRenderer::getInstance()->display('@permissionsmatrix/matrix_form.html.twig', [
     'dropdown_profiles' => $dropdown_profiles,
     'dropdown_groups'   => $dropdown_groups,
-    'csrf_token'        => Session::getNewCSRFToken(),
+    'csrf_token'        => \GlpiPlugin\Permissionsmatrix\Matriz::getCSRFToken(),
     'inline_css'        => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
     'inline_js'         => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
 ]);

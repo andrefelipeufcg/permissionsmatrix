@@ -1,16 +1,22 @@
 <?php
 
-$inc = __DIR__ . '/../../../inc/includes.php';
-if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
-if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
-include $inc;
+if (!defined('GLPI_ROOT')) {
+    $inc = __DIR__ . '/../../../inc/includes.php';
+    if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/inc/includes.php'; }
+    if (!file_exists($inc)) { $inc = ($_SERVER['DOCUMENT_ROOT'] ?? '') . '/../inc/includes.php'; }
+    require $inc;
+}
 
 // Configurações de segurança: apenas Super-Admin deve ter acesso a esta página
 Session::checkRight("config", UPDATE);
 
 $plugin = new Plugin();
 if (!$plugin->isActivated('permissionsmatrix')) {
-    Html::displayNotFoundError();
+    if (method_exists('Html', 'displayNotFoundError')) {
+        Html::displayNotFoundError();
+    } else {
+        throw new \Glpi\Exception\Http\NotFoundHttpException();
+    }
 }
 
 global $DB;
@@ -93,7 +99,7 @@ Html::header(__('Permissions Matrix', 'permissionsmatrix'), 'config.form.php', "
 
 \Glpi\Application\View\TemplateRenderer::getInstance()->display('@permissionsmatrix/config_form.html.twig', [
     'action_url' => 'config.form.php',
-    'csrf_token' => Session::getNewCSRFToken(),
+    'csrf_token' => \GlpiPlugin\Permissionsmatrix\Matriz::getCSRFToken(),
     'allow_all'  => $allow_all_state,
     'inline_css' => file_get_contents(__DIR__ . '/../css/permissionsmatrix.css'),
     'inline_js'  => file_get_contents(__DIR__ . '/../js/permissionsmatrix.js')
